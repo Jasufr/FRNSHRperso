@@ -2,7 +2,7 @@ class CreateItems < ActiveRecord::Migration[7.1]
   def change
     create_table :items do |t|
       t.string :name
-      t.string :type
+      t.string :furniture_type
       t.integer :price
       t.string :color
       t.string :shop_name
@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration[7.1]
       t.float :x_dimension
       t.float :y_dimension
       t.float :z_dimension
+      t.string :photo
 
       t.timestamps
     end

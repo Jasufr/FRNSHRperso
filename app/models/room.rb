@@ -1,7 +1,7 @@
 class Room < ApplicationRecord
   belongs_to :user
-  has_many :wishlists
-  has_many :planners
+  has_many :wishlists, dependent: :destroy
+  has_many :planners, dependent: :destroy
   has_many :planner_items, through: :planners, source: :item
   has_many :wish_items, through: :wishlists, source: :item
 
