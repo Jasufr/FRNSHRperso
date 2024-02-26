@@ -2,8 +2,8 @@ class Room < ApplicationRecord
   belongs_to :user
   has_many :wishlists
   has_many :planners
-  has_many :planner_items, through: :planners, source: :items
-  has_many :wish_items, through: :wishlists, source: :items
+  has_many :planner_items, through: :planners, source: :item
+  has_many :wish_items, through: :wishlists, source: :item
 
   validates :room_type, presence: true
   validates :palette, presence: true
