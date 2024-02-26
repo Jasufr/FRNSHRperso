@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_060710) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "furniture_type"
     t.integer "price"
     t.string "color"
     t.string "shop_name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_060710) do
     t.float "x_dimension"
     t.float "y_dimension"
     t.float "z_dimension"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
