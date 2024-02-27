@@ -1,0 +1,24 @@
+<div class="search">
+  <div class="searchbar">
+    <%= form_with url: items_path, method: :get do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placholder: "What are you searching for?"
+      %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="search-results">
+    <div id="items">
+      <%= if @items.any? %>
+        <% @items.each do |item| %>
+          <%= item.name %>
+          <%= item.price %>
+        <% end %>
+      <% else %>
+        <em>No, items found.</em>
+      <% end %>
+    </div>
+  </div>
+</div>
