@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: sticky;
+  top: 0;
+  background-color: $brown;
+  color: $light-gray;
+  z-index: 100;
+  margin-bottom: 40px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +15,31 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
+}
+
+#navbarSupportedContent {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: $light-gray;
+  color: $gray;
+  padding: 8px;
+  border-radius: 8px;
+  line-height: 32px;
+  box-shadow: 0 0 10px $gray;
+}
+
+.dropdown-item {
+  padding: 4px;
+  &:hover {
+      background-color: rgba(1,186,239,0.25);
+    }
+}
+
+.brand-title {
+  font-family: "Gochi Hand", cursive;
 }
