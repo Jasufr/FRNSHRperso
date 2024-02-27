@@ -1,5 +1,11 @@
 <p>Here's your wishlist</p>
-<%# DONT REMOVE %>
-<%= render "wishbar", wishlists: @wishlists %>
-<%= render "shared/search-results" %>
-<!-- DONT REMOVE -->
+<div class="page-container">
+  <%# DONT REMOVE %>
+  <div class="wishbar-container">
+    <%= render "wishbar", wishlists: @wishlists %>
+  </div>
+  <div class="search-results-container">
+    <%= render "shared/search-results" %>
+  </div>
+  <!-- DONT REMOVE -->
+</div>
