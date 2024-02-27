@@ -4,7 +4,7 @@
       <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placholder: "What are you searching for?"
+          placholder: "What are you looking for?"
       %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
@@ -12,10 +12,22 @@
   <div class="search-results">
     <div id="items">
       <% if @items.any? %>
-        <% @items.each do |item| %>
-          <%= item.name %>
-          <%= item.price %>
-        <% end %>
+        <div class="results-container">
+          <% @items.each do |item| %>
+            <div class="result">
+              <div class="result-photo" style="background-image: url('<%= item.photo %>');">
+              </div>
+              <div class="result-details">
+                <h3><%= item.name %></h3>
+                <p>¥ <%= item.price %></p>
+                <p><%= item.furniture_type %></p>
+                <p>Dimensions: <%= item.x_dimension %> x <%= item.y_dimension %> x <%= item.z_dimension %></p>
+                <p>Shop: <%= item.shop_name %></p>
+              </div>
+              <a class="add-to-wishlist-button"><i class="fa-solid fa-plus"></i></a>
+            </div>
+          <% end %>
+        </div>
       <% else %>
         <em>No, items found.</em>
       <% end %>
