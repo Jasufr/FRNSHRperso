@@ -1,18 +1,17 @@
 <div class="card-container">
-        <% if wishlists.any? %>
-        <% wishlists.each do |wishlist| %>
-          <div class="card d-flex justify-content-center">
-              <div class="card">
-                <img src="<%= wishlist.item.photo %>" alt="furniture_image">
-                <div class="d-flex flex-column w-100 info-text align-content: between">
-                  <h3 style="text-align: end"> <%= wishlist.item.name %> </h3>
-                  <p> ¥<%= wishlist.item.price %></p>
-                  <i class="fa-solid fa-trash"></i>
-                </div>
-              </div>
-            <% end %>
-          </div>
-      <% else %>
-        <em>Add some items to your wishlist...</em>
-      <% end %>
+  <% if wishlists.any? %>
+    <% wishlists.each do |wishlist| %>
+      <div class="result">
+        <div class="result-photo" style="background-image: url('<%= wishlist.item.photo %>');">
+        </div>
+        <div class="result-details">
+          <h3><%= wishlist.item.name %></h3>
+          <p>¥ <%= wishlist.item.price %></p>
+        </div>
+        <a class="remove-from-wishlist-button><i class="fa-solid fa-minus"></i></a>
+      </div>
+    <% end %>
+  <% else %>
+    <em>Add some items to your wishlist...</em>
+  <% end %>
 </div>
