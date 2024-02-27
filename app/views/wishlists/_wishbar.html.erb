@@ -8,7 +8,10 @@
           <h3><%= wishlist.item.name %></h3>
           <p>¥ <%= wishlist.item.price %></p>
         </div>
-        <a class="remove-from-wishlist-button><i class="fa-solid fa-minus"></i></a>
+        <a class="remove-from-wishlist-button"><i class="fa-solid fa-minus"></i></a>
+        <% if current_page?(room_planners_path) %>
+          <h5>i am at planner page</h5>
+        <% end %>
       </div>
     <% end %>
   <% else %>
