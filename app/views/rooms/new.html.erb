@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="form-container">
+    <h1>Choose a Room</h1>
+    <%= simple_form_for(@room) do |f| %>
+      <%= f.input :room_type, as: :select, collection: Room::ROOMS %>
+      <%= f.input :palette, as: :array do %>
+          <input type="color" name=room[palette][]>
+          <input type="color" name=room[palette][]>
+          <input type="color" name=room[palette][]>
+          <input type="color" name=room[palette][]>
+          <input type="color" name=room[palette][]>
+      <% end %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
