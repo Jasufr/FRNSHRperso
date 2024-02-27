@@ -1,6 +1,6 @@
 <div class="search">
   <div class="searchbar">
-    <%= form_with url: items_path, method: :get do %>
+    <%= form_with url: room_wishlists_path(@room), method: :get do %>
       <%= text_field_tag :query,
           params[:query],
           class: "form-control",
@@ -11,7 +11,7 @@
   </div>
   <div class="search-results">
     <div id="items">
-      <%= if @items.any? %>
+      <% if @items.any? %>
         <% @items.each do |item| %>
           <%= item.name %>
           <%= item.price %>
