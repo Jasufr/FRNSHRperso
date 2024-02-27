@@ -1,14 +1,18 @@
 <div class="card-container">
   <% if wishlists.any? %>
     <% wishlists.each do |wishlist| %>
-      <div class="result">
-        <div class="result-photo" style="background-image: url('<%= wishlist.item.photo %>');">
+      <div class="wishlist-item">
+        <div class="wishlist-photo" style="background-image: url('<%= wishlist.item.photo %>');">
         </div>
-        <div class="result-details">
-          <h3><%= wishlist.item.name %></h3>
+        <div class="d-flex flex-column wishlist-details ">
+          <div class ="d-flex justify-content-between">
+          <h3 class="text-center"><%= wishlist.item.name %></h3>
+          <a class="remove-from-wishlist-button"><i class="fa-solid fa-minus"></i></a>
+          </div>
+          <div class="d-flex">
           <p>¥ <%= wishlist.item.price %></p>
+          </div>
         </div>
-        <a class="remove-from-wishlist-button"><i class="fa-solid fa-minus"></i></a>
         <% if current_page?(room_planners_path) %>
           <h5>i am at planner page</h5>
         <% end %>

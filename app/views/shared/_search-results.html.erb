@@ -1,14 +1,5 @@
 <div class="search">
-  <div class="searchbar">
-    <%= form_with url: room_wishlists_path(@room), method: :get do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placholder: "What are you looking for?"
-      %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <%= render "shared/narrow-search" %>
   <div class="search-results">
     <div id="items">
       <% if @items.any? %>
