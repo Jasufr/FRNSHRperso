@@ -1,0 +1,43 @@
+.wishlist-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 12px;
+ }
+
+ .wishlist-item {
+   display: flex;
+   width: 90%;
+   box-shadow: 0px 0px 10px gray;
+   background-color: $beige;
+   margin-bottom: 16px;
+   margin-right: 16px;
+   height: 150px;
+   background-color: $brown;
+   border: 1px solid black;
+   border-left: none;
+   border-radius: 0 32px 32px 0;
+ }
+
+ .wishlist-photo {
+   width: 120px;
+   height: 120px;
+   background-size: cover;
+   background-position: center;
+   align-self: center;
+   padding: 8px;
+   border-radius: 0 16px 16px 0;
+   border: solid 2px 2px 2px 0 $brown;
+ }
+
+ .wishlist-details {
+   padding: 12px 12px;
+   flex-grow: 1;
+ }
+
+ .remove-from-wishlist-button {
+   margin: 8px;
+   width: 25px;
+   height: 25px;
+ }

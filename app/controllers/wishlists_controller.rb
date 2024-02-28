@@ -1,5 +1,4 @@
 class WishlistsController < ApplicationController
-
   def index
     @wishlists = policy_scope(Wishlist)
     @room = Room.find(params[:room_id])

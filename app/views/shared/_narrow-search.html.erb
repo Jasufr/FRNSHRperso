@@ -1,0 +1,12 @@
+<div class="searchbar">
+  <%= form_with url: room_wishlists_path(@room), method: :get do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placholder: "What are you looking for?"
+      %>
+    <%= select_tag(:room_type, options_for_select([@room.room_type, Room::ROOMS].flatten.uniq)) %>
+    <%# OR THIS LINE <%= select_tag(:room_type, options_for_select([@room.room_type, Room::ROOMS].flatten.uniq.map(&:capitalize))) %>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+  <% end %>
+</div>
