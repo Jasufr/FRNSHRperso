@@ -1,2 +1,4 @@
- 
-<h5>i am at planner page</h5>
+<%= simple_form_for [@room, @planner] do |f| %>
+  <%= f.input :item_id , as: :hidden, input_html: {value: wishlist.item.id}%>
+  <%= f.submit %>
+<%end%>
