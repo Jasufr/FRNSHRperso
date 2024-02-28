@@ -1,0 +1,9 @@
+<div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+  <div class="card">
+    <%= image_tag "#{planner.item.photo}"%>
+    <div class="card-body">
+      <%= planner.item.name %>
+    </div>
+    <div><%= link_to "Delete",planner_path(planner),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></div>
+  </div>
+</div>

@@ -12,11 +12,26 @@ class PlannersController < ApplicationController
     @planner = Planner.new(planner_params)
     @planner.room = @room
     authorize @planner
-    if @planner.save
-      redirect_to room_planners_path(@room)
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @planner.save
+        html = render_to_string(partial: "planner_card", formats: :html, locals: {planner: @planner})
+        format.html { redirect_to room_planners_path(@room) }
+        format.json {
+          render json: {
+            message: "Hello world",
+            html: html
+            }}# Follows the classic Rails flow and look for a create.json view
+        # render(partial: "monuments/monument", formats: :html, locals: {monument: @monument})
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json # Follows the classic Rails flow and look for a create.json view
+      end
     end
+    # if @planner.save
+    #   redirect_to room_planners_path(@room)
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   def destroy
