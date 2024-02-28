@@ -1,12 +1,16 @@
 class WishlistsController < ApplicationController
+  include ColorGeneration
+
   def index
     @wishlist = Wishlist.new
     @wishlists = policy_scope(Wishlist)
     @room = Room.find(params[:room_id])
     @wishlists = @wishlists.where(room: @room)
-    # To do: turn this one into Items that matches the room
-    @items = Item.all
 
+    color_range = generate_color_range(@room.palette, 5, 2)
+      # To do: turn this one into Items that matches the room
+    @items = Item.where(color: color_range)
+    # To do: turn this one into Items that matches the room
     if params[:query].present?
       # To do: add also Items that matches the room
       @items = @items.search_by_name(params[:query])
@@ -25,7 +29,7 @@ class WishlistsController < ApplicationController
 
     if params[:width].present? && params[:width] != "-1"
       sql_subquery = "x_dimension >= ? AND x_dimension <= ?"
-      @items = @items.where(sql_subquery, (params[:width].to_i - 20), (params[:width].to_i + 20))
+      @items = @items.where(sql_subquery, (params[:width].to_i - 20), (params[:width].to_i + 20)
     end
   end
 
@@ -54,4 +58,5 @@ class WishlistsController < ApplicationController
   def wishlist_params
     params.require(:wishlist).permit(:item_id)
   end
+
 end
