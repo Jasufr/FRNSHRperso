@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'open-uri'
+require "nokogiri"
 
 puts "Destroying Rooms, Users, Items..."
 Room.destroy_all
@@ -28,7 +29,7 @@ items = [
     name: "World's Comfiest Sofa",
     furniture_type: "sofa",
     price: 15000,
-    color: "#7C2A25",
+    color: "#7c2a25",
     shop_name: "Bongo's House of Furnishings",
     shop_item_id: "001",
     shop_url: "https://flymee.jp/product/20258/?gad_source=1",
@@ -41,7 +42,7 @@ items = [
     name: "Dog-faced cushion",
     furniture_type: "cushion",
     price: 3500,
-    color: "#C5BCB0",
+    color: "#c5bcb0",
     shop_name: "IKEA",
     shop_item_id: "010",
     shop_url: "https://www.ikea.com/jp/en/p/barndroem-cushion-with-pocket-beige-00511063/",
@@ -54,7 +55,7 @@ items = [
     name: "Dozemaster 4000",
     furniture_type: "bed",
     price: 58000,
-    color: "#B99368",
+    color: "#b99368",
     shop_name: "Nitori",
     shop_item_id: "100",
     shop_url: "https://www.nitori-net.jp/ec/product/5652860s/",
@@ -67,7 +68,7 @@ items = [
     name: "Poisoned Chair",
     furniture_type: "chair",
     price: 2000,
-    color: "#0B4189",
+    color: "#0b4189",
     shop_name: "IKEA",
     shop_item_id: "110",
     shop_url: "https://www.ikea.com/jp/ja/p/kyrre-stool-bright-blue-60555558/?source=google&medium=cpc&campaign=ikea_jp_jp_p_shopping_fy21&gad_source=1",
@@ -80,7 +81,7 @@ items = [
     name: "Sheep Counter Mk.II",
     furniture_type: "bed",
     price: 80000,
-    color: "#1B3E39",
+    color: "#1b3e39",
     shop_name: "Just Furniture",
     shop_item_id: "101",
     shop_url: "https://www.justfurnitureonline.com/category/bedrooms/aiden-green-velvet-king-bed.html",
@@ -93,7 +94,7 @@ items = [
     name: "Cozytron VX-84",
     furniture_type: "sofa",
     price: 34000,
-    color: "#C59642",
+    color: "#c59642",
     shop_name: "Fine Kagu",
     shop_item_id: "011",
     shop_url: "https://www.finekagu.com/products/sf-cauto?currency=JPY&variant=43484255551747&stkn=45a7a757935c&gad_source=1",
@@ -127,3 +128,4 @@ Planner.create(room: room3, item: Item.all[4])
 Planner.create(room: room3, item: Item.all[5])
 
 puts "Seeds generated"
+

@@ -1,14 +1,17 @@
 class WishlistsController < ApplicationController
+  include ColorGeneration
+
   def index
     @wishlists = policy_scope(Wishlist)
     @room = Room.find(params[:room_id])
     @wishlists = @wishlists.where(room: @room)
+    color_range = generate_color_range(@room.palette, 5, 2)
     if params[:query].present?
       # To do: add also Items that matches the room
       @items = Item.search_by_name(params[:query])
     else
       # To do: turn this one into Items that matches the room
-      @items = Item.all
+      @items = Item.where(color: color_range)
     end
   end
 
