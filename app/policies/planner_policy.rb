@@ -5,4 +5,12 @@ class PlannerPolicy < ApplicationPolicy
       user.planners
     end
   end
+
+  def create?
+    true
+  end
+
+  def destroy?
+    true
+  end
 end

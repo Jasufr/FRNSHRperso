@@ -2,16 +2,34 @@ class WishlistsController < ApplicationController
   include ColorGeneration
 
   def index
+    @wishlist = Wishlist.new
     @wishlists = policy_scope(Wishlist)
     @room = Room.find(params[:room_id])
     @wishlists = @wishlists.where(room: @room)
+
     color_range = generate_color_range(@room.palette, 5, 2)
+      # To do: turn this one into Items that matches the room
+    @items = Item.where(color: color_range)
+    # To do: turn this one into Items that matches the room
     if params[:query].present?
       # To do: add also Items that matches the room
-      @items = Item.search_by_name(params[:query])
-    else
-      # To do: turn this one into Items that matches the room
-      @items = Item.where(color: color_range)
+      @items = @items.search_by_name(params[:query])
+    end
+    if params[:room_type].present?
+      room_type = params[:room_type]
+      @items = @items.where(furniture_type: Item::ROOM_ITEMS[room_type])
+    end
+    # if params[:furniture_type].present?
+    #   @items = @items.where(furniture_type: params[:furniture_type])
+    # end
+    if params[:price_range].present?
+      sql_subquery = "price >= ? AND price <= ?"
+      @items = @items.where(sql_subquery, params[:price_range].split(",")[0].to_i, params[:price_range].split("-")[1].to_i)
+    end
+
+    if params[:width].present? && params[:width] != "-1"
+      sql_subquery = "x_dimension >= ? AND x_dimension <= ?"
+      @items = @items.where(sql_subquery, (params[:width].to_i - 20), (params[:width].to_i + 20)
     end
   end
 
@@ -20,16 +38,19 @@ class WishlistsController < ApplicationController
     authorize @wishlist
     @room = Room.find(params[:room_id])
     @wishlist.room = @room
-    # if @wishlist.save
-    #   redirect_to wishlist_path(@wishlist) - don't redirect, just plop it in the partial
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    if @wishlist.save
+      redirect_to room_wishlists_path(@room)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @wishlist = Wishlist.find(params[:id])
+    authorize @wishlist
+    @room = @wishlist.room
     @wishlist.destroy
+    redirect_to room_wishlists_path(@room), status: :see_other
   end
 
   private

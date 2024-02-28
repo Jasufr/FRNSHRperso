@@ -7,6 +7,6 @@ class Room < ApplicationRecord
 
   validates :room_type, presence: true
   validates :palette, presence: true
-  ROOMS = ['kitchen', 'bathroom', 'bedroom', 'living', 'dining', 'garden', 'kids']
+  ROOMS = ['Kitchen', 'Bathroom', 'Bedroom', 'Living', 'Dining', 'Garden', 'Kids']
   validates :room_type, inclusion: { in: ROOMS }
 end
