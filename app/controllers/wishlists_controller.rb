@@ -27,7 +27,10 @@ class WishlistsController < ApplicationController
 
   def destroy
     @wishlist = Wishlist.find(params[:id])
+    authorize @wishlist
+    @room = @wishlist.room
     @wishlist.destroy
+    redirect_to room_wishlists_path(@room), status: :see_other
   end
 
   private
