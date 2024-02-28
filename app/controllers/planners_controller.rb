@@ -19,6 +19,14 @@ class PlannersController < ApplicationController
     end
   end
 
+  def destroy
+    @planner = Planner.find(params[:id])
+    authorize @planner
+    @room = @planner.room
+    @planner.destroy
+    redirect_to room_planners_path(@room), status: :see_other
+  end
+
   private
 
   def planner_params
