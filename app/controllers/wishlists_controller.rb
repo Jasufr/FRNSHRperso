@@ -1,5 +1,6 @@
 class WishlistsController < ApplicationController
   def index
+    @wishlist = Wishlist.new
     @wishlists = policy_scope(Wishlist)
     @room = Room.find(params[:room_id])
     @wishlists = @wishlists.where(room: @room)
@@ -17,11 +18,11 @@ class WishlistsController < ApplicationController
     authorize @wishlist
     @room = Room.find(params[:room_id])
     @wishlist.room = @room
-    # if @wishlist.save
-    #   redirect_to wishlist_path(@wishlist) - don't redirect, just plop it in the partial
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    if @wishlist.save
+      redirect_to room_wishlists_path(@room)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
