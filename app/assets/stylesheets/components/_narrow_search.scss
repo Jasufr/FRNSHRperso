@@ -10,12 +10,15 @@
   width: 300px;
   background-color: white;
 }
-.room-type-menu label {
+.room-type-menu label, .price-range-menu label {
   display: block;
   padding: 8px 12px;
 }
-.room-type-menu label:hover {
+.room-type-menu label:hover, .price-range-menu label:hover {
   background-color: $light-brown;
+}
+.price-range-menu {
+  min-width: 135px;
 }
 .palette-container {
   height: 37.6px;
@@ -27,19 +30,7 @@
   width: 37.6px;
   padding: 0;
 }
-// .btn-secondary {
-//   background-color: $brown;
-//   border: none;
-//   color: white;
-// }
-// .btn-secondary:hover {
-//   background-color: $light-brown;
-//   color: white;
 
-// }
-// .btn-secondary.show {
-//   background-color: $light-brown;
-// }
-// .btn-secondary-active-bg {
-//   background-color: $light-brown;
-// }
+.dimensions-menu {
+  padding: 8px 12px;
+}
