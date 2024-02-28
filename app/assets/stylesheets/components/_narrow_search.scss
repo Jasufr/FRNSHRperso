@@ -1,0 +1,45 @@
+.narrow-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+  // height: 100px;
+}
+.search-input {
+  width: 300px;
+  background-color: white;
+}
+.room-type-menu label {
+  display: block;
+  padding: 8px 12px;
+}
+.room-type-menu label:hover {
+  background-color: $light-brown;
+}
+.palette-container {
+  height: 37.6px;
+  gap: 2px;
+}
+#colorpicker {
+  border: none;
+  height: 100%;
+  width: 37.6px;
+  padding: 0;
+}
+// .btn-secondary {
+//   background-color: $brown;
+//   border: none;
+//   color: white;
+// }
+// .btn-secondary:hover {
+//   background-color: $light-brown;
+//   color: white;
+
+// }
+// .btn-secondary.show {
+//   background-color: $light-brown;
+// }
+// .btn-secondary-active-bg {
+//   background-color: $light-brown;
+// }
