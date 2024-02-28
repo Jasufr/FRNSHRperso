@@ -15,9 +15,12 @@
                 <p>Dimensions: <%= item.x_dimension %> x <%= item.y_dimension %> x <%= item.z_dimension %></p>
                 <p>Shop: <%= item.shop_name %></p>
               </div>
-              <%= simple_form_for [@room, @wishlist] do |f| %>
+              <%= simple_form_for [@room, @wishlist], html: { class:"d-flex"} do |f| %>
                 <%= f.input :item_id, as: :hidden, input_html: { value: item.id } %>
-                <%= f.submit 'Add', disabled: @room.wish_items.find_by(id: item) ? true : false, class: "add-to-wishlist-button" %><i class="fa-solid fa-plus"></i>
+                <%#= f.submit 'Add', disabled: @room.wish_items.find_by(id: item) ? true : false, class: "add-to-wishlist-button" %>
+                <%= f.button :button, disabled: @room.wish_items.find_by(id: item) ? true : false, class: "add-to-wishlist-button pt-0" do %>
+                  <i class="fa-solid fa-heart"></i>
+                <% end %>
               <% end %>
             </div>
           <% end %>
