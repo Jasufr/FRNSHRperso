@@ -17,7 +17,6 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     @room.user = current_user
-    raise
     authorize @room
     if @room.save
       redirect_to room_wishlists_path(@room)
