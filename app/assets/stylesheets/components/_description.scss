@@ -1,0 +1,30 @@
+.description-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+.description-container div {
+  width: 30%;
+}
+.description-container i {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: $brown;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3)
+
+}
+.description-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.description-container p {
+  text-align: justify;
+
+}
+.about-us-title {
+  font-size: 18px;
+    font-weight: bold;
+}
+.about-us-text {
+  text-align: justify;
+}
