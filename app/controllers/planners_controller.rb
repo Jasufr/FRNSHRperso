@@ -5,6 +5,12 @@ class PlannersController < ApplicationController
     @planners = @planners.where(room: @room)
     @wishlists = @room.wishlists
     @planner = Planner.new
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name", template: "planners/_plannerspart", formats: [:html]
+      end
+    end
   end
 
   def create
