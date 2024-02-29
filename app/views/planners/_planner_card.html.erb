@@ -4,6 +4,12 @@
     <div class="card-body">
       <%= planner.item.name %>
     </div>
-    <div><%= link_to "Delete",planner_path(planner),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></div>
+    <div>
+      <%# <%= link_to "Delete",planner_path(planner),data: {turbo_method: :delete, turbo_confirm: "Are you sure?", refreshless_target: "remove", action: "click->refreshless#remove"}%>
+      <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete do |f| %>
+        <%# <%= f.input :item_id , as: :hidden, input_html: {value: planner.item.id}%>
+        <%= f.submit %>
+      <%end%>
+    </div>
   </div>
 </div>
