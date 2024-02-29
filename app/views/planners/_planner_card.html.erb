@@ -2,7 +2,7 @@
   <div class="planner-card">
     <div class="planner-image" style="background-image: url('<%= planner.item.photo %>')">
     </div>
-    <div class="card-body d-flex flex-row align-items-center justify-content-between">
+    <div class="card-body d-flex flex-row align-items-center justify-content-around planner-text">
       <div><%= planner.item.name %></div>
       <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete , data: { refreshless_target: "removeitem", action: "submit->refreshless#remove"} do |f| %>
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
