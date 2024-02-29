@@ -8,7 +8,7 @@ class WishlistsController < ApplicationController
     @wishlists = @wishlists.where(room: @room)
 
     color_range = generate_color_range(@room.palette, 5, 2)
-      # To do: turn this one into Items that matches the room
+    # To do: turn this one into Items that matches the room
     @items = Item.where(color: color_range)
     # To do: turn this one into Items that matches the room
     if params[:query].present?
@@ -28,7 +28,7 @@ class WishlistsController < ApplicationController
     end
     if params[:width].present? && params[:width] != "-1"
       sql_subquery = "x_dimension >= ? AND x_dimension <= ?"
-      @items = @items.where(sql_subquery, (params[:width].to_i - 20), (params[:width].to_i + 20)
+      @items = @items.where(sql_subquery, (params[:width].to_i - 20), (params[:width].to_i + 20))
     end
     if params[:height].present? && params[:height] != "-1"
       sql_subquery = "y_dimension >= ? AND y_dimension <= ?"

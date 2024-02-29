@@ -18,7 +18,7 @@
           Room Type
         </button>
         <ul class="dropdown-menu room-type-menu">
-          <%= f.collection_radio_buttons :room_type, Room::ROOMS.map {|room| [room, room]}, :first, :last, {}, {class: "d-none"} %>
+          <%= f.collection_radio_buttons :room_type, Room::ROOMS.map {|room| [room.capitalize, room]}, :first, :last, {}, {class: "d-none"} %>
         </ul>
       </div>
       <%# ?? furniture type entry ?? %>
