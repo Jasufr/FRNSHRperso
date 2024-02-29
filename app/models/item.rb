@@ -18,6 +18,6 @@ class Item < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-  ROOM_ITEMS = { "Kitchen" => ["chair", "table", "stool", "cabinet", "counter"], "Bedroom" => ["bed", "cushion"], "Bathroom" => [], "Living" => ["sofa"], "Dining" => [], "Garden" => [], "Kids" => [] }
+  ROOM_ITEMS = { "kitchen" => ["chair", "table", "stool", "cabinet", "counter"], "bedroom" => ["bed", "cushion"], "bathroom" => [], "living" => ["sofa"], "dining" => [], "garden" => [], "kids" => [] }
 
 end

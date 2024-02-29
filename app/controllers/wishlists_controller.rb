@@ -10,6 +10,7 @@ class WishlistsController < ApplicationController
     color_range = generate_color_range(@room.palette, 5, 2)
     # To do: turn this one into Items that matches the room
     @items = Item.where(color: color_range)
+    # @items = Item.all
     # To do: turn this one into Items that matches the room
     if params[:query].present?
       # To do: add also Items that matches the room
