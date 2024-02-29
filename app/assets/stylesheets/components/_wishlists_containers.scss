@@ -6,6 +6,8 @@
 .wishbar-container {
   width: 30%;
   flex-direction: column;
+  margin-top: 64px;
+  border-right: 4px solid $brown;
 }
 
 .search-results-container {
