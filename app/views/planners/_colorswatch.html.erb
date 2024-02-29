@@ -1,5 +1,4 @@
-  
-<div class ="colorarea">
+<div class ="colorarea" data-refreshless-target="colorswatch">
   <%total_item_no = @planners.count%>
   <% if @planners.count.positive?%>
     <%colored_items = @planners.joins(:item).group('items.color').count%>
