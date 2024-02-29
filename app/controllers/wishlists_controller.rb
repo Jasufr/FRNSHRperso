@@ -29,8 +29,9 @@ class WishlistsController < ApplicationController
 
     if params[:width].present? && params[:width] != "-1"
       sql_subquery = "x_dimension >= ? AND x_dimension <= ?"
-      @items = @items.where(sql_subquery, (params[:width].to_i - 20), (params[:width].to_i + 20)
+      @items = @items.where(sql_subquery, (params[:width].to_i - 20), (params[:width].to_i + 20))
     end
+
   end
 
   def create
@@ -58,5 +59,4 @@ class WishlistsController < ApplicationController
   def wishlist_params
     params.require(:wishlist).permit(:item_id)
   end
-
 end
