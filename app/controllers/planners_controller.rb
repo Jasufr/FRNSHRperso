@@ -14,10 +14,12 @@ class PlannersController < ApplicationController
     authorize @planner
     respond_to do |format|
       if @planner.save
+        @planners = current_user.planners.where(room: @room)
         html = render_to_string(partial: "planner_card", formats: :html, locals: { planner: @planner })
+        colorhtml = render_to_string(partial: "colorswatch", formats: :html, locals: { planner: @planners })
         # create the colorbar as a string using a partial
         format.html { redirect_to room_planners_path(@room) }
-        format.json { render json: { html: html } }
+        format.json { render json: { html: html, colorswatch: colorhtml } }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: { errors: @planner.errors.full_messages }, status: :unprocessable_entity }
@@ -30,8 +32,14 @@ class PlannersController < ApplicationController
     authorize @planner
     @room = @planner.room
     @planner.destroy
-
-    redirect_to room_planners_path(@room), status: :see_other
+    respond_to do |format|
+    if @planner.destroy
+      @planners = current_user.planners.where(room: @room)
+      colorhtml = render_to_string(partial: "colorswatch", formats: :html, locals: { planner: @planners })
+      # format.html {redirect_to room_planners_path(@room), status: :see_other}
+      format.json { render json: {colorswatch: colorhtml } }
+    end
+  end
   end
 
   private

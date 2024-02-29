@@ -3,7 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="refreshless"
 export default class extends Controller {
 
-  static targets = ["display","plannercard"]
+  static targets = ["display","plannercard","colorswatch"]
+
 
   connect() {
     console.log("connected")
@@ -20,10 +21,12 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data.html)
+        console.log(data.colorswatch)
         console.log(this.displayTarget)
         this.displayTarget.insertAdjacentHTML("beforeend", data.html)
+        this.colorswatchTarget.outerHTML = data.colorswatch
       })
+
   }
 
   remove(event) {
@@ -40,10 +43,18 @@ export default class extends Controller {
       if (response.ok) {
         console.log("Item deleted successfully");
         plannercard.remove();
+        return response.json();
       } else {
         console.error("Failed to delete item:", response.statusText);
         // Handle the case where the delete request was not successful
       }
     })
+
+    .then(data => {
+      console.log(data.colorswatch)
+      this.colorswatchTarget.outerHTML = data.colorswatch
+    })
+
+
   }
 }
