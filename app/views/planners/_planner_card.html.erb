@@ -4,11 +4,9 @@
     <div class="card-body">
       <%= planner.item.name %>
     </div>
-    <div>
-      <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete , data: { refreshless_target: "removeitem", action: "submit->refreshless#remove"} do |f| %>
-        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-        <%= f.button :submit, "Delete" %>
-      <%end%>
-    </div>
+    <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete , data: { refreshless_target: "removeitem", action: "submit->refreshless#remove"} do |f| %>
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <%= f.button :submit, "Delete" %>
+    <%end%>
   </div>
 </div>

@@ -29,24 +29,21 @@ export default class extends Controller {
   remove(event) {
     event.preventDefault();
     console.log("An item is deleted from planner");
-    console.log(event.currentTarget);
-    console.log(this.removeitemTarget.action)
-    fetch(this.removeitemTarget.action, {
+    console.log(this.removeitemTargets)
+    console.log(event.currentTarget.parentElement.parentElement)
+    const plannercard = event.currentTarget.parentElement.parentElement
+    fetch(event.currentTarget.action, {
       method: "DELETE",
       body: new FormData(event.currentTarget)
     })
     .then(response => {
       if (response.ok) {
         console.log("Item deleted successfully");
-        console.log(this.removeitemTarget);
-        this.plannercardTarget.remove();
+        plannercard.remove();
       } else {
         console.error("Failed to delete item:", response.statusText);
         // Handle the case where the delete request was not successful
       }
     })
-  //     .then((data) => {
-
-  //     })
   }
 }
