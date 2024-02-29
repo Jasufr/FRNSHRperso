@@ -1,20 +1,7 @@
 <div class="container">
   <h1>Planner</h1>
   <h4>Your current swatch:</h4>
-  <div class ="colorarea">
-    <%total_item_no = @planners.count%>
-    <% if @planners.count.positive?%>
-      <%colored_items = @planners.joins(:item).group('items.color').count%>
-      <%colored_items.each do |key, value|%>
-        <div style="background-color: <%= key %>; width: <%= value.to_f/total_item_no*100 %>%;">
-          <%=key%>
-          <%=value%>
-          <%=value.to_f/total_item_no*100%>%</div>
-      <%end%>
-    <%else%>
-      <p>no items are added to your plan yet</p>
-    <%end%>
-  </div>
+  <%= render "colorswatch"%>
   <h4>Your planned items:</h4>
   <div class="row" data-refreshless-target="display">
     <%@planners.each do |planner|%>

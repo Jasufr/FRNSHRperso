@@ -14,24 +14,15 @@ class PlannersController < ApplicationController
     authorize @planner
     respond_to do |format|
       if @planner.save
-        html = render_to_string(partial: "planner_card", formats: :html, locals: {planner: @planner})
+        html = render_to_string(partial: "planner_card", formats: :html, locals: { planner: @planner })
+        # create the colorbar as a string using a partial
         format.html { redirect_to room_planners_path(@room) }
-        format.json {
-          render json: {
-            message: "Hello world",
-            html: html
-            }}# Follows the classic Rails flow and look for a create.json view
-        # render(partial: "monuments/monument", formats: :html, locals: {monument: @monument})
+        format.json { render json: { html: html } }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json # Follows the classic Rails flow and look for a create.json view
+        format.json { render json: { errors: @planner.errors.full_messages }, status: :unprocessable_entity }
       end
     end
-    # if @planner.save
-    #   redirect_to room_planners_path(@room)
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
   end
 
   def destroy
@@ -39,6 +30,7 @@ class PlannersController < ApplicationController
     authorize @planner
     @room = @planner.room
     @planner.destroy
+
     redirect_to room_planners_path(@room), status: :see_other
   end
 
