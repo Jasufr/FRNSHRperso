@@ -33,8 +33,8 @@ export default class extends Controller {
     event.preventDefault();
     console.log("An item is deleted from planner");
     console.log(this.removeitemTargets)
-    console.log(event.currentTarget.parentElement.parentElement)
-    const plannercard = event.currentTarget.parentElement.parentElement
+    const plannercard = event.currentTarget.parentElement.parentElement.parentElement
+    console.log(plannercard)
     fetch(event.currentTarget.action, {
       method: "DELETE",
       body: new FormData(event.currentTarget)
