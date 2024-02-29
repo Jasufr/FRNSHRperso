@@ -1,4 +1,10 @@
 <div class="card-container">
+  <div class="d-flex align-items-center">
+    <h3 class="wishlist-heading">Favourites</h3>
+    <% if current_page?(room_wishlists_path) %>
+      <%= render "room_wishlists"%>
+    <% end %>
+  </div>
   <% if wishlists.any? %>
     <% wishlists.each do |wishlist| %>
       <div class="wishlist-item">
@@ -16,9 +22,6 @@
             <p>¥ <%= wishlist.item.price %></p>
           </div>
         </div>
-        <% if current_page?(room_wishlists_path) %>
-          <%= render "room_wishlists", wishlist: wishlist %>
-        <% end %>
         <% if current_page?(room_planners_path) %>
           <%= render "room_planners", wishlist: wishlist %>
         <% end %>
