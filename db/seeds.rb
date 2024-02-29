@@ -16,13 +16,13 @@ User.destroy_all
 Item.destroy_all
 
 puts "Creating new seeds"
-user1 = User.create(username: "Mario", email: "abc@gmail.com", password: "123456")
-user2 = User.create(username: "Luidgi", email: "bac@gmail.com", password: "123456")
-user3 = User.create(username: "Peach", email: "cba@gmail.com", password: "123456")
+user1 = User.create!(username: "Mario", email: "abc@gmail.com", password: "123456")
+user2 = User.create!(username: "Luidgi", email: "bac@gmail.com", password: "123456")
+user3 = User.create!(username: "Peach", email: "cba@gmail.com", password: "123456")
 
-room1 = Room.create(palette: ["red", "orange"], room_type: "kitchen", name: "kitchen", user: user1)
-room2 = Room.create(palette: ["yellow", "orange"], room_type: "living", name: "living", user: user2)
-room3 = Room.create(palette: ["blue", "green"], room_type: "bathroom", name: "bathroom", user: user3)
+room1 = Room.create!(palette: ["#ff0000", "#f7771e"], room_type: "kitchen", name: "kitchen", user: user1)
+room2 = Room.create!(palette: ["#ffff00", "#f7771e"], room_type: "living", name: "living", user: user2)
+room3 = Room.create!(palette: ["#0000ff", "#00ff00"], room_type: "bathroom", name: "bathroom", user: user3)
 
 items = [
   {
@@ -113,19 +113,18 @@ items.each do |item|
   instance.save
 end
 
-Wishlist.create(room: room1, item: Item.all[0])
-Wishlist.create(room: room1, item: Item.all[1])
-Wishlist.create(room: room2, item: Item.all[2])
-Wishlist.create(room: room2, item: Item.all[3])
-Wishlist.create(room: room3, item: Item.all[4])
-Wishlist.create(room: room3, item: Item.all[5])
+Wishlist.create!(room: room1, item: Item.all[0])
+Wishlist.create!(room: room1, item: Item.all[1])
+Wishlist.create!(room: room2, item: Item.all[2])
+Wishlist.create!(room: room2, item: Item.all[3])
+Wishlist.create!(room: room3, item: Item.all[4])
+Wishlist.create!(room: room3, item: Item.all[5])
 
-Planner.create(room: room1, item: Item.all[0])
-Planner.create(room: room1, item: Item.all[1])
-Planner.create(room: room2, item: Item.all[2])
-Planner.create(room: room2, item: Item.all[3])
-Planner.create(room: room3, item: Item.all[4])
-Planner.create(room: room3, item: Item.all[5])
+Planner.create!(room: room1, item: Item.all[0])
+Planner.create!(room: room1, item: Item.all[1])
+Planner.create!(room: room2, item: Item.all[2])
+Planner.create!(room: room2, item: Item.all[3])
+Planner.create!(room: room3, item: Item.all[4])
+Planner.create!(room: room3, item: Item.all[5])
 
 puts "Seeds generated"
-
