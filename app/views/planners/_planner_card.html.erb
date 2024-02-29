@@ -1,14 +1,13 @@
-<div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+<div class="col-lg-4 col-md-6 col-sm-12 mb-3" data-refreshless-target="plannercard">
   <div class="card">
     <%= image_tag "#{planner.item.photo}"%>
     <div class="card-body">
       <%= planner.item.name %>
     </div>
     <div>
-      <%# <%= link_to "Delete",planner_path(planner),data: {turbo_method: :delete, turbo_confirm: "Are you sure?", refreshless_target: "remove", action: "click->refreshless#remove"}%>
-      <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete do |f| %>
-        <%# <%= f.input :item_id , as: :hidden, input_html: {value: planner.item.id}%>
-        <%= f.submit %>
+      <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete , data: { refreshless_target: "removeitem", action: "submit->refreshless#remove"} do |f| %>
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+        <%= f.button :submit, "Delete" %>
       <%end%>
     </div>
   </div>

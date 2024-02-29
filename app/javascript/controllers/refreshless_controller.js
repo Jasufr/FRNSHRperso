@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="refreshless"
 export default class extends Controller {
 
-  static targets = ["form", "display","remove"]
+  static targets = ["form", "display","removeitem","plannercard"]
 
   connect() {
     console.log("connected")
@@ -26,21 +26,27 @@ export default class extends Controller {
       })
   }
 
-  // remove(event) {
-  //   event.preventDefault();
-  //   console.log("An item is deleted from planner");
-  //   console.log(event.currentTarget);
-  //   console.log(this.removeTarget.href)
-  //   fetch(this.removeTarget.href, {
-  //     method: "DELETE",
-  //     headers: { "Accept": "application/json" }
-  //   })
-  //     .then(response => {
-  //       console.log(response);
-  //       response.json()
-  //     })
+  remove(event) {
+    event.preventDefault();
+    console.log("An item is deleted from planner");
+    console.log(event.currentTarget);
+    console.log(this.removeitemTarget.action)
+    fetch(this.removeitemTarget.action, {
+      method: "DELETE",
+      body: new FormData(event.currentTarget)
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log("Item deleted successfully");
+        console.log(this.removeitemTarget);
+        this.plannercardTarget.remove();
+      } else {
+        console.error("Failed to delete item:", response.statusText);
+        // Handle the case where the delete request was not successful
+      }
+    })
   //     .then((data) => {
 
   //     })
-  // }
+  }
 }
