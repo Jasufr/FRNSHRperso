@@ -5,19 +5,19 @@
       <%= f.input :room_type, as: :select, collection: Room::ROOMS %>
       <fieldset class="form-group check_boxes optional snippet_tags">
         <legend class="col-form-label pt-0">Choose a palette(up to 5)</legend>
-          <div class="color-wrapper">
+        <div class="color-wrapper">
           <input type="hidden" name="snippet[tag_ids][]" value="">
-          <% Item.pluck(:color).uniq do |chosen_color| %>
+          <% Item.pluck(:color).uniq.each do |chosen_color| %>
             <div class="color-item">
-              <input class="form-check-input check_boxes optional color-selector" type="checkbox" value="<%= chosen_color%>" name="room[palette][]" id="color-<%= chosen_color%>">
-              <label class="form-check-label collection_check_boxes" for="color-<%= chosen_color%>" style='background-color: <%= chosen_color %>'><%= chosen_color %></label>
+              <input class="form-check-input check_boxes optional color-selector" type="checkbox" value="<%= chosen_color %>" name="room[palette][]" id="color-<%= chosen_color %>">
+              <label class="form-check-label collection_check_boxes" for="color-<%= chosen_color %>" style='background-color: <%= chosen_color %>'><%= chosen_color %></label>
             </div>
-        <% end %>
+          <% end %>
         </div>
-        </fieldset>
-        <div class="buttonHolder">
-      <%= f.button :submit, class: "btn btn-primary" %>
+      </fieldset>
+      <div class="buttonHolder">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
-</div>
 </div>
