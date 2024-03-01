@@ -1,17 +1,21 @@
 .results-container {
- display: flex;
- flex-direction: row;
+ display: grid;
+//  flex-direction: row;
+grid-template-columns: 1fr 1fr;
  flex-wrap: wrap;
  gap: 16px;
  padding: 12px;
+ justify-items: stretch;
 }
 .result {
   border: 1px solid black;
   display: flex;
-  width: 500px;
+  min-width: 500px;
+  height: 165px;
   // justify-content: space-between;
   box-shadow: 0px 0px 10px gray;
   background-color: $beige;
+  // margin: auto;
 }
 .result p {
   margin: 0;
@@ -48,4 +52,10 @@
     &:disabled {
   color: gray;
     }
+}
+
+@media (max-width: 1470px) {
+  .results-container {
+    grid-template-columns: 1fr;
+  }
 }
