@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = scope_policy(Room)
+    @rooms = policy_scope(Room)
   end
 
   def show
