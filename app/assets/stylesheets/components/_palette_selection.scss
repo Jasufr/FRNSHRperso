@@ -1,24 +1,34 @@
-.tag-item {
-  display: inline-block;
+.color-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.tag-selector {
+.buttonHolder {
+  text-align: center;
+}
+
+.color-item {
+  flex: 0 0 30%;
+}
+
+.color-selector {
   position: absolute;
   transform: scale(0);
 }
 
-.tag-selector + label {
+.color-selector + label {
+  display: block;
   cursor: pointer;
-  display: inline-block;
-  font-size: 0.7rem;
-  border-radius: 50rem;
-  padding: 0.1rem 0.5rem;
-  color: #7E73FF;
-  border: 1px solid #7E73FF;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  color: rgb(255, 255, 255);
 }
 
-.tag-selector:checked + label {
-  color: white;
+.color-selector:checked + label {
+  color: gray !important;
+  border: 2px solid rgb(255, 255, 255);
 }
