@@ -188,7 +188,7 @@ items = [
     name: "Small Bookcase",
     furniture_type: "bookcase",
     price: 14850,
-    color: "#FFFFFF",
+    color: "#ffffff",
     shop_name: "Francfranc",
     shop_item_id: "030",
     shop_url: "https://francfranc.com/products/1108120014316",
