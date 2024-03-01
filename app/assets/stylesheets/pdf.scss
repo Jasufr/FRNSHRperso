@@ -1,0 +1,17 @@
+@import "bootstrap";
+@import "font-awesome";
+
+.floating {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
+  width: 95%;
+  padding: 10px;
+}
+
+.colorarea {
+  height: 100px;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+
+}
