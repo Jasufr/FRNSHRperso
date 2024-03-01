@@ -274,9 +274,46 @@ items = [
     x_dimension: 850,
     y_dimension: 450,
     z_dimension: 380
+  },
+  {
+    name: "LANGSTED Rug",
+    furniture_type: "rug",
+    price: 7999,
+    color: "#c59642",
+    shop_name: "IKEA",
+    shop_item_id: "036",
+    shop_url: "https://www.ikea.com/jp/ja/p/langsted-rug-low-pile-yellow-00408056/?source=google&medium=cpc&campaign=ikea_jp_jp_p_shopping_fy21&gad_source=1&gclid=Cj0KCQiA84CvBhCaARIsAMkAvkLYbhf34LfCVwgFNBUIQuTW4ALY7n-BrFR-O2oLIC4FN8jbfXBO6b0aAiCKEALw_wcB",
+    photo: "https://www.ikea.com/jp/ja/images/products/langsted-rug-low-pile-yellow__0893589_pe726546_s5.jpg?f=xl",
+    x_dimension: 195,
+    y_dimension: 13,
+    z_dimension: 133
+  },
+  {
+    name: "STOENSE Rug",
+    furniture_type: "rug",
+    price: 19990,
+    color: "#0b4189",
+    shop_name: "IKEA",
+    shop_item_id: "037",
+    shop_url: "https://www.ikea.com/jp/ja/p/stoense-rug-low-pile-blue-20562377/?source=google&medium=cpc&campaign=ikea_jp_jp_p_shopping_fy21&gad_source=1&gclid=Cj0KCQiA84CvBhCaARIsAMkAvkLZ8oA2uYQM-ly_1lJpVcDcyAq9UTyyb4GSBBdraYOb5RKm348DFgYaAiIaEALw_wcB",
+    photo: "https://www.ikea.com/jp/ja/images/products/stoense-rug-low-pile-blue__1201729_pe905717_s5.jpg?f=xs",
+    x_dimension: 195,
+    y_dimension: 18,
+    z_dimension: 195
+  },
+  {
+    name: "GURLI Cushion",
+    furniture_type: "cushion",
+    price: 399,
+    color: "#c59642",
+    shop_name: "IKEA",
+    shop_item_id: "038",
+    shop_url: "https://www.ikea.com/jp/ja/p/gurli-cushion-cover-golden-yellow-00395822/?source=google&medium=cpc&campaign=ikea_jp_jp_p_shopping_fy21&gad_source=1&gclid=Cj0KCQiA84CvBhCaARIsAMkAvkLCCmijI9r4UA0Xoe9mOTn38YnepfcU2laVp1dW7h_Fzje12-cMXUIaAiR8EALw_wcB",
+    photo: "https://www.ikea.com/jp/ja/images/products/gurli-cushion-cover-golden-yellow__0544894_pe655202_s5.jpg?f=xs",
+    x_dimension: 50,
+    y_dimension: 5,
+    z_dimension: 50
   }
-
-
 
 ]
 
