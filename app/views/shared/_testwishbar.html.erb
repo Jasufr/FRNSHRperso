@@ -7,7 +7,7 @@
           <p><%= wishlist.item.name %></p>
           <p>¥ <%= wishlist.item.price %></p>
           <p>Shop: <a class="text-decoration-none" href="<%= wishlist.item.shop_url %>" target="_blank"><%= wishlist.item.shop_name %></a></p>
-          <div class="testremovebutton"><%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-from-wishlist-button" do %>
+          <div class="testremovebutton"><%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "hoverbutton" do %>
               <i class="fas fa-trash"></i>
             <% end %>
           </div>
