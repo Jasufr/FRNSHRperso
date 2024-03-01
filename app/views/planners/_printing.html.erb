@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class="planner-heading">Room planner - Printing Version</h1>
+  <h1 class="planner-heading">Room Planner - Printing Version</h1>
   <div class ="floating">
-    <h2>Your current swatch:</h2>
+    <h2>Your color swatch:</h2>
     <%= render "colorswatch"%>
   </div>
   <h2>Your planned items:</h2>
@@ -16,7 +16,7 @@
           <%= item_name %> ----
           <%= link_to planners_for_item.first.item.shop_name, planners_for_item.first.item.shop_url %>----
           Unit Price: ¥<%= planners_for_item.first.item.price %>----
-          Quantitly: <%= count%>
+          Quantity: <%= count%>
           <% total_price += planners_for_item.sum { |planner| planner.item.price } %>
         </li>
       <% end %>

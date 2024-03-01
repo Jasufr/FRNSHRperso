@@ -1,35 +1,28 @@
 @import "bootstrap";
 @import "font-awesome";
 
-.floating {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid black;
-  width: 95%;
+#content {
   padding: 10px;
 }
+.floating {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  padding-bottom: 10px;
+}
 
-.colorarea {
+#colorarea {
   height: 100px;
   width: 100%;
   display: -webkit-box;
   -webkit-box-orient: horizontal;
 }
-
-.planner-card {
-  width: 25%;
-  height: 200px;
-  border: 1px solid black;
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
+#header {
+  font-family: "Gochi Hand", cursive;
+  border-bottom: double;
 }
-
-.planner-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background-size: cover;
-  background-position: center;
-}
-
-.planner-text {
-  padding: 8px;
+#footer{
+  font-family: "Gochi Hand", cursive;
+  text-align: right;
+  border-top: double;
+  padding: 10px;
 }

@@ -6,12 +6,15 @@
     <%= wicked_pdf_stylesheet_link_tag "bootstrap" %>
     <%= wicked_pdf_stylesheet_link_tag "font-awesome" %>
   </head>
-  <body onload='number_pages'>
-    <div id="header">
-      <h1>FRNSHR</h1>
-    </div>
-    <div id="content">
-      <%= yield %>
-    </div>
-  </body>
+  <div id="header">
+    <h1>FRNSHR</h1>
+    <h4>From Vision to Reality: Your Ideal Furniture Awaits</h4>
+  </div>
+  <div id="content">
+    <%= yield %>
+  </div>
+  <div id="footer">
+    <p>Thank you for using FRNSHR</p>
+  </div>
+</body>
 </html>
