@@ -23,9 +23,9 @@ user2 = User.create!(username: "Luidgi", email: "bac@gmail.com", password: "1234
 user3 = User.create!(username: "Peach", email: "cba@gmail.com", password: "123456")
 
 
-room1 = Room.create!(palette: ["red", "orange"], room_type: "Kitchen", name: "kitchen", user: user1)
-room2 = Room.create!(palette: ["yellow", "orange"], room_type: "Living", name: "living", user: user2)
-room3 = Room.create!(palette: ["blue", "green"], room_type: "Bathroom", name: "bathroom", user: user3)
+room1 = Room.create!(palette: ["red", "orange"], room_type: "kitchen", name: "kitchen", user: user1)
+room2 = Room.create!(palette: ["yellow", "orange"], room_type: "living", name: "living", user: user2)
+room3 = Room.create!(palette: ["blue", "green"], room_type: "bathroom", name: "bathroom", user: user3)
 
 items = [
   {
