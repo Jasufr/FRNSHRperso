@@ -13,7 +13,7 @@
                 <p>¥ <%= item.price %></p>
                 <p><%= item.furniture_type %></p>
                 <p>Dimensions: <%= item.x_dimension %> x <%= item.y_dimension %> x <%= item.z_dimension %></p>
-                <p>Shop: <%= item.shop_name %></p>
+                <p>Shop: <a class="text-decoration-none" href="<%= item.shop_url %>" target="_blank"><%= item.shop_name %></a></p>
               </div>
               <%= simple_form_for [@room, @wishlist], html: { class:"d-flex"} do |f| %>
                 <%= f.input :item_id, as: :hidden, input_html: { value: item.id } %>
