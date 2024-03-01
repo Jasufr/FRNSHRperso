@@ -2,23 +2,41 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-top: 8px;
+  // margin-top: 8px;
   flex-wrap: wrap;
   // height: 100px;
+  justify-content: flex-start;
+  padding: 8px 8px;
+  background-color: $light-brown;
+  border-radius: 0 0 0 3px;
+}
+.searchbar {
+  position: sticky;
+  top: 64px;
+  z-index: 100;
 }
 .search-input {
-  width: 300px;
+  max-width: 250px;
   background-color: white;
+}
+.search-button {
+  color: white
 }
 .room-type-menu label, .price-range-menu label {
   display: block;
   padding: 8px 12px;
+}
+.room-type-menu input:checked + label {
+  background-color: $light-brown;
 }
 .room-type-menu label:hover, .price-range-menu label:hover {
   background-color: $light-brown;
 }
 .price-range-menu {
   min-width: 135px;
+}
+.price-range-menu input:checked + label, .price-range-menu input:checked + label {
+  background-color: $light-brown;
 }
 .palette-container {
   height: 37.6px;
@@ -33,4 +51,7 @@
 
 .dimensions-menu {
   padding: 8px 12px;
+}
+.dimensions-menu input {
+    accent-color: $gray;
 }

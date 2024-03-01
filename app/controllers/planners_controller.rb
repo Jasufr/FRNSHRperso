@@ -5,6 +5,12 @@ class PlannersController < ApplicationController
     @planners = @planners.where(room: @room)
     @wishlists = @room.wishlists
     @planner = Planner.new
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name", template: "planners/_plannerspart", formats: [:html]
+      end
+    end
   end
 
   def create
@@ -14,24 +20,17 @@ class PlannersController < ApplicationController
     authorize @planner
     respond_to do |format|
       if @planner.save
-        html = render_to_string(partial: "planner_card", formats: :html, locals: {planner: @planner})
+        @planners = current_user.planners.where(room: @room)
+        html = render_to_string(partial: "planner_card", formats: :html, locals: { planner: @planner })
+        colorhtml = render_to_string(partial: "colorswatch", formats: :html, locals: { planner: @planners })
+        # create the colorbar as a string using a partial
         format.html { redirect_to room_planners_path(@room) }
-        format.json {
-          render json: {
-            message: "Hello world",
-            html: html
-            }}# Follows the classic Rails flow and look for a create.json view
-        # render(partial: "monuments/monument", formats: :html, locals: {monument: @monument})
+        format.json { render json: { html: html, colorswatch: colorhtml } }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json # Follows the classic Rails flow and look for a create.json view
+        format.json { render json: { errors: @planner.errors.full_messages }, status: :unprocessable_entity }
       end
     end
-    # if @planner.save
-    #   redirect_to room_planners_path(@room)
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
   end
 
   def destroy
@@ -39,7 +38,14 @@ class PlannersController < ApplicationController
     authorize @planner
     @room = @planner.room
     @planner.destroy
-    redirect_to room_planners_path(@room), status: :see_other
+    respond_to do |format|
+    if @planner.destroy
+      @planners = current_user.planners.where(room: @room)
+      colorhtml = render_to_string(partial: "colorswatch", formats: :html, locals: { planner: @planners })
+      # format.html {redirect_to room_planners_path(@room), status: :see_other}
+      format.json { render json: {colorswatch: colorhtml } }
+    end
+  end
   end
 
   private

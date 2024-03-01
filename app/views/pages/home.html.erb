@@ -1,1 +1,74 @@
 <%= render "shared/banner" %>
+<div class="container description-container px-4">
+  <div class="palette-feature">
+    <i class="fa-solid fa-palette"></i>
+    <h3>Color Palette Customization and Selection:</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus neque pretium condimentum imperdiet. Etiam imperdiet mauris ut cursus tristique. Praesent nibh lacus, pretium sed consequat quis, cursus vehicula tellus. Mauris vestibulum massa turpis, vel rhoncus nisl egestas eget. Nam ac mollis orci. Cras aliquam sollicitudin urna, ac lacinia augue sollicitudin non. Curabitur tellus neque, porta vel leo ut, semper pulvinar purus. Donec non libero vel dolor iaculis rhoncus a nec ligula.</p>
+  </div>
+  <div class="search-feature">
+    <i class="fa-solid fa-chair"></i>
+    <h3>Room-Based Furniture Discovery:</h3>
+    <p>Donec in cursus justo. Donec enim lectus, efficitur in tincidunt et, tempor id sem. Praesent convallis tortor eget placerat rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi aliquam, ex sed consequat vulputate, orci justo mattis lorem, sed malesuada velit lorem ut lacus. Integer pulvinar vestibulum risus ut eleifend. Cras arcu libero, molestie sed tellus in, vulputate lobortis ligula.</p>
+  </div>
+  <div class="wishlist-feature">
+    <i class="fa-solid fa-clipboard-list"></i>
+    <h3>Wishlist Organization and Room Design:</h3>
+    <p>Curabitur id tristique sapien. Donec vel imperdiet lorem. Vivamus semper, metus quis tempor sollicitudin, nulla ipsum placerat odio, at volutpat mauris metus et mi. Ut sed laoreet quam. Integer ac felis ullamcorper, ultricies magna sit amet, efficitur nisi. Duis auctor ipsum lorem, nec consectetur diam consectetur eget. Nam hendrerit risus eu mauris sagittis congue. Mauris non convallis dolor, in aliquam eros. Nam vitae risus quis lorem molestie iaculis in id ex. Ut quis elit vel risus ornare scelerisque. Sed a commodo turpis, non venenatis massa. Aliquam sit amet tempor massa, sed rutrum nulla. Nulla vitae bibendum neque, a pretium tortor.</p>
+  </div>
+</div>
+<div id="carouselExampleCaptions" class="carousel slide my-5">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="carousel-image" style="background-image: url('<%= image_path("bedroom.jpg")%>');"></div>
+      <%= image_tag("palette_bedroom.png", class: "carousel-palette") %>
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="caption-shadow">Bedroom</h5>
+        <p class="caption-shadow">Ut quis elit vel risus ornare scelerisque.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="carousel-image" style="background-image: url('<%= image_path("living.jpg")%>');"></div>
+      <%= image_tag("palette_living.png", class: "carousel-palette") %>
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="caption-shadow">Living Room</h5>
+        <p class="caption-shadow">Nulla vitae bibendum neque, a pretium tortor.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="carousel-image" style="background-image: url('<%= image_path("dining.png")%>');"></div>
+      <%= image_tag("palette_dining.png", class: "carousel-palette") %>
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="caption-shadow">Dining Room</h5>
+        <p class="caption-shadow">Nam ac mollis orci. Cras aliquam sollicitudin urna, ac lacinia augue sollicitudin non.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="cool-button-container">
+  <a href="/rooms/new" class="button type--B">
+    <div class="button__line"></div>
+    <div class="button__line"></div>
+    <span class="button__text">Get Inspired</span>
+    <div class="button__drow1"></div>
+    <div class="button__drow2"></div>
+  </a>
+</div>
+<div class="about-us container my-5 px-4">
+  <h3 class="about-us-title"><i class="fa-regular fa-address-card"></i> About us ?</h3>
+  <p class="about-us-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nibh ante, molestie et enim in, efficitur porttitor eros. Sed at metus vel diam suscipit ultrices. Pellentesque consectetur blandit neque vitae pretium. Maecenas non diam velit. Duis vehicula orci in dapibus facilisis. Maecenas feugiat iaculis mattis. Vivamus feugiat nunc nisi, vel maximus sapien volutpat vel. Fusce luctus ut augue id eleifend. Nam ullamcorper massa nec eros fermentum, sed rhoncus nibh hendrerit.
+    Phasellus ac fringilla dolor. Phasellus nec faucibus magna. Fusce sollicitudin nulla nibh, eu finibus nisi malesuada a. Suspendisse tempus, massa rutrum faucibus feugiat, metus nibh tempus leo, eget gravida diam diam eu nulla. Etiam augue sapien, consectetur vel dignissim a, efficitur eget dui. Nam sit amet mi tincidunt, pellentesque mauris id, sollicitudin libero. Aenean sed erat non metus semper interdum. Morbi in ligula vestibulum, scelerisque dui eu, ornare mauris. Etiam tempus pharetra posuere. Quisque quis sagittis est, efficitur interdum velit. Suspendisse ut dictum sapien. Aenean fermentum hendrerit erat, nec viverra ligula ultrices vitae. Phasellus eget porta diam, nec molestie lectus. Quisque sollicitudin, dui ut vehicula mollis, lorem purus malesuada metus, ac placerat libero nisi a lectus. Nullam sit amet nibh eget massa bibendum hendrerit quis a felis. Vestibulum dictum varius nisi.
+    Suspendisse commodo justo ante, commodo rhoncus lectus mattis eu. Nam feugiat orci sit amet sapien pellentesque tempor sit amet id mi. Cras facilisis pulvinar felis quis dapibus. Donec euismod in nisl ac sollicitudin. Donec imperdiet erat nec sagittis facilisis. Sed vehicula neque at imperdiet lacinia. Nulla facilisi. Nullam porttitor nisi a viverra placerat. Morbi ligula turpis, aliquam non nunc in, euismod luctus magna. Curabitur pulvinar euismod neque sit amet tempus. In ut lacus et massa dapibus auctor. Vestibulum convallis quis nisl non mollis. Aliquam erat volutpat. Mauris dapibus malesuada sagittis. Quisque pretium consequat dolor at viverra. Maecenas aliquet, metus vitae condimentum dignissim, risus arcu malesuada ligula, sed fringilla turpis ligula et orci.</p>
+</div>

@@ -18,9 +18,10 @@ User.destroy_all
 Item.destroy_all
 
 puts "Creating new seeds"
-user1 = User.create(username: "Mario", email: "abc@gmail.com", password: "123456")
-user2 = User.create(username: "Luidgi", email: "bac@gmail.com", password: "123456")
-user3 = User.create(username: "Peach", email: "cba@gmail.com", password: "123456")
+user1 = User.create!(username: "Mario", email: "abc@gmail.com", password: "123456")
+user2 = User.create!(username: "Luidgi", email: "bac@gmail.com", password: "123456")
+user3 = User.create!(username: "Peach", email: "cba@gmail.com", password: "123456")
+
 
 room1 = Room.create!(palette: ["red", "orange"], room_type: "Kitchen", name: "kitchen", user: user1)
 room2 = Room.create!(palette: ["yellow", "orange"], room_type: "Living", name: "living", user: user2)
@@ -182,6 +183,7 @@ items.each do |item|
   p instance.valid?
   instance.save
 end
+
 p room1
 Wishlist.create(room: room1, item: Item.all[0])
 Wishlist.create(room: room1, item: Item.all[1])
