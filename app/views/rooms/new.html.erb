@@ -3,17 +3,21 @@
     <h1>Choose a Room</h1>
     <%= simple_form_for(@room) do |f| %>
       <%= f.input :room_type, as: :select, collection: Room::ROOMS %>
-        <fieldset class="form-group check_boxes optional snippet_tags">
-        <legend class="col-form-label pt-0">Tags</legend>
-        <input type="hidden" name="snippet[tag_ids][]" value="">
-        <% Item.pluck(:color).uniq do |chosen_color| %>
-            <div class="tag-item">
-              <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="<%= chosen_color%>" name="room[palette][]" id="color-<%= chosen_color%>">
+      <fieldset class="form-group check_boxes optional snippet_tags">
+        <legend class="col-form-label pt-0">Choose a palette(up to 5)</legend>
+          <div class="color-wrapper">
+          <input type="hidden" name="snippet[tag_ids][]" value="">
+          <% Item.pluck(:color).uniq do |chosen_color| %>
+            <div class="color-item">
+              <input class="form-check-input check_boxes optional color-selector" type="checkbox" value="<%= chosen_color%>" name="room[palette][]" id="color-<%= chosen_color%>">
               <label class="form-check-label collection_check_boxes" for="color-<%= chosen_color%>" style='background-color: <%= chosen_color %>'><%= chosen_color %></label>
             </div>
         <% end %>
-          </fieldset>
+        </div>
+        </fieldset>
+        <div class="buttonHolder">
       <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>
