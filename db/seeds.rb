@@ -172,7 +172,7 @@ items = [
     z_dimension: 69
   },
   {
-    name: "Small Bookcase",
+    name: "Small Bookcase Black",
     furniture_type: "bookcase",
     price: 14850,
     color: "#000000",
@@ -185,7 +185,7 @@ items = [
     z_dimension: 250
   },
   {
-    name: "Small Bookcase",
+    name: "Small Bookcase White",
     furniture_type: "bookcase",
     price: 14850,
     color: "#FFFFFF",
@@ -198,7 +198,7 @@ items = [
     z_dimension: 250
   },
   {
-    name: "Classic Bookcase",
+    name: "Classic Bookcase Black",
     furniture_type: "bookcase",
     price: 39000,
     color: "#000000",
@@ -211,7 +211,7 @@ items = [
     z_dimension: 370
   },
   {
-    name: "Classic Bookcase",
+    name: "Classic Bookcase White",
     furniture_type: "bookcase",
     price: 39000,
     color: "#ffffff",
