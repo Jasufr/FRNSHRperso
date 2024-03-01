@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 class="planner-heading">Room Planner - Printing Version</h1>
+  <div class ="floating">
+    <h2>Your color swatch:</h2>
+    <%= render "colorswatch"%>
+  </div>
+  <h2>Your planned items:</h2>
+  <div class="row" data-refreshless-target="display">
+    <%total_price = 0%>
+    <ul>
+      <% item_counts = @planners.map { |planner| planner.item.name }.tally %>
+      <% total_price = 0 %>
+      <% item_counts.each do |item_name, count| %>
+        <% planners_for_item = @planners.select { |planner| planner.item.name == item_name } %>
+        <li>
+          <%= item_name %> ----
+          <%= link_to planners_for_item.first.item.shop_name, planners_for_item.first.item.shop_url %>----
+          Unit Price: ¥<%= planners_for_item.first.item.price %>----
+          Quantity: <%= count%>
+          <% total_price += planners_for_item.sum { |planner| planner.item.price } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <h2>Total Price: ¥<%= total_price %></h2>
+</div>

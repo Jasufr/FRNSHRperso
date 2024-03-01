@@ -13,22 +13,21 @@
         <div class="d-flex flex-column wishlist-details ">
           <div class ="d-flex justify-content-between">
             <h3 class="text-center"><%= wishlist.item.name %></h3>
-            <div><%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-from-wishlist-button" do %>
+            <div><%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "hoverbutton" do %>
                 <i class="fas fa-trash"></i>
               <% end %>
             </div>
           </div>
-          <div class="d-flex">
-            <p>¥ <%= wishlist.item.price %></p>
-            <p>Shop: <a class="text-decoration-none" href="<%= wishlist.item.shop_url %>" target="_blank"><%= wishlist.item.shop_name %></a></p>
+          <div class="d-flex justify-content-between">
+            <p>¥ <%= wishlist.item.price %><br><a class="text-decoration-none color: $red" href="<%= wishlist.item.shop_url %>" target="_blank"><%= wishlist.item.shop_name %></a>
+                <% if current_page?(room_planners_path) %>
+                  <%= render "room_planners", wishlist: wishlist %>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
-        <% if current_page?(room_planners_path) %>
-          <%= render "room_planners", wishlist: wishlist %>
         <% end %>
-      </div>
-    <% end %>
-  <% else %>
-    <em>Add some items to your wishlist...</em>
-  <% end %>
-</div>
+      <% else %>
+        <em>Add some items to your wishlist...</em>
+      <% end %>
+    </div>

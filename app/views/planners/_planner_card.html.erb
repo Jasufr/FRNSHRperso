@@ -7,7 +7,7 @@
       <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete , data: { refreshless_target: "removeitem", action: "submit->refreshless#remove"} do |f| %>
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
         <%= f.button :button do %>
-          <i class="fa-solid fa-trash"></i>
+          <i class="fa-solid fa-circle-minus hoverbutton"></i>
         <% end %>
       <%end%>
     </div>
