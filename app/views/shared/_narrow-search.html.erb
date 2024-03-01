@@ -39,17 +39,19 @@
         <ul class="dropdown-menu dimensions-menu">
           <label for="width" class="form-label">Width</label>
           <output id="rangevaluewidth">0</output>
-          <%= f.range_field :width, :step => 10, :in => -1..300, value: params[:width] || -1, oninput: "rangevaluewidth.value=value" %>
+          <%= f.range_field :width, :step => 10, :in => -1..300, value: params[:width] || -1, oninput: "rangevaluewidth.value=(parseInt(value, 10)+ 1)" %>
           <label for="height" class="form-label">Height</label>
           <output id="rangevalueheight">0</output>
-          <%= f.range_field :height, :step => 10, :in => -1..300, value: params[:height] || -1, oninput: "rangevalueheight.value=value" %>
+          <%= f.range_field :height, :step => 10, :in => -1..300, value: params[:height] || -1, oninput: "rangevalueheight.value=(parseInt(value, 10)+ 1)" %>
           <label for="depth" class="form-label">Depth</label>
           <output id="rangevaluedepth">0</output>
-          <%= f.range_field :depth, :step => 10, :in => -1..300, value: params[:depth] || -1, oninput: "rangevaluedepth.value=value" %>
+          <%= f.range_field :depth, :step => 10, :in => -1..300, value: params[:depth] || -1, oninput: "rangevaluedepth.value=(parseInt(value, 10)+ 1)" %>
         </ul>
       </div>
       <%# submit %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary search-button" %>
+      <%# reset search %>
+      <a href="/rooms/<%= @room.id %>/wishlists" class="btn btn-primary">Reset</a>
     </div>
   <% end %>
 </div>

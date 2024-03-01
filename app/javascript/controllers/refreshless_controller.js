@@ -8,6 +8,14 @@ export default class extends Controller {
 
   connect() {
     console.log("connected")
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("colorarea").style.height = "60px";
+      } else {
+        document.getElementById("colorarea").style.height = "200px";
+      }
+    }
   }
 
   add(event) {
