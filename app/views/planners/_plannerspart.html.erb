@@ -11,6 +11,6 @@
     <%end%>
   </div>
   <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-primary">Send my plan to me</button>
+    <%= link_to "PDF", room_planners_path(@room, format: :pdf) %>
   </div>
 </div>

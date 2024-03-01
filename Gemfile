@@ -52,7 +52,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "pundit"
 gem 'color'
-
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 gem "pg_search"
 
 group :development, :test do
