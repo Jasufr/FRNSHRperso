@@ -11,7 +11,7 @@ export default class extends Controller {
     window.onscroll = function() {scrollFunction()};
     function scrollFunction() {
       if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        document.getElementById("colorarea").style.height = "60px";
+        document.getElementById("colorarea").style.height = "50px";
       } else {
         document.getElementById("colorarea").style.height = "200px";
       }
