@@ -1,4 +1,6 @@
-<h2 class="hello">Favourites</h2>
+<div class="hello">
+  <h3>Favourites</h3>
+  <%= link_to "Plan room!", room_planners_path, class: "btn btn-primary", role: "button" %></div>
 <div class="wishitems-container">
   <% if wishlists.any? %>
     <% wishlists.each do |wishlist| %>
