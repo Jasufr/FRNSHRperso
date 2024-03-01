@@ -13,5 +13,23 @@
   width: 100%;
   display: -webkit-box;
   -webkit-box-orient: horizontal;
+}
 
+.planner-card {
+  width: 25%;
+  height: 200px;
+  border: 1px solid black;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+
+.planner-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.planner-text {
+  padding: 8px;
 }
