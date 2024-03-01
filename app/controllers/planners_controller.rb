@@ -8,7 +8,7 @@ class PlannersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "file_name", template: "planners/_printing", layout: 'pdf', formats: [:html]
+        render pdf: "file_name.pdf", template: "planners/_printing", layout: 'pdf', formats: [:html]
       end
     end
   end
