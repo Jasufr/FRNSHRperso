@@ -3,13 +3,16 @@
     <h1>Choose a Room</h1>
     <%= simple_form_for(@room) do |f| %>
       <%= f.input :room_type, as: :select, collection: Room::ROOMS %>
-      <%= f.input :palette, as: :array do %>
-          <input type="color" name=room[palette][]>
-          <input type="color" name=room[palette][]>
-          <input type="color" name=room[palette][]>
-          <input type="color" name=room[palette][]>
-          <input type="color" name=room[palette][]>
-      <% end %>
+        <fieldset class="form-group check_boxes optional snippet_tags">
+        <legend class="col-form-label pt-0">Tags</legend>
+        <input type="hidden" name="snippet[tag_ids][]" value="">
+        <% Item.pluck(:color).uniq do |chosen_color| %>
+            <div class="tag-item">
+              <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="<%= chosen_color%>" name="room[palette][]" id="color-<%= chosen_color%>">
+              <label class="form-check-label collection_check_boxes" for="color-<%= chosen_color%>" style='background-color: <%= chosen_color %>'><%= chosen_color %></label>
+            </div>
+        <% end %>
+          </fieldset>
       <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
   </div>

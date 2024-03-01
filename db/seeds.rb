@@ -8,9 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'open-uri'
-require "nokogiri"
+#require "nokogiri"
 
 puts "Destroying Rooms, Users, Items..."
+Wishlist.destroy_all
+Planner.destroy_all
 Room.destroy_all
 User.destroy_all
 Item.destroy_all
@@ -20,9 +22,9 @@ user1 = User.create(username: "Mario", email: "abc@gmail.com", password: "123456
 user2 = User.create(username: "Luidgi", email: "bac@gmail.com", password: "123456")
 user3 = User.create(username: "Peach", email: "cba@gmail.com", password: "123456")
 
-room1 = Room.create(palette: ["red", "orange"], room_type: "kitchen", name: "kitchen", user: user1)
-room2 = Room.create(palette: ["yellow", "orange"], room_type: "living", name: "living", user: user2)
-room3 = Room.create(palette: ["blue", "green"], room_type: "bathroom", name: "bathroom", user: user3)
+room1 = Room.create!(palette: ["red", "orange"], room_type: "Kitchen", name: "kitchen", user: user1)
+room2 = Room.create!(palette: ["yellow", "orange"], room_type: "Living", name: "living", user: user2)
+room3 = Room.create!(palette: ["blue", "green"], room_type: "Bathroom", name: "bathroom", user: user3)
 
 items = [
   {
@@ -102,7 +104,75 @@ items = [
     x_dimension: 138,
     y_dimension: 66,
     z_dimension: 70
+  },
+  {
+    name: "PLATSA Opening Shelf Unit",
+    furniture_type: "shelf",
+    price: 8000,
+    color: "#1b61a4",
+    shop_name: "IKEA",
+    shop_item_id: "022",
+    shop_url: "https://www.ikea.com/jp/en/p/platsa-open-shelving-unit-blue-60566222/",
+    photo: "https://www.ikea.com/jp/en/images/products/platsa-open-shelving-unit-blue__1210277_pe909617_s5.jpg?f=xl",
+    x_dimension: 60,
+    y_dimension: 40,
+    z_dimension: 60
+  },
+  {
+    name: "MYLLRA Changing Table with Drawers",
+    furniture_type: "chest",
+    price: 9990,
+    color: "#f6eaec",
+    shop_name: "IKEA",
+    shop_item_id: "023",
+    shop_url: "https://www.ikea.com/jp/en/p/myllra-changing-table-with-drawers-pale-pink-50464667/",
+    photo: "https://www.ikea.com/jp/en/images/products/myllra-changing-table-with-drawers-pale-pink__0812335_pe771995_s5.jpg?f=xl",
+    x_dimension: 85,
+    y_dimension: 97,
+    z_dimension: 79
+  },
+  {
+    name: "KALLAX Insert With Door",
+    furniture_type: "shelf",
+    price: 2000,
+    color: "#8cbb8f",
+    shop_name: "IKEA",
+    shop_item_id: "024",
+    shop_url: "https://www.ikea.com/jp/en/p/kallax-insert-with-door-wave-shaped-green-80501357/",
+    photo: "https://www.ikea.com/jp/en/images/products/kallax-insert-with-door-wave-shaped-green__0959827_pe806227_s5.jpg?f=xl",
+    x_dimension: 33,
+    y_dimension: 33,
+    z_dimension: 33
+  },
+  {
+    name: "VINLIDEN 3-seat Sofa",
+    furniture_type: "sofa",
+    price: 69990,
+    color: "#6c9596",
+    shop_name: "IKEA",
+    shop_item_id: "025",
+    shop_url: "https://www.ikea.com/jp/en/p/vinliden-3-seat-sofa-hakebo-light-turquoise-s99304658/",
+    photo: "https://www.ikea.com/jp/en/images/products/vinliden-3-seat-sofa-hakebo-light-turquoise__0938990_pe794368_s5.jpg?f=xl",
+    x_dimension: 203,
+    y_dimension: 108,
+    z_dimension: 97
+  },
+  {
+    name: "STYRSPEL Gaming Chair",
+    furniture_type: "chair",
+    price: 29990,
+    color: "#574768",
+    shop_name: "IKEA",
+    shop_item_id: "026",
+    shop_url: "https://www.ikea.com/jp/en/p/styrspel-gaming-chair-purple-black-00522028/",
+    photo: "https://www.ikea.com/jp/en/images/products/styrspel-gaming-chair-purple-black__1115361_pe872047_s5.jpg?f=xl",
+    x_dimension: 71,
+    y_dimension: 142,
+    z_dimension: 69
   }
+
+
+
 ]
 
 items.each do |item|
@@ -112,13 +182,14 @@ items.each do |item|
   p instance.valid?
   instance.save
 end
-
+p room1
 Wishlist.create(room: room1, item: Item.all[0])
 Wishlist.create(room: room1, item: Item.all[1])
 Wishlist.create(room: room2, item: Item.all[2])
 Wishlist.create(room: room2, item: Item.all[3])
 Wishlist.create(room: room3, item: Item.all[4])
 Wishlist.create(room: room3, item: Item.all[5])
+Wishlist.create(room: room3, item: Item.all[6])
 
 Planner.create(room: room1, item: Item.all[0])
 Planner.create(room: room1, item: Item.all[1])
@@ -126,6 +197,6 @@ Planner.create(room: room2, item: Item.all[2])
 Planner.create(room: room2, item: Item.all[3])
 Planner.create(room: room3, item: Item.all[4])
 Planner.create(room: room3, item: Item.all[5])
+Planner.create(room: room3, item: Item.all[6])
 
 puts "Seeds generated"
-

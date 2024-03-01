@@ -1,25 +1,37 @@
+require 'chunky_png'
+
 module ColorGeneration
   extend ActiveSupport::Concern
 
-  def generate_color_range(hex_codes, num_colors, step_factor)
-    colors = []
+  def generate_analogous_colors(input_hex_codes)
+    all_analogous_colors = []
 
-    hex_codes.each do |hex_code|
-      rgb = Color::RGB.by_hex(hex_code)
+    input_hex_codes.each do |input_hex_code|
+      analogous_colors = []
 
-      # Calculate step size for each RGB component
-      step_r = 255 / (num_colors * step_factor)
-      step_g = 255 / (num_colors * step_factor)
-      step_b = 255 / (num_colors * step_factor)
+      # Convert input hex code to RGB
+      rgb = ChunkyPNG::Color.from_hex(input_hex_code)
 
-      num_colors.times do |i|
-        r = [rgb.r + step_r * i, 255].min
-        g = [rgb.g + step_g * i, 255].min
-        b = [rgb.b + step_b * i, 255].min
-        colors << Color::RGB.new(r, g, b).html
+      # Convert RGB to HSL
+      hsl = ChunkyPNG::Color.rgb_to_hsl(rgb)
+
+      # Calculate the hue values for the specific analogous colors
+      hues = [60, 0, 300] # Corresponding to #0b5a89, #0b4189, and #0b2889
+
+      puts "Calculated hue values for input color #{input_hex_code}: #{hues}"
+
+      # Generate analogous colors based on the calculated hue values
+      hues.each do |hue|
+        # Ensure hue value is within the range of 0 to 360 degrees
+        hue %= 360
+
+        # Convert HSL back to RGB and then to hex
+        rgb = ChunkyPNG::Color.hsl_to_rgb(hue, hsl[1], hsl[2])
+        analogous_colors << ChunkyPNG::Color.to_hex(rgb)
       end
-    end
 
-    colors
+      all_analogous_colors << analogous_colors
+    end
+    all_analogous_colors
   end
 end
