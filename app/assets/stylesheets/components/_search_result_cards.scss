@@ -1,18 +1,23 @@
 .results-container {
- display: flex;
- flex-direction: row;
+ display: grid;
+//  flex-direction: row;
+grid-template-columns: 1fr 1fr;
  flex-wrap: wrap;
  gap: 16px;
  padding: 12px;
+ justify-items: stretch;
 }
 .result {
   display: flex;
-  width: 500px;
+
+  min-width: 500px;
+  height: 165px;
   background-color: $beige;
   border-radius: 15px;
   border: 8px $brown;
   border-style: outset;
   box-shadow: 5px 5px 5px 5px gray;
+
 }
 .result p {
   margin: 0;
@@ -50,4 +55,10 @@
     &:disabled {
   color: gray;
     }
+}
+
+@media (max-width: 1470px) {
+  .results-container {
+    grid-template-columns: 1fr;
+  }
 }

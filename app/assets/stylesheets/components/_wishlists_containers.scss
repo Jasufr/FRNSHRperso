@@ -6,12 +6,25 @@
 .wishbar-container {
   width: 30%;
   flex-direction: column;
-  margin-top: 64px;
+  // margin-top: 64px;
+  // position: sticky;
+  // top: 0px;
+  // z-index: 10;
 }
 
 .search-results-container {
-  width: 70%;
+  // width: 70%;
+  flex-grow: 1;
 }
 .planners-container {
   width: 70%;
+}
+
+.testwishbar-container {
+  width: 300px;
+  // height: 100vh;
+  background-color: $light-gray;
+  // padding: 8px;
+  border-left: 1px solid black;
+  // padding-left: 5px;
 }
