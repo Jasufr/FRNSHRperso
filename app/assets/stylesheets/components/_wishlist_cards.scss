@@ -77,8 +77,11 @@
   height: 53.6px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   z-index: 50;
+}
+.hello h3 {
+  margin: 0;
 }
 .wishitems-container {
   display: flex;
@@ -113,6 +116,10 @@
   padding: 8px;
   font-size: 14px;
 }
+.wishitem-info * {
+
+  max-width: 125px;
+}
 .wishitem-info p:first-child {
   font-weight: bold;
 }
@@ -124,4 +131,12 @@
 }
 .testremovebutton i {
   text-shadow: 1px 1px 5px gray;
+}
+
+.button-planner {
+  // width: 100%;
+  background-color: blue;
+  position: fixed;
+  right: 0;
+  bottom: 0;
 }
