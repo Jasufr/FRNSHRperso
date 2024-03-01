@@ -2,7 +2,7 @@
   <%= simple_form_for [@room, @planner], data: { refreshless_target: "form", action: "submit->refreshless#add"} do |f| %>
     <%= f.input :item_id , as: :hidden, input_html: {value: wishlist.item.id}%>
     <%= f.button :button do %>
-      <i class="fa-solid fa-circle-plus"></i>
+      <i class="fa-solid fa-circle-plus hoverbutton"></i>
     <% end %>
   <% end %>
 </div>
