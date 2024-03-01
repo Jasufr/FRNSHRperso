@@ -1,5 +1,6 @@
 .color-wrapper {
-  display: flex;
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -9,7 +10,8 @@
 }
 
 .color-item {
-  flex: 0 0 30%;
+  width: 200px;
+  margin: 20px;
 }
 
 .color-selector {
@@ -26,6 +28,9 @@
   text-align: left;
   padding: 10px 10px 30px 10px;
   color: rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 15px 50px 30px;
+  overflow: hidden;
 }
 
 .color-selector:checked + label {
