@@ -22,12 +22,15 @@
 }
 
 .testwishbar-container {
-  width: 300px;
+  width: 200px;
   // height: 100vh;
-  background-color: $light-gray;
+  background-color: white;
   // padding: 8px;
-  border-left: 1px solid black;
+  border-left: 1px solid lightgray;
   // padding-left: 5px;
+  // position: static;
+  // top: 64px;
+  top: 0;
 }
 
 .planner-button {
