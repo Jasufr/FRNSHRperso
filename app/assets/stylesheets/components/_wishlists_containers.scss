@@ -3,38 +3,17 @@
   flex-direction: row;
 }
 
-.wishbar-container {
-  width: 30%;
-  flex-direction: column;
-  // margin-top: 64px;
-  // position: sticky;
-  // top: 0px;
-  // z-index: 10;
-}
-
 .search-results-container {
-  // width: 70%;
   flex-grow: 1;
-  position: relative;
+  // position: relative;
 }
 .planners-container {
   width: 70%;
 }
 
-.testwishbar-container {
+.wishbar-container {
   width: 200px;
-  // height: 100vh;
   background-color: white;
-  // padding: 8px;
   border-left: 1px solid lightgray;
-  // padding-left: 5px;
-  // position: static;
-  // top: 64px;
   top: 0;
-}
-
-.planner-button {
-  position: absolute;
-  right: 0;
-  bottom: 20px;
 }

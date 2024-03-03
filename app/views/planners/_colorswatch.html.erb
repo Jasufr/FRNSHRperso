@@ -1,14 +1,17 @@
-<div id ="colorarea" data-refreshless-target="colorswatch">
-  <%total_item_no = @planners.count%>
-  <% if @planners.count.positive?%>
-    <%colored_items = @planners.joins(:item).group('items.color').count%>
-    <%colored_items.each do |key, value|%>
-      <div style="background-color: <%= key %>; width: <%= value.to_f/total_item_no*100 %>%;">
-        <%=key%>
-        <%=value%>
-        <%=value.to_f/total_item_no*100%>%</div>
+<div class="color-swatch">
+  <div id ="colorarea" data-refreshless-target="colorswatch">
+    <%total_item_no = @planners.count%>
+    <% if @planners.count.positive?%>
+      <%colored_items = @planners.joins(:item).group('items.color').count%>
+      <%colored_items.each do |key, value|%>
+        <div class="each-color" style="background-color: <%= key %>; width: <%= value.to_f/total_item_no*100 %>%;">
+          <%# <%=key%>
+          <p><%=value%> item</p>
+          <p><%=value.to_f/total_item_no*100%>%</p>
+        </div>
+      <%end%>
+    <%else%>
+      <p>Add some items from your favourites!</p>
     <%end%>
-  <%else%>
-    <p>Add some items from your favourites!</p>
-  <%end%>
+  </div>
 </div>

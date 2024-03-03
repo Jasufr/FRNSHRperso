@@ -1,0 +1,11 @@
+<div class="planner-bar">
+  <p class="palette-title ms-3">Room colors :</p>
+  <div class="palette-container d-flex me-4">
+    <% @room.palette.each do |color| %>
+      <div class="room-color" style="background-color: <%= color %>"></div>
+    <% end %>
+  </div>
+  <p class="palette-title">Color ratios :</p>
+  <%= render "planners/colorswatch" %>
+  <%= link_to "Save my plan as PDF", room_planners_path(@room, format: :pdf), class: "btn btn-primary" %>
+</div>

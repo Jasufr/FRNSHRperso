@@ -1,9 +1,7 @@
 <div class="wishbar">
   <div class="wishbar-header">
     <p class="wishbar-title">Favourites</p>
-    <%# if wishlists.any? %>
     <p class="wishlists-counter"><%= wishlists.count %> items selected</p>
-    <%# end %>
     <%= link_to "Continue to Room Planner", room_planners_path, class: "button-planner", role: "button" %>
   </div>
   <div class="wishitems-container scrollbar" id="style-4">
@@ -16,15 +14,19 @@
             <p>¥ <%= wishlist.item.price %></p>
             <div class="wishitem-lastline">
               <p><a class="text-decoration-none" href="<%= wishlist.item.shop_url %>" target="_blank">Shop</a></p>
-              <%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-button" do %>
-                <i class="fas fa-trash"></i>
+              <% if current_page?(room_planners_path) %>
+                <%= render "room_planners", wishlist: wishlist %>
+              <% else %>
+                <%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-button" do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
               <% end %>
             </div>
           </div>
         </div>
       <% end %>
     <% else %>
-      <em class="empty-wishlist-text">Add some items to your wishlist...</em>
+      <em class="empty-wishlist-text p-3">Add some items to your wishlist...</em>
     <% end %>
   </div>
 </div>

@@ -2,19 +2,15 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  // margin-top: 8px;
   flex-wrap: wrap;
-  // height: 100px;
   justify-content: flex-start;
   padding: 8px 8px;
   background-color: $light-brown;
-  border-radius: 0 0 0 3px;
 }
 .searchbar {
   position: sticky;
   top: 64px;
   z-index: 10;
-  // display: flex;
 }
 .search-input {
   max-width: 250px;
@@ -23,7 +19,6 @@
 }
 .search-button {
   color: white
-  // background-color: #00a6fb;
 }
 .room-type-menu label, .price-range-menu label {
   display: block;
