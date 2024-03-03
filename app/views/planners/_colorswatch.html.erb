@@ -6,8 +6,15 @@
       <%colored_items.each do |key, value|%>
         <div class="each-color" style="background-color: <%= key %>; width: <%= value.to_f/total_item_no*100 %>%;">
           <%# <%=key%>
-          <p><%=value%> item</p>
-          <p><%=value.to_f/total_item_no*100%>%</p>
+          <p>
+            <%=value%>
+            <% if value > 1 %>
+              items
+            <% else %>
+              item
+            <% end %>
+          </p>
+          <p><%= (value.to_f/total_item_no*100).round(0) %>%</p>
         </div>
       <%end%>
     <%else%>

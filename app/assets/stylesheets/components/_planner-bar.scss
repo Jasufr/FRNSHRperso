@@ -5,9 +5,18 @@
   z-index: 10;
   gap: 8px;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 8px 8px;
   background-color: $light-brown;
+}
+.planner-bar-leftpart {
+  display: flex;
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
 }
 .palette-title {
   margin: 0;
@@ -28,8 +37,13 @@
   padding: 4px;
   line-height: 1.1em;
   color: white;
-  text-shadow: 0 0 2px black;
+  text-shadow: 1px 1px 3px black;
 }
 .each-color * {
   margin: 0;
+}
+
+.share-btn {
+  color:white;
+  border-radius: 4px;
 }

@@ -2,7 +2,11 @@
   <div class="wishbar-header">
     <p class="wishbar-title">Favourites</p>
     <p class="wishlists-counter"><%= wishlists.count %> items selected</p>
-    <%= link_to "Continue to Room Planner", room_planners_path, class: "button-planner", role: "button" %>
+    <% if current_page?(room_planners_path) %>
+      <%= link_to "Back to Search", room_wishlists_path, class: "button-planner", role: "button" %>
+    <% else %>
+      <%= link_to "Continue to Room Planner", room_planners_path, class: "button-planner", role: "button" %>
+    <% end %>
   </div>
   <div class="wishitems-container scrollbar" id="style-4">
     <% if wishlists.any? %>

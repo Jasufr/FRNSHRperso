@@ -36,6 +36,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.planner-card-infos p:first-child {
+  font-weight: bold;
+}
 .remove-item-from-planner {
   position: absolute;
   top: 0;
