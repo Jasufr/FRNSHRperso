@@ -60,6 +60,8 @@ gem 'wkhtmltopdf-binary'
 
 gem "pg_search"
 
+gem 'mini_magick'
+
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

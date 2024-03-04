@@ -1,15 +1,17 @@
 class WishlistsController < ApplicationController
-  include ColorGeneration
+  include ColorMatching
 
   def index
     @wishlist = Wishlist.new
     @wishlists = policy_scope(Wishlist)
     @room = Room.find(params[:room_id])
     @wishlists = @wishlists.where(room: @room)
+    user_colors = @room.palette # Assuming user selects an array of colors somehow
+    @closest_images = closest_matching_images(user_colors)
 
     # color_range = generate_analogous_colors(@room.palette)
 
-    @items = Item.where(color: @room.palette, furniture_type: Item::ROOM_ITEMS[@room.room_type])
+    @items = @closest_images
 
     # To do: turn this one into Items that matches the room
     if params[:query].present?
