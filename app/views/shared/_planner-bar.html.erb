@@ -1,0 +1,13 @@
+<div class="planner-bar">
+  <div class="planner-bar-leftpart">
+    <p class="palette-title ms-3">Room colors :</p>
+    <div class="palette-container d-flex me-4">
+      <% @room.palette.each do |color| %>
+        <div class="room-color" style="background-color: <%= color %>"></div>
+      <% end %>
+    </div>
+    <p class="palette-title">Color ratios :</p>
+    <%= render "planners/colorswatch" %>
+  </div>
+  <%= link_to "Share", room_planners_path(@room, format: :pdf), target: "_blank", class: "share-btn btn btn-primary" %>
+</div>

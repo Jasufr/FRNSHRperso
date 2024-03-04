@@ -1,0 +1,56 @@
+.planner-bar {
+  display: flex;
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px;
+  background-color: $light-brown;
+}
+.planner-bar-leftpart {
+  display: flex;
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.palette-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: -2px;
+}
+
+#colorarea {
+  height: 37.6px;
+  width: 450px;
+  display: flex;
+  flex-direction: row;
+  transition: 0.8s;
+  font-size: 12px;
+}
+.each-color {
+  padding: 4px;
+  line-height: 1.1em;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+}
+.each-color * {
+  margin: 0;
+}
+
+.share-btn {
+  color:white;
+  border-radius: 4px;
+}
+
+.empty-planner {
+  margin: auto 10px;
+  background-color: $light-gray;
+  padding: 8px 12px;
+  border-radius: 10px;
+}

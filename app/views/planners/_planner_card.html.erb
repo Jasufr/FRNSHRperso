@@ -1,13 +1,17 @@
-<div class="d-flex col-lg-4 col-md-6 col-sm-12 mb-3" data-refreshless-target="plannercard">
+<%# class="d-flex col-lg-4 col-md-6 col-sm-12 mb-3" %>
+<div data-refreshless-target="plannercard">
   <div class="planner-card">
     <div class="planner-image" style="background-image: url('<%= planner.item.photo %>')">
     </div>
-    <div class="card-body d-flex flex-row align-items-center justify-content-around planner-text">
-      <div><%= planner.item.name %></div>
+    <div class="planner-card-infos">
+      <p><%= planner.item.name %></p>
+      <p>¥ <%= planner.item.price %></p>
+    </div>
+    <div class="remove-item-from-planner ">
       <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete , data: { refreshless_target: "removeitem", action: "submit->refreshless#remove"} do |f| %>
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
         <%= f.button :button do %>
-          <i class="fa-solid fa-circle-minus hoverbutton"></i>
+          <i class="fa-solid fa-circle-minus"></i>
         <% end %>
       <%end%>
     </div>

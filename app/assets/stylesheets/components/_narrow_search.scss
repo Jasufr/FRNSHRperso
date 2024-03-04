@@ -2,13 +2,10 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  // margin-top: 8px;
   flex-wrap: wrap;
-  // height: 100px;
   justify-content: flex-start;
   padding: 8px 8px;
   background-color: $light-brown;
-  border-radius: 0 0 0 3px;
 }
 .searchbar {
   position: sticky;
@@ -18,6 +15,7 @@
 .search-input {
   max-width: 250px;
   background-color: white;
+  border: none;
 }
 .search-button {
   color: white
@@ -38,15 +36,36 @@
 .price-range-menu input:checked + label, .price-range-menu input:checked + label {
   background-color: $light-brown;
 }
-.palette-container {
+.palette-container  {
   height: 37.6px;
   gap: 2px;
 }
-#colorpicker {
+.room-color{
   border: none;
   height: 100%;
   width: 37.6px;
   padding: 0;
+}
+.narrowbar {
+  display: flex;
+  border-radius: 4px;
+}
+.narrowbar * {
+  border-radius: 0;
+}
+.narrowbar div:first-child button {
+  border-radius: 4px 0 0 4px;
+}
+.narrowbar input:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.narrowbar:focus-within {
+  box-shadow: 0 0 0 2px rgba(0, 146, 255, .3), 0 0 0 3px rgba(11, 65, 137, 0.2);
+
+}
+.search-input:focus {
+  box-shadow: none;
+  border: none;
 }
 
 .dimensions-menu {
@@ -54,4 +73,10 @@
 }
 .dimensions-menu input {
     accent-color: $gray;
+}
+.reset-button {
+  border-radius: 4px;
+}
+.reset-button:hover {
+  color: black;
 }

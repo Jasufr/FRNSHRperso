@@ -19,15 +19,16 @@
             </div>
           </div>
           <div class="d-flex justify-content-between">
-            <p>¥ <%= wishlist.item.price %><br><a class="text-decoration-none color: $red" href="<%= wishlist.item.shop_url %>" target="_blank"><%= wishlist.item.shop_name %></a>
-                <% if current_page?(room_planners_path) %>
-                  <%= render "room_planners", wishlist: wishlist %>
-                <% end %>
-              </div>
+            <p>¥ <%= wishlist.item.price %><br>
+              <a class="text-decoration-none color: $red" href="<%= wishlist.item.shop_url %>" target="_blank"><%= wishlist.item.shop_name %></a>
+              <% if current_page?(room_planners_path) %>
+                <%= render "room_planners", wishlist: wishlist %>
+              <% end %>
             </div>
           </div>
-        <% end %>
-      <% else %>
-        <em>Add some items to your wishlist...</em>
+        </div>
       <% end %>
-    </div>
+    <% else %>
+      <em>Add some items to your wishlist...</em>
+    <% end %>
+  </div>

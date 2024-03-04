@@ -1,57 +1,54 @@
 <div class="searchbar">
   <%= form_with url: room_wishlists_path(@room), method: :get do |f| %>
     <div class="narrow-search">
-      <%# searchbar entry %>
-      <%= f.text_field :query,
+      <div class="palette-container d-flex">
+        <% @room.palette.each do |color| %>
+          <div class="room-color" style="background-color: <%= color %>"></div>
+        <% end %>
+      </div>
+      <div class="narrowbar">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Room Type
+          </button>
+          <ul class="dropdown-menu room-type-menu">
+            <%= f.collection_radio_buttons :room_type, Room::ROOMS.map {|room| [room, room.capitalize]}, :first, :last, {checked: params[:room_type]}, {class: "d-none"} %>
+          </ul>
+        </div>
+        <%# searchbar entry %>
+        <%= f.text_field :query,
           class: "form-control search-input",
           placeholder: "What are you looking for?"
       %>
-      <%# palette colors entry %>
-      <div class="palette-container d-flex">
-        <% @room.palette.each do |color| %>
-          <input type="color" id="colorpicker" value="<%= color %>">
-        <% end %>
+        <%# price range entry %>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Price</button>
+          <ul class="dropdown-menu price-range-menu">
+            <%= f.collection_radio_buttons :price_range, [["0-2000"], ["2000-5000"], ["5000-10000"], ["10000-20000"], ["20000-30000"], ["30000-40000"],], :first, :last, {checked: params[:price_range]}, {class: "d-none"} %>
+          </ul>
+        </div>
+        <%# furniture size entry %>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dimensions
+          </button>
+          <ul class="dropdown-menu dimensions-menu">
+            <label for="width" class="form-label">Width</label>
+            <output id="rangevaluewidth">0</output>
+            <%= f.range_field :width, :step => 10, :in => -1..300, value: params[:width] || -1, oninput: "rangevaluewidth.value=(parseInt(value, 10)+ 1)" %>
+            <label for="height" class="form-label">Height</label>
+            <output id="rangevalueheight">0</output>
+            <%= f.range_field :height, :step => 10, :in => -1..300, value: params[:height] || -1, oninput: "rangevalueheight.value=(parseInt(value, 10)+ 1)" %>
+            <label for="depth" class="form-label">Depth</label>
+            <output id="rangevaluedepth">0</output>
+            <%= f.range_field :depth, :step => 10, :in => -1..300, value: params[:depth] || -1, oninput: "rangevaluedepth.value=(parseInt(value, 10)+ 1)" %>
+          </ul>
+        </div>
+        <%# submit %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary search-button" %>
       </div>
-      <%# room_type entry %>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Room Type
-        </button>
-        <ul class="dropdown-menu room-type-menu">
-          <%= f.collection_radio_buttons :room_type, Room::ROOMS.map {|room| [room, room.capitalize]}, :first, :last, {checked: params[:room_type]}, {class: "d-none"} %>
-        </ul>
-      </div>
-      <%# ?? furniture type entry ?? %>
-      <%# <%= select_tag(:furniture_type, options_for_select([Item::ROOM_ITEMS[@room.room_type]])) %>
-      <%# price range entry %>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Price</button>
-        <ul class="dropdown-menu price-range-menu">
-          <%= f.collection_radio_buttons :price_range, [["0-2000"], ["2000-5000"], ["5000-10000"], ["10000-20000"], ["20000-30000"], ["30000-40000"],], :first, :last, {checked: params[:price_range]}, {class: "d-none"} %>
-        </ul>
-      </div>
-      <%# <%= select_tag(:price_range, options_for_select([["¥", nil], ["¥2000-5000", "2000-5000"]])) %>
-      <%# furniture size entry %>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Dimensions
-        </button>
-        <ul class="dropdown-menu dimensions-menu">
-          <label for="width" class="form-label">Width</label>
-          <output id="rangevaluewidth">0</output>
-          <%= f.range_field :width, :step => 10, :in => -1..300, value: params[:width] || -1, oninput: "rangevaluewidth.value=(parseInt(value, 10)+ 1)" %>
-          <label for="height" class="form-label">Height</label>
-          <output id="rangevalueheight">0</output>
-          <%= f.range_field :height, :step => 10, :in => -1..300, value: params[:height] || -1, oninput: "rangevalueheight.value=(parseInt(value, 10)+ 1)" %>
-          <label for="depth" class="form-label">Depth</label>
-          <output id="rangevaluedepth">0</output>
-          <%= f.range_field :depth, :step => 10, :in => -1..300, value: params[:depth] || -1, oninput: "rangevaluedepth.value=(parseInt(value, 10)+ 1)" %>
-        </ul>
-      </div>
-      <%# submit %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary search-button" %>
       <%# reset search %>
-      <a href="/rooms/<%= @room.id %>/wishlists" class="btn btn-primary">Reset</a>
+      <a href="/rooms/<%= @room.id %>/wishlists" class="reset-button btn btn-danger">Reset</a>
     </div>
   <% end %>
 </div>
