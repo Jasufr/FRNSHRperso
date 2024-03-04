@@ -4,9 +4,10 @@
     <%colored_items = @room.area_by_colors%>
     <%colored_items.each do |key, value|%>
       <div style="background-color: <%= key %>; width: <%= value.to_f/@room.total_area*100 %>%;">
-        <%=key%>
-        <%=value%>
-        <%=value.to_f/total_item_no*100%>%</div>
+        <%# <%=key%>
+        <%# <%=value%>
+        <%# <%=value.to_f/total_item_no*100%>
+        </div>
     <%end%>
   <%else%>
     <p>Add some items from your favourites!</p>
