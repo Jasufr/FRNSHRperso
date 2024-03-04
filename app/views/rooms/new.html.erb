@@ -3,6 +3,12 @@
     <h1>Choose a Room</h1>
     <%= simple_form_for(@room) do |f| %>
       <%= f.input :room_type, as: :select, collection: Room::ROOMS %>
+      <input type="color" name="room[palette][]" >
+      <input type="color" name="room[palette][]" >
+      <input type="color" name="room[palette][]" >
+      <input type="color" name="room[palette][]" >
+      <input type="color" name="room[palette][]" >
+      <!--
       <fieldset class="form-group check_boxes optional snippet_tags">
         <legend class="col-form-label pt-0">Choose a palette(up to 5)</legend>
         <div class="color-wrapper">
@@ -15,6 +21,7 @@
           <% end %>
         </div>
       </fieldset>
+      -->
       <div class="buttonHolder">
         <%= f.button :submit, class: "btn btn-primary" %>
       </div>
