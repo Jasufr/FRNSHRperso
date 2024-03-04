@@ -13,4 +13,15 @@ class Room < ApplicationRecord
   def total_area
     planner_items.sum { |item| item.surface_area   }
   end
+
+
+  def area_by_colors
+    planners.joins(:item).group('planners.id', 'items.color').each_with_object({}) do |planner, result|
+      color = planner.item.color
+      surface_area = planner.item.surface_area
+      result[color] ||= 0
+      result[color] += surface_area
+    end
+  end
+
 end
