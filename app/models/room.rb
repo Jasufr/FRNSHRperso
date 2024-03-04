@@ -9,4 +9,8 @@ class Room < ApplicationRecord
   validates :palette, presence: true
   ROOMS = ['kitchen', 'bathroom', 'bedroom', 'living', 'dining', 'garden', 'kids']
   validates :room_type, inclusion: { in: ROOMS }
+
+  def total_area
+    planner_items.sum { |item| item.surface_area   }
+  end
 end
