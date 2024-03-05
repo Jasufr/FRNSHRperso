@@ -10,7 +10,7 @@
               </div>
               <div class="result-details">
                 <h3><%= item.name %></h3>
-                <p>¥ <%= item.price %> (<%= item.furniture_type.capitalize %>)</p>
+                <p>¥ <%= item.price %> (<%= item.furniture_type&.capitalize %>)</p>
                 <p></p>
                 <p>Size: <%= item.x_dimension %> x <%= item.y_dimension %> x <%= item.z_dimension %></p>
                 <p>Shop: <a class="text-decoration-none" href="<%= item.shop_url %>" target="_blank"><%= item.shop_name %></a></p>
