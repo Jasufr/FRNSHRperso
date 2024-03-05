@@ -80,3 +80,10 @@
 .reset-button:hover {
   color: black;
 }
+.inline-text {
+  background-color: $brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+}
