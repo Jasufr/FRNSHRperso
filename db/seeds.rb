@@ -180,9 +180,9 @@ items = [
     shop_item_id: "030",
     shop_url: "https://francfranc.com/products/1108120014323",
     photo: "https://francfranc.com/cdn/shop/products/1108120014323_d1_x600.jpg?v=1649317900",
-    x_dimension: 600,
-    y_dimension: 450,
-    z_dimension: 250
+    x_dimension: 60,
+    y_dimension: 45,
+    z_dimension: 25
   },
   {
     name: "Small Bookcase White",
@@ -193,9 +193,9 @@ items = [
     shop_item_id: "030",
     shop_url: "https://francfranc.com/products/1108120014316",
     photo: "https://francfranc.com/cdn/shop/products/1108120014316_d1_x600.jpg?v=1649317822",
-    x_dimension: 600,
-    y_dimension: 450,
-    z_dimension: 250
+    x_dimension: 60,
+    y_dimension: 45,
+    z_dimension: 25
   },
   {
     name: "Classic Bookcase Black",
@@ -206,9 +206,9 @@ items = [
     shop_item_id: "030",
     shop_url: "https://francfranc.com/products/1108110035284",
     photo: "https://francfranc.com/cdn/shop/files/1108110035284_d1_x600.jpg?v=1689217386",
-    x_dimension: 700,
-    y_dimension: 750,
-    z_dimension: 370
+    x_dimension: 70,
+    y_dimension: 75,
+    z_dimension: 37
   },
   {
     name: "Classic Bookcase White",
@@ -219,9 +219,9 @@ items = [
     shop_item_id: "031",
     shop_url: "https://francfranc.com/products/1108110015682",
     photo: "https://francfranc.com/cdn/shop/products/1108110015682_d1_x600.jpg?v=1674106910",
-    x_dimension: 700,
-    y_dimension: 750,
-    z_dimension: 370
+    x_dimension: 70,
+    y_dimension: 75,
+    z_dimension: 37
   },
   {
     name: "Classic Table",
@@ -232,9 +232,9 @@ items = [
     shop_item_id: "032",
     shop_url: "https://francfranc.com/products/1108100069404",
     photo: "https://francfranc.com/cdn/shop/products/1108100069404_A_x600.jpg?v=1579159805",
-    x_dimension: 850,
-    y_dimension: 750,
-    z_dimension: 380
+    x_dimension: 85,
+    y_dimension: 75,
+    z_dimension: 38
   },
   {
     name: "Coffee Table",
@@ -245,9 +245,9 @@ items = [
     shop_item_id: "033",
     shop_url: "https://francfranc.com/products/1108100069305",
     photo: "https://francfranc.com/cdn/shop/products/1108100069305_A_x600.jpg?v=1579159804",
-    x_dimension: 850,
-    y_dimension: 450,
-    z_dimension: 380
+    x_dimension: 85,
+    y_dimension: 45,
+    z_dimension: 38
   },
   {
     name: "Round Coffee Table",
@@ -258,9 +258,9 @@ items = [
     shop_item_id: "034",
     shop_url: "https://francfranc.com/products/1108100014411",
     photo: "https://francfranc.com/cdn/shop/products/1108100014411_d1_x600.jpg?v=1660888600",
-    x_dimension: 850,
-    y_dimension: 450,
-    z_dimension: 380
+    x_dimension: 85,
+    y_dimension: 45,
+    z_dimension: 38
   },
   {
     name: "Modern Coffee Table",
@@ -271,9 +271,9 @@ items = [
     shop_item_id: "035",
     shop_url: "https://francfranc.com/products/9108100068308",
     photo: "https://francfranc.com/cdn/shop/products/9108100068308_A_x600.jpg?v=1579159521",
-    x_dimension: 850,
-    y_dimension: 450,
-    z_dimension: 380
+    x_dimension: 85,
+    y_dimension: 45,
+    z_dimension: 38
   },
   {
     name: "LANGSTED Rug",
