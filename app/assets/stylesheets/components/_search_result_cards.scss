@@ -53,6 +53,19 @@
     }
 }
 
+.on-wishlist-button {
+  align-self: flex-start;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  padding: 0;
+  background: none;
+  color: $red;
+  text-shadow: 0 0 2px black;
+  font-size: 18px;
+}
+
 @media (max-width: 1300px) {
   .results-container {
     grid-template-columns: 1fr 1fr;
