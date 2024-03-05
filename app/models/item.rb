@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
-  has_many :wishlists
-  has_many :planners
+  has_many :wishlists, dependent: :destroy
+  has_many :planners, dependent: :destroy
+
 
   validates :name, presence: true
   # validates :type, presence: true
