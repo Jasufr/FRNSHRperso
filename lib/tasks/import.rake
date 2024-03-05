@@ -2,7 +2,7 @@ namespace :import do
   desc "Import items from CSV file"
   task items: :environment do
     require 'csv'
-
+    Item.destroy_all
     # Specify the path to your CSV file
     csv_file_path = "items.csv"
 

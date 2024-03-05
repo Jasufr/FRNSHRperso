@@ -19,7 +19,7 @@ class ScrapeIkeaService
     # html = URI.open(url)
     # @doc = Nokogiri::HTML.parse(html)
 
-    @living_room_item_category_page_urls = ["https://www.ikea.com/jp/en/cat/sofas-fu003/?page=30", "https://www.ikea.com/jp/en/cat/armchairs-chaise-longues-fu006/?page=3", "https://www.ikea.com/jp/en/cat/bookcases-shelving-units-st002/?page=13", "https://www.ikea.com/jp/en/cat/tv-media-furniture-10475/?page=8", "https://www.ikea.com/jp/en/cat/coffee-side-tables-10705/?page=5", "https://www.ikea.com/jp/en/cat/rugs-10653/?page=6", "https://www.ikea.com/jp/en/cat/curtains-blinds-tl002/?page=7", "https://www.ikea.com/jp/en/cat/cushions-cushion-covers-10659/?page=5"]
+    @living_room_item_category_page_urls = ["https://www.ikea.com/jp/en/cat/sofas-fu003/?page=31#products-page-31", "https://www.ikea.com/jp/en/cat/armchairs-chaise-longues-fu006/?page=3", "https://www.ikea.com/jp/en/cat/bookcases-shelving-units-st002/?page=13", "https://www.ikea.com/jp/en/cat/tv-media-furniture-10475/?page=8", "https://www.ikea.com/jp/en/cat/coffee-side-tables-10705/?page=5", "https://www.ikea.com/jp/en/cat/rugs-10653/?page=6", "https://www.ikea.com/jp/en/cat/curtains-blinds-tl002/?page=7", "https://www.ikea.com/jp/en/cat/cushions-cushion-covers-10659/?page=5"]
   end
 
   def call
@@ -59,13 +59,13 @@ class ScrapeIkeaService
   # end
 
   def scrape_items_urls(url)
-    browser = Watir::Browser.new
-    browser.goto(url)
+    # browser = Watir::Browser.new
+    # browser.goto(url)
 
     p "def scrape_items_urls"
-    sleep(3)
-    # html = URI.open(url)
-    @doc = Nokogiri::HTML.parse(browser.html)
+    # sleep(3)
+    html = URI.open(url)
+    @doc = Nokogiri::HTML.parse(html)
     p items_urls = @doc.search(".pip-product-compact a")
     # p items_urls = @doc.search(".plp-mastercard__item a")
     items_urls.map do |item_url|
@@ -84,9 +84,26 @@ class ScrapeIkeaService
     furniture_type = []
     p name = @doc.search(".pip-header-section__title--big").text.strip
     p price = @doc.search(".pip-temp-price__integer")[0].text.gsub(/\D+/, "")
-    p width = @doc.search(".pip-product-dimensions__measurement-wrapper").text.strip.split("cm").select! { |element| element.start_with?("Width") }[0].match(/\d+/)[0]
-    p length = @doc.search(".pip-product-dimensions__measurement-wrapper").text.strip.split("cm").select! { |element| element.start_with?("Length") || element.start_with?("Depth") }[0].match(/\d+/)[0]
-    p height = @doc.search(".pip-product-dimensions__measurement-wrapper").text.strip.split("cm").select! { |element| element.start_with?("Height") }[0].match(/\d+/)[0]
+    p width_elem = @doc.search(".pip-product-dimensions__measurement-wrapper").text.strip.split("cm")
+
+    return if width_elem.select { |element| element.start_with?("Width") }.empty?
+
+    p width = width_elem.select { |element| element.start_with?("Width") }[0].match(/\d+/)[0]
+
+
+
+    p length_elem = @doc.search(".pip-product-dimensions__measurement-wrapper").text.strip.split("cm")
+
+    return if length_elem.select { |element| element.start_with?("Length") || element.start_with?("Depth") }.empty?
+
+    p length = length_elem.select { |element| element.start_with?("Length") || element.start_with?("Depth") }[0].match(/\d+/)[0]
+
+    p height_elem = @doc.search(".pip-product-dimensions__measurement-wrapper").text.strip.split("cm")
+
+    return if height_elem.select { |element| element.start_with?("Height") }.empty?
+
+    p height = height_elem.select { |element| element.start_with?("Height") }[0].match(/\d+/)[0]
+
     item_title = @doc.search(".pip-header-section__description-text")[0].text.strip.split(/[^a-zA-Z]/)
     p item_title
     item_title.each do |title_word|
@@ -105,6 +122,7 @@ class ScrapeIkeaService
 
     p shop_item_id = @doc.search(".pip-product-identifier__value")[0].text.strip
     p color
+    return if color.empty?
     color = PairColorsIkea.new(color.last.downcase).call
 
     p item_infos = {
