@@ -20,10 +20,10 @@ namespace :scrape do
     }
 
     #colors.each do |color_name, hex|
-    #p "https://francfranc.com/search?color%5B0%5D=グレー&q=sofa"
-    browser.goto("https://francfranc.com/search?color%5B0%5D=ブルー&q=sofa")
+    #p "https://francfranc.com/search?color%5B0%5D=ブルー&q=sofa"
+    browser.goto("https://francfranc.com/search?color%5B0%5D=ブラウン&q=sofa")
 
-    browser.elements(class: 'c-product-card__title').wait_until(message: "フィエール ソファ ブルー（W1800）")
+    browser.elements(class: 'c-product-card__title').wait_until(message: "カラン フロアチェア S ブラウン")
     browser.scroll.to(:bottom)
         #browser.elements(class: 'ais-Hits-list').map do |result|
     browser.elements(class: 'ais-Hits-item').map do |card|
@@ -34,7 +34,7 @@ namespace :scrape do
           name: card.element(class: 'c-product-card__title').innertext,
           photo: card.element(tag_name: 'img').attribute_value(:src),
           price: card.element(css: '.c-product-card-price.medium').innertext.gsub(/\D+/, ""),
-          color: "#617f86",
+          color: "#392e25",
           furniture_type: "sofa",
           shop_name: "francfranc"
         }
