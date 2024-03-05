@@ -2,6 +2,7 @@ require 'open-uri'
 require "nokogiri"
 require 'watir'
 require 'colorscore'
+require "csv"
 
 namespace :scrape do
   desc "TODO"
@@ -18,31 +19,28 @@ namespace :scrape do
       ブラウン: "#392e25"
     }
 
-    colors.each do |color_name, hex|
-      p "https://francfranc.com/search?color%5B0%5D=#{color_name}&q=sofa"
-      browser.goto("https://francfranc.com/search?color%5B0%5D=#{color_name}&q=sofa")
+    #colors.each do |color_name, hex|
+    #p "https://francfranc.com/search?color%5B0%5D=グレー&q=sofa"
+    browser.goto("https://francfranc.com/search?color%5B0%5D=ブルー&q=sofa")
 
-      #browser.elements(class: 'c-product-card__title').wait_until(message: "エルフィア ホットカーペットラグ L 1900×1900 グレー×アイボリー")
-      browser.scroll.to(:bottom)
-      browser.elements(class: 'ais-Hits-list').map do |result|
-        result.element(class: 'c-product-card medium').map do |card|
-          p card.element(class: 'c-product-card__title').innertext
-          item = Item.find_or_initialize_by(shop_url: card.element(tag_name: 'a').attribute_value(:href))
-          item.update(
-            {
-              name: card.element(class: 'c-product-card__title').innertext,
-              photo: card.element(tag_name: 'img').attribute_value(:src),
-              price: card.element(css: '.c-product-card-price.medium').innertext.gsub(/\D+/, ""),
-              color: hex,
-              furniture_type: "sofa",
-              shop_name: "francfranc"
-            }
-          )
-
-        end
-
-        browser.close
-      end
+    browser.elements(class: 'c-product-card__title').wait_until(message: "フィエール ソファ ブルー（W1800）")
+    browser.scroll.to(:bottom)
+        #browser.elements(class: 'ais-Hits-list').map do |result|
+    browser.elements(class: 'ais-Hits-item').map do |card|
+      p card.element(class: 'c-product-card__title').innertext
+      item = Item.find_or_initialize_by(shop_url: card.element(tag_name: 'a').attribute_value(:href))
+      item.update(
+        {
+          name: card.element(class: 'c-product-card__title').innertext,
+          photo: card.element(tag_name: 'img').attribute_value(:src),
+          price: card.element(css: '.c-product-card-price.medium').innertext.gsub(/\D+/, ""),
+          color: "#617f86",
+          furniture_type: "sofa",
+          shop_name: "francfranc"
+        }
+      )
     end
+
+    browser.close
   end
 end
