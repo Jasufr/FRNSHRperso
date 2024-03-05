@@ -2,12 +2,22 @@
   <%total_item_no = @planners.count%>
   <% if @planners.count.positive?%>
     <%colored_items = @room.area_by_colors%>
-    <%colored_items.each do |key, value|%>
+    <% sorted_colored_items = colored_items.sort_by do |key, _| %>
+      <% value = value_from_hex(key) %>
+      <% if value == 0 %>
+        <% [-1, hue_from_hex(key)] %>
+      <% elsif value == 1 %>
+        <% [2, hue_from_hex(key)] %>
+      <% else %>
+        <% [1, saturation_from_hex(key), hue_from_hex(key)] %>
+      <% end %>
+    <% end %>
+    <% sorted_colored_items.each do |key, value|%>
       <div style="background-color: <%= key %>; width: <%= value.to_f/@room.total_area*100 %>%;">
         <%# <%=key%>
         <%# <%=value%>
         <%# <%=value.to_f/total_item_no*100%>
-        </div>
+      </div>
     <%end%>
   <%else%>
     <p>Add some items from your favourites!</p>
