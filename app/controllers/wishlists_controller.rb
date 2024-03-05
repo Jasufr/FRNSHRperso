@@ -43,6 +43,7 @@ class WishlistsController < ApplicationController
     # if params[:none].present?
     #   @items = Item.where(color: @room.palette, furniture_type: Item::ROOM_ITEMS[@room.room_type])
     # end
+    @items = Item.all
   end
 
   def create
