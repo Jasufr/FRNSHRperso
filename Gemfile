@@ -66,6 +66,8 @@ gem 'watir'
 gem "webdrivers"
 gem 'mini_magick'
 
+gem 'mechanize'
+gem 'colorscore', '~> 0.0.5'
 
 group :development, :test do
   gem "dotenv-rails"
