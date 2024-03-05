@@ -63,7 +63,7 @@ gem "pg_search"
 
 gem "nokogiri"
 gem 'watir'
-gem "webdrivers"
+#gem "webdrivers"
 gem 'mini_magick'
 
 gem 'mechanize'
