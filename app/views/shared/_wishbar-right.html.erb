@@ -21,7 +21,7 @@
               <% if current_page?(room_planners_path) %>
                 <%= render "room_planners", wishlist: wishlist %>
               <% else %>
-                <%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-button" do %>
+                <%= button_to wishlist_path(wishlist), method: :delete, data: {turbo_method: :delete}, class: "remove-button" do %>
                   <i class="fas fa-trash"></i>
                 <% end %>
               <% end %>

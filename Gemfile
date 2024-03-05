@@ -60,9 +60,12 @@ gem 'wkhtmltopdf-binary'
 
 gem "pg_search"
 
+
 gem "nokogiri"
 gem 'watir'
 gem "webdrivers"
+gem 'mini_magick'
+
 
 group :development, :test do
   gem "dotenv-rails"

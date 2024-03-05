@@ -27,6 +27,7 @@ Item.destroy_all
 # room2 = Room.create!(palette: ["yellow", "orange"], room_type: "living", name: "living", user: user2)
 # room3 = Room.create!(palette: ["blue", "green"], room_type: "bathroom", name: "bathroom", user: user3)
 
+
 # items = [
 #   {
 #     name: "World's Comfiest Sofa",
@@ -315,7 +316,6 @@ Item.destroy_all
 #     z_dimension: 50
 #   }
 
-# ]
 
 # items.each do |item|
 #   p item

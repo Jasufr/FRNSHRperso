@@ -7,29 +7,29 @@
         <% end %>
       </div>
       <div class="narrowbar">
-        <%# <div class="dropdown">
+        <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Room Type
           </button>
           <ul class="dropdown-menu room-type-menu">
             <%= f.collection_radio_buttons :room_type, Room::ROOMS.map {|room| [room, room.capitalize]}, :first, :last, {checked: params[:room_type]}, {class: "d-none"} %>
-        <%# </ul> %>
-        <%# </div> %>
+          </ul>
+        </div>
         <%# searchbar entry %>
         <%= f.text_field :query,
           class: "form-control search-input",
-          placeholder: "Narrow your search..."
-        %>
-        <%# price range entry - REPLACE WITH SORT BY ASC/DESC %>
-        <%# <div class="dropdown">
+          placeholder: "What are you looking for?"
+      %>
+        <%# price range entry %>
+        <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Price</button>
           <ul class="dropdown-menu price-range-menu">
             <%= f.collection_radio_buttons :price_range, [["0-2000"], ["2000-5000"], ["5000-10000"], ["10000-20000"], ["20000-30000"], ["30000-40000"],], :first, :last, {checked: params[:price_range]}, {class: "d-none"} %>
-        <%# </ul>
-        </div> %>
+          </ul>
+        </div>
         <%# furniture size entry %>
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle height-100%" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dimensions
           </button>
           <ul class="dropdown-menu dimensions-menu">
@@ -47,12 +47,6 @@
         <%# submit %>
         <%= submit_tag "Search", name: "", class: "btn btn-primary search-button" %>
       </div>
-      <div class="d-flex ml-4px mr-4px">
-        <div class="inline-text">Price</div>
-        <div><%= link_to raw('<i class="fa-solid fa-angle-up"></i>'), {controller: "wishlists", action: "index", sort: "asc", height: params[:height], width: params[:width], depth: params[:depth], query: params[:query]}, method: :get, class: "btn btn-secondary" %></div>
-        <div><%= link_to raw('<i class="fa-solid fa-angle-down"></i>'), {controller: "wishlists", action: "index", sort: "desc", height: params[:height], width: params[:width], depth: params[:depth], query: params[:query]}, method: :get, class: "btn btn-secondary" %></div>
-      </div>
-      <%= f.hidden_field :sort, type: :hidden, value: params[:sort] %>
       <%# reset search %>
       <a href="/rooms/<%= @room.id %>/wishlists" class="reset-button btn btn-danger">Reset</a>
     </div>

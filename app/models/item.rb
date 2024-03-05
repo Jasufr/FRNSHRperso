@@ -19,6 +19,10 @@ class Item < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
   ROOM_ITEMS = { "kitchen" => ["chair", "table", "stool", "cabinet", "counter"], "bedroom" => ["bed", "cushion", "chair", "cabinet", "bookcase", "rug"], "bathroom" => [], "living" => ["sofa", "cushion", "chair", "table", "cabinet", "bookcase", "rug"], "dining" => ["chair", "table", "cabinet", "counter"], "garden" => [], "kids" => [] }
 
+  def surface_area
+    x_dimension*y_dimension + y_dimension*z_dimension + x_dimension*z_dimension
+  end
 end
