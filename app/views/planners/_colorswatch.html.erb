@@ -9,7 +9,7 @@
       <% elsif value == 1 %>
         <% [2, hue_from_hex(key)] %>
       <% else %>
-        <% [1, saturation_from_hex(key), hue_from_hex(key)] %>
+        <% [1, value, saturation_from_hex(key), hue_from_hex(key)] %>
       <% end %>
     <% end %>
     <% sorted_colored_items.each do |key, value|%>

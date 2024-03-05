@@ -328,8 +328,8 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
-  nokogiri
   mini_magick
+  nokogiri
   pg (~> 1.1)
   pg_search
   puma (>= 5.0)
