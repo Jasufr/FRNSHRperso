@@ -357,8 +357,8 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mechanize
-  nokogiri
   mini_magick
+  nokogiri
   pg (~> 1.1)
   pg_search
   puma (>= 5.0)
