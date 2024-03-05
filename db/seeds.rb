@@ -315,7 +315,7 @@ Item.destroy_all
 #     y_dimension: 5,
 #     z_dimension: 50
 #   }
-
+# ]
 
 # items.each do |item|
 #   p item

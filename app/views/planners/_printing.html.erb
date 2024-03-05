@@ -14,7 +14,8 @@
         <tbody>
           <tr>
             <td style = "width:10%;"><strong>Color</strong></td>
-            <td style = "width:45%;"><strong>Item</strong></td>
+            <td style = "width:35%;"><strong>Item</strong></td>
+            <td><strong>Item Id</strong></td>
             <td><strong>Quantity</strong></td>
             <td><strong>Unit Price</strong></td>
             <td><strong>Link</strong></td>
@@ -27,6 +28,7 @@
             <tr>
               <td style="background-color: <%= details.first.item.color %>;"></td>
               <td><%= name %></td>
+              <td><%= details.first.item.shop_item_id %></td>
               <td><%= count %></td>
               <td><%= details.first.item.price%></td>
               <td><%= link_to "url", details.first.item.shop_url, target: "_blank" %></td>
