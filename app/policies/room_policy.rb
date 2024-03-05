@@ -16,4 +16,9 @@ class RoomPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def destroy?
+    record.user.id == user.id
+  end
+
 end

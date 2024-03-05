@@ -1,26 +1,44 @@
 <div class="container">
-  <h1 class="planner-heading">Room Planner - Printing Version</h1>
+  <h1 class="planner-heading">Room Planner - Shopping List Version</h1>
   <div class ="floating">
     <h2>Your color swatch:</h2>
     <%= render "colorswatch"%>
   </div>
   <h2>Your planned items:</h2>
-  <div class="row" data-refreshless-target="display">
+  <div class = "row">
     <%total_price = 0%>
-    <ul>
-      <% item_counts = @planners.map { |planner| planner.item.name }.tally %>
-      <% total_price = 0 %>
-      <% item_counts.each do |item_name, count| %>
-        <% planners_for_item = @planners.select { |planner| planner.item.name == item_name } %>
-        <li>
-          <%= item_name %> ----
-          <%= link_to planners_for_item.first.item.shop_name, planners_for_item.first.item.shop_url %>----
-          Unit Price: ¥<%= planners_for_item.first.item.price %>----
-          Quantity: <%= count%>
-          <% total_price += planners_for_item.sum { |planner| planner.item.price } %>
-        </li>
-      <% end %>
-    </ul>
+    <% shop_names = @planners.map { |planner| planner.item.shop_name }.uniq %>
+    <% shop_names.each do |shop| %>
+      <h3><%= shop %></h3>
+      <table style="border: 0;">
+        <tbody>
+          <tr>
+            <td style = "width:10%;"><strong>Color</strong></td>
+            <td style = "width:45%;"><strong>Item</strong></td>
+            <td><strong>Quantity</strong></td>
+            <td><strong>Unit Price</strong></td>
+            <td><strong>Link</strong></td>
+          </tr>
+          <% same_shop = @planners.select { |planner| planner.item.shop_name == shop } %>
+          <% same_items = same_shop.map { |planner| planner.item.name }.tally %>
+          <% same_items.each do |name, count| %>
+            <% details = @planners.select{ |planner| planner.item.name == name} %>
+            <% total_price += details.sum { |planner| planner.item.price }%>
+            <tr>
+              <td style="background-color: <%= details.first.item.color %>;"></td>
+              <td><%= name %></td>
+              <td><%= count %></td>
+              <td><%= details.first.item.price%></td>
+              <td><%= link_to "url", details.first.item.shop_url, target: "_blank" %></td>
+            </tr>
+            <p></p>
+          <% end %>
+        </tbody>
+      </table>
+      <p></p>
+    <% end %>
   </div>
-  <h2>Total Price: ¥<%= total_price %></h2>
+  <div style="text-align: right;">
+    <h2>Total Price : ¥<%= total_price %></h2>
+  </div>
 </div>

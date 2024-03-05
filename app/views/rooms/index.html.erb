@@ -4,8 +4,14 @@
     <% @rooms.each do |room|%>
       <div class="d-flex col-lg-6 col-md-6 col-sm-12 mb-8">
         <div class = "saved_room_cards">
-          <p><%= link_to room.room_type, room_planners_path(room)%></p>
+          <div class = "d-flex justify-content-between">
+            <p><%= link_to room.room_type, room_planners_path(room)%></p>
+            <%= button_to room_path(room), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-button" do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
           <% @planners = room.planners %>
+          <% @room = room %>
           <%= render "planners/colorswatch", room: room %>
         </div>
       </div>
