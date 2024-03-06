@@ -16,6 +16,10 @@
             <%= f.collection_radio_buttons :room_type, Room::ROOMS.map {|room| [room, room.capitalize]}, :first, :last, {checked: params[:room_type]}, {class: "d-none"} %>
         <%# </ul> %>
         <%# </div> %>
+        <div style="position:relative">
+          <button type="button" class="btn btn-secondary"><i class="fa-solid fa-palette"></i></button>
+          <input type="color" name="colors[]" value="#000001" style="opacity:0; position:absolute; left:0;top:0;width:100%"/>
+        </div>
         <%# searchbar entry %>
         <%= f.text_field :query,
           class: "form-control search-input",
@@ -46,7 +50,7 @@
           </ul>
         </div>
         <%# submit %>
-        <%= submit_tag "Filter", name: "", class: "btn btn-primary search-button" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary search-button" %>
       </div>
       <div class="d-flex ml-4px mr-4px">
         <div class="inline-text">Price</div>
@@ -56,10 +60,6 @@
       <%= f.hidden_field :sort, type: :hidden, value: params[:sort] %>
       <%# reset search %>
       <a href="/rooms/<%= @room.id %>/wishlists" class="reset-button btn btn-danger">Reset</a>
-      <div>
-        search by a new colour
-        <input type="color" name="colors[]" value="#000001">
-      </div>
     </div>
   <% end %>
 </div>
