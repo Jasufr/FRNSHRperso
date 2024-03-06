@@ -7,11 +7,11 @@ class WishlistsController < ApplicationController
     @room = Room.find(params[:room_id])
     @wishlists = @wishlists.where(room: @room)
     user_colors = @room.palette # Assuming user selects an array of colors somehow
-    @closest_images = closest_matching_images(user_colors)
+
 
     # color_range = generate_analogous_colors(@room.palette)
 
-    @items = @closest_images
+    @items = Item.all
 
     # To do: turn this one into Items that matches the room
     if params[:query].present?
@@ -47,10 +47,12 @@ class WishlistsController < ApplicationController
       @items = @items.sort_by(&:price).reverse
     end
 
+    @items = closest_matching_images(user_colors, @items)
+
     # if params[:none].present?
     #   @items = Item.where(color: @room.palette, furniture_type: Item::ROOM_ITEMS[@room.room_type])
     # end
-    @items = Item.all
+    #@items = Item.all
   end
 
   def create
