@@ -7,34 +7,30 @@ export default class extends Controller {
   connect() {
     console.log("js connected");
   }
-  selectAnalogic(event) {
-    event.preventDefault();
-    this.displayAnalogicTarget.style.border = "2px solid white";
-    this.analogicTargets.forEach(element => {
-      element.setAttribute("name", "room[palette][]");
-    });
-    this.displayMonochromeTarget.style.border = "";
-    this.monochromeTargets.forEach(element => {
-      element.setAttribute("name", "");
-    });
-}
-
-selectMonochrome(event) {
-  event.preventDefault();
-  this.displayMonochromeTarget.style.border = "2px solid white";
-  this.monochromeTargets.forEach(element => {
-    element.setAttribute("name", "room[palette][]");
-  });
-  this.displayAnalogicTarget.style.border = "";
-  this.analogicTargets.forEach(element => {
-    element.setAttribute("name", "");
-  });
-
-}
 
   roomchecking(event){
     console.log("room is connected");
   }
+
+  select(event) {
+    event.preventDefault();
+ // resetting the others to zero
+    const allDivs = document.querySelectorAll('.scheme-card');
+    allDivs.forEach(div => {
+      div.style.border = '0';
+      const allInputs = div.querySelectorAll('input[type="color"]');
+      allInputs.forEach(input => {
+          input.setAttribute("name", "");
+      });
+  });
+// picking the current one only
+    const selectedDiv = event.currentTarget.parentElement
+    selectedDiv.style.border = "2px solid white";
+    const selectedInput = selectedDiv.querySelectorAll('input[type="color"]')
+    selectedInput.forEach(element => {element.setAttribute("name", "room[palette][]")});
+}
+
+
   suggestion(event){
 
     console.log("color is connected");
@@ -56,10 +52,10 @@ selectMonochrome(event) {
     scheme.forEach(color => {
       const colorHex = color.hex.value;
       console.log(colorHex); // This will log the hexcode of each color
-      const colorPicker = `<input type="color" data-colorscheme-target="analogic" name="" value="${colorHex}">`;
+      const colorPicker = `<input type="color" name="" value="${colorHex}">`;
       this.displayAnalogicTarget.insertAdjacentHTML('beforeend',colorPicker);
     });
-const analogicButton = `<button data-action="click->colorscheme#selectAnalogic">Pick this color scheme</button>`;
+const analogicButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
 this.displayAnalogicTarget.insertAdjacentHTML('beforeend',analogicButton)
   })
 
@@ -79,23 +75,23 @@ this.displayMonochromeTarget.insertAdjacentHTML('beforeend',"<p>2nd Suggested Co
     scheme.forEach(color => {
       const colorHex = color.hex.value;
       console.log(colorHex); // This will log the hexcode of each color
-      const colorPicker = `<input type="color" data-colorscheme-target="monochrome" name="" value="${colorHex}">`;
+      const colorPicker = `<input type="color" name="" value="${colorHex}">`;
       this.displayMonochromeTarget.insertAdjacentHTML('beforeend',colorPicker);
     });
-const monochromeButton = `<button data-action="click->colorscheme#selectMonochrome">Pick this color scheme</button>`;
+const monochromeButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
 this.displayMonochromeTarget.insertAdjacentHTML('beforeend',monochromeButton)
   })
 
 // reset the selector to not selected
-  this.displayAnalogicTarget.style.border = "";
-  this.analogicTargets.forEach(element => {
-    element.setAttribute("name", "");
+const allDivs = document.querySelectorAll('.scheme-card');
+allDivs.forEach(div => {
+  div.style.border = '0';
+  const allInputs = div.querySelectorAll('input[type="color"]');
+  allInputs.forEach(input => {
+      input.setAttribute("name", "");
   });
-  this.displayMonochromeTarget.style.border = "";
-  this.monochromeTargets.forEach(element => {
-    element.setAttribute("name", "");
-  });
+});
+
+
   }
-
-
 }
