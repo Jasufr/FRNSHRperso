@@ -3,7 +3,7 @@
     <div class="narrow-search">
       <div class="palette-container d-flex">
         <% @room.palette.each do |color| %>
-          <div class="room-color" style="background-color: <%= color %>"></div>
+          <input type="color" style="background-color: <%= color %>" value = "<%= color %>">
         <% end %>
       </div>
       <div class="narrowbar">

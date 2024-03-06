@@ -36,9 +36,10 @@
 .price-range-menu input:checked + label, .price-range-menu input:checked + label {
   background-color: $light-brown;
 }
-.palette-container  {
+.palette-container input  {
   height: 37.6px;
-  gap: 2px;
+  padding: 0;
+  border: none;
 }
 .room-color{
   border: none;
