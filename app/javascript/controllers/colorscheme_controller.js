@@ -40,7 +40,9 @@ selectMonochrome(event) {
     console.log("color is connected");
     const usercolor = this.usercolorTarget.value.slice(1);
     console.log(usercolor);
+  // 1st color scheme
     this.displayAnalogicTarget.innerHTML = "";
+    this.displayAnalogicTarget.insertAdjacentHTML('beforeend',"<p>1st Suggested Color Scheme</p>");
     fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=analogic&count=5`)
   .then(response => {
     if (!response.ok) {
@@ -61,7 +63,9 @@ const analogicButton = `<button data-action="click->colorscheme#selectAnalogic">
 this.displayAnalogicTarget.insertAdjacentHTML('beforeend',analogicButton)
   })
 
+// 2nd color scheme
 this.displayMonochromeTarget.innerHTML = "";
+this.displayMonochromeTarget.insertAdjacentHTML('beforeend',"<p>2nd Suggested Color Scheme</p>");
   fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=monochrome&count=5`)
   .then(response => {
     if (!response.ok) {
@@ -82,6 +86,7 @@ const monochromeButton = `<button data-action="click->colorscheme#selectMonochro
 this.displayMonochromeTarget.insertAdjacentHTML('beforeend',monochromeButton)
   })
 
+// reset the selector to not selected
   this.displayAnalogicTarget.style.border = "";
   this.analogicTargets.forEach(element => {
     element.setAttribute("name", "");

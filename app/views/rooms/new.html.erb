@@ -5,7 +5,7 @@
       <%= f.input :room_type, as: :select, collection: Room::ROOMS, input_html: { data: { colorscheme_target: 'room', action: 'change->colorscheme#roomchecking' }} %>
       <p>Choose a Color:</p>
       <input type="color" data-colorscheme-target="usercolor" data-action="input->colorscheme#suggestion">
-      <p>Suggested Color Scheme: </p>
+      <p>Suggested Color Schemes: </p>
       <div data-colorscheme-target="displayAnalogic"></div>
       <div data-colorscheme-target="displayMonochrome"></div>
       <p><%= f.button :submit, class: "btn btn-primary" %></p>
