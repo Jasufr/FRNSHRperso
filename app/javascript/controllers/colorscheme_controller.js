@@ -14,21 +14,22 @@ export default class extends Controller {
       element.setAttribute("name", "room[palette][]");
     });
     this.displayMonochromeTarget.style.border = "";
-    this.MonochromeTargets.forEach(element => {
+    this.monochromeTargets.forEach(element => {
       element.setAttribute("name", "");
     });
 }
 
 selectMonochrome(event) {
   event.preventDefault();
+  this.displayMonochromeTarget.style.border = "2px solid white";
+  this.monochromeTargets.forEach(element => {
+    element.setAttribute("name", "room[palette][]");
+  });
   this.displayAnalogicTarget.style.border = "";
   this.analogicTargets.forEach(element => {
     element.setAttribute("name", "");
   });
-  this.displayMonochromeTarget.style.border = "2px solid white";
-  this.MonochromeTargets.forEach(element => {
-    element.setAttribute("name", "room[palette][]");
-  });
+
 }
 
   roomchecking(event){
@@ -56,7 +57,7 @@ selectMonochrome(event) {
       const colorPicker = `<input type="color" data-colorscheme-target="analogic" name="" value="${colorHex}">`;
       this.displayAnalogicTarget.insertAdjacentHTML('beforeend',colorPicker);
     });
-const analogicButton = `<button data-action="click->colorscheme#selectAnalogic">Pick this</button>`;
+const analogicButton = `<button data-action="click->colorscheme#selectAnalogic">Pick this color scheme</button>`;
 this.displayAnalogicTarget.insertAdjacentHTML('beforeend',analogicButton)
   })
 
@@ -77,7 +78,7 @@ this.displayMonochromeTarget.innerHTML = "";
       const colorPicker = `<input type="color" data-colorscheme-target="monochrome" name="" value="${colorHex}">`;
       this.displayMonochromeTarget.insertAdjacentHTML('beforeend',colorPicker);
     });
-const monochromeButton = `<button data-action="click->colorscheme#selectMonochrome">Pick this</button>`;
+const monochromeButton = `<button data-action="click->colorscheme#selectMonochrome">Pick this color scheme</button>`;
 this.displayMonochromeTarget.insertAdjacentHTML('beforeend',monochromeButton)
   })
 
@@ -86,7 +87,7 @@ this.displayMonochromeTarget.insertAdjacentHTML('beforeend',monochromeButton)
     element.setAttribute("name", "");
   });
   this.displayMonochromeTarget.style.border = "";
-  this.MonochromeTargets.forEach(element => {
+  this.monochromeTargets.forEach(element => {
     element.setAttribute("name", "");
   });
   }
