@@ -32,7 +32,7 @@
   gap: 8px;
   overflow-y: scroll;
   background-color: white;
-  max-height: 75vh;
+  max-height: calc(100vh - 180px);
 }
 #style-4::-webkit-scrollbar-track
 {
@@ -84,10 +84,11 @@
 }
 .remove-button {
   border: none;
-  background-color: white;
+  background-color: transparent;
   color: lightgray;
   text-shadow: 0 0 1px black;
   transition: .3s;
+  font-size: 18px;
   &:hover {
     color: black;
 
@@ -98,21 +99,48 @@
   color: $red;
 }
 .button-planner {
+  background-color: $blue;
+  text-align: center;
+  text-decoration: none;
+  // text-shadow: 0px 0px 3px black;
+  font-size: 14px;
+  padding: 8px 12px;
+  width: 140px;
+  line-height: 1em;
+  color: white;
+  border-radius: 6px;
+  // box-shadow: 0px 0px 10px $blue;
+  margin-top: 8px;
+  // border: 1px solid $blue;
+  // position: absolute;
+  // top: 70vh;
+  // right: 25px;
+  z-index: 100;
+}
+// .button-planner:hover {
+//   // background-color: #007ebe;
+//   background-color: #0c4ef7;
+//   // opacity: .8;
+//   transition: .5s;
+// }
+.button-back-to-search {
   background-color: $light-gray;
   text-align: center;
   text-decoration: none;
-  text-shadow: 0px 0px 3px black;
+  // text-shadow: 0px 0px 3px black;
   font-size: 14px;
   padding: 6px;
   width: 140px;
   line-height: 1em;
-  color: white;
+  color: black;
   border-radius: 10px;
   box-shadow: 0px 0px 10px lightgray;
   margin-top: 8px;
-  border: 1px solid lightgray
+  border: 1px solid lightgray;
 }
-.button-planner:hover {
+.button-back-to-search:hover {
   background-color: gray;
   transition: .5s;
+  color: white;
+
 }

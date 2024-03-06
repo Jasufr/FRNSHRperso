@@ -10,10 +10,10 @@
               </div>
               <div class="result-details">
                 <h3><%= item.name %></h3>
-                <p>¥ <%= item.price %> (<%= item.furniture_type&.capitalize %>)</p>
+                <p>¥ <%= number_with_delimiter(item.price) %> (<%= item.furniture_type&.capitalize %>)</p>
                 <p></p>
-                <p>Size: <%= item.x_dimension %> x <%= item.y_dimension %> x <%= item.z_dimension %></p>
-                <p>Shop: <a class="text-decoration-none" href="<%= item.shop_url %>" target="_blank"><%= item.shop_name %></a></p>
+                <p><i class="fa-solid fa-ruler"></i> <%= item.x_dimension %> x <%= item.y_dimension %> x <%= item.z_dimension %></p>
+                <p><a class="text-decoration-none text-info" href="<%= item.shop_url %>" target="_blank"><%= item.shop_name %>  <i class="fa-solid fa-up-right-from-square"></i></a></p>
               </div>
               <% if @room.wish_items.find_by(id: item) %>
                 <%= button_to wishlist_path(@room.wishlists.find_by(item: item)), method: :delete, data: {turbo_method: :delete}, class: "on-wishlist-button" do %>
