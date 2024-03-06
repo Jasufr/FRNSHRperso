@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="colorscheme"
 export default class extends Controller {
-  static targets = ["usercolor", "displayArea","displayAnalogic","displayMonochrome","displayMonochromeLight","displayQuad"];
+  static targets = ["usercolor", "displayArea"];
 
   connect() {
     console.log("js connected");
@@ -36,96 +36,31 @@ export default class extends Controller {
     console.log("color is connected");
     const usercolor = this.usercolorTarget.value.slice(1);
     console.log(usercolor);
+    const modes = ["analogic", "monochrome", "monochrome-light", "quad"];
     const schemeButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
 
-  // 1st color scheme
-
-    this.displayAreaTarget.insertAdjacentHTML('beforeend','<div data-colorscheme-target="displayAnalogic" class = "scheme-card"></div>');
-    this.displayAnalogicTarget.insertAdjacentHTML('beforeend',"<p>1st Suggested Color Scheme</p>");
-    fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=analogic&count=5`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data); // This will return an long array
-    const scheme = data.colors;
-    scheme.forEach(color => {
-      const colorHex = color.hex.value;
-      console.log(colorHex); // This will log the hexcode of each color
-      const colorPicker = `<input type="color" name="" value="${colorHex}">`;
-      this.displayAnalogicTarget.insertAdjacentHTML('beforeend',colorPicker);
-    });
-this.displayAnalogicTarget.insertAdjacentHTML('beforeend',schemeButton)
-  })
-
-// 2nd color scheme
-this.displayAreaTarget.insertAdjacentHTML('beforeend','<div data-colorscheme-target="displayMonochrome" class = "scheme-card"></div>');
-this.displayMonochromeTarget.insertAdjacentHTML('beforeend',"<p>2nd Suggested Color Scheme</p>");
-  fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=monochrome&count=5`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data); // This will return an long array
-    const scheme = data.colors;
-    scheme.forEach(color => {
-      const colorHex = color.hex.value;
-      console.log(colorHex); // This will log the hexcode of each color
-      const colorPicker = `<input type="color" name="" value="${colorHex}">`;
-      this.displayMonochromeTarget.insertAdjacentHTML('beforeend',colorPicker);
-    });
-this.displayMonochromeTarget.insertAdjacentHTML('beforeend',schemeButton)
-  })
-
-// 3rd color scheme
-this.displayAreaTarget.insertAdjacentHTML('beforeend','<div data-colorscheme-target="displayMonochromeLight" class = "scheme-card"></div>');
-this.displayMonochromeLightTarget.insertAdjacentHTML('beforeend',"<p>3nd Suggested Color Scheme</p>");
-  fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=monochrome-light&count=5`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data); // This will return an long array
-    const scheme = data.colors;
-    scheme.forEach(color => {
-      const colorHex = color.hex.value;
-      console.log(colorHex); // This will log the hexcode of each color
-      const colorPicker = `<input type="color" name="" value="${colorHex}">`;
-      this.displayMonochromeLightTarget.insertAdjacentHTML('beforeend',colorPicker);
-    });
-this.displayMonochromeLightTarget.insertAdjacentHTML('beforeend',schemeButton)
-  })
-
-  // 4th color scheme
-this.displayAreaTarget.insertAdjacentHTML('beforeend','<div data-colorscheme-target="displayQuad" class = "scheme-card"></div>');
-this.displayQuadTarget.insertAdjacentHTML('beforeend',"<p>3nd Suggested Color Scheme</p>");
-  fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=quad&count=5`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data); // This will return an long array
-    const scheme = data.colors;
-    scheme.forEach(color => {
-      const colorHex = color.hex.value;
-      console.log(colorHex); // This will log the hexcode of each color
-      const colorPicker = `<input type="color" name="" value="${colorHex}">`;
-      this.displayQuadTarget.insertAdjacentHTML('beforeend',colorPicker);
-    });
-this.displayQuadTarget.insertAdjacentHTML('beforeend',schemeButton)
-  })
-
+ // iteration
+ modes.forEach(mode => {
+  this.displayAreaTarget.insertAdjacentHTML('beforeend', `<div id="${mode}" class="scheme-card col-lg-6 col-md-6 col-sm-12 mb-8"></div>`);
+  const modeDiv = document.getElementById(mode);
+  modeDiv.insertAdjacentHTML('beforeend', `<p>${mode}</p>`);
+  fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=${mode}&count=5`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const scheme = data.colors;
+      scheme.forEach(color => {
+        const colorHex = color.hex.value;
+        const colorPicker = `<input type="color" name="" value="${colorHex}">`;
+        modeDiv.insertAdjacentHTML('beforeend',colorPicker);
+      });
+  modeDiv.insertAdjacentHTML('beforeend',schemeButton)
+    })
+});
   }
+
 }
