@@ -6,8 +6,8 @@
       <p>Choose a Color:</p>
       <input type="color" data-colorscheme-target="usercolor" data-action="change->colorscheme#suggestion">
       <p>Suggested Color Schemes: </p>
-      <div data-colorscheme-target="displayAnalogic" class = "scheme-card"></div>
-      <div data-colorscheme-target="displayMonochrome" class = "scheme-card"></div>
+      <div data-colorscheme-target = "displayArea">
+      </div>
       <p><%= f.button :submit, class: "btn btn-primary" %></p>
     <% end %>
   </div>
