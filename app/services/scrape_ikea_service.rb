@@ -19,7 +19,7 @@ class ScrapeIkeaService
     # html = URI.open(url)
     # @doc = Nokogiri::HTML.parse(html)
 
-    @living_room_item_category_page_urls = ["https://www.ikea.com/jp/en/cat/sofas-fu003/?page=31#products-page-31", "https://www.ikea.com/jp/en/cat/armchairs-chaise-longues-fu006/?page=3", "https://www.ikea.com/jp/en/cat/bookcases-shelving-units-st002/?page=13", "https://www.ikea.com/jp/en/cat/tv-media-furniture-10475/?page=8", "https://www.ikea.com/jp/en/cat/coffee-side-tables-10705/?page=5", "https://www.ikea.com/jp/en/cat/rugs-10653/?page=6", "https://www.ikea.com/jp/en/cat/curtains-blinds-tl002/?page=7", "https://www.ikea.com/jp/en/cat/cushions-cushion-covers-10659/?page=5"]
+    @living_room_item_category_page_urls = ["https://www.ikea.com/jp/en/cat/sofas-fu003/", "https://www.ikea.com/jp/en/cat/armchairs-chaise-longues-fu006/", "https://www.ikea.com/jp/en/cat/bookcases-shelving-units-st002/", "https://www.ikea.com/jp/en/cat/tv-media-furniture-10475/", "https://www.ikea.com/jp/en/cat/coffee-side-tables-10705/", "https://www.ikea.com/jp/en/cat/rugs-10653/", "https://www.ikea.com/jp/en/cat/curtains-blinds-tl002/", "https://www.ikea.com/jp/en/cat/cushions-cushion-covers-10659/"]
   end
 
   def call
@@ -66,7 +66,8 @@ class ScrapeIkeaService
     # sleep(3)
     html = URI.open(url)
     @doc = Nokogiri::HTML.parse(html)
-    p items_urls = @doc.search(".pip-product-compact a")
+    p items_urls = @doc.search(".pip-product-compact a.pip-product-compact a", ".plp-product-thumbnail")
+    # p items_urls = @doc.search(".plp-product-thumbnail")
     # p items_urls = @doc.search(".plp-mastercard__item a")
     items_urls.map do |item_url|
       p new_url = item_url["href"]
@@ -79,7 +80,8 @@ class ScrapeIkeaService
     html = URI.open(url)
     @doc = Nokogiri::HTML.parse(html)
     colors = ["white", "grey", "black", "anthracite", "beige", "turquoise", "brown", "green", "blue", "yellow", "red", "pink", "oak"]
-    types = ["bed", "wardrobe", "cushion", "blanket", "throw", "chest", "storage", "bedside", "side", "cabinet", "shelf", "desk", "sofa", "armchair", "chair", "bookcase", "tv", "coffee", "curtains", "sideboard", "table", "bathroom", "wash", "outside", "bench", "curtain", "curtains", "rug", "shelving"]
+    types = ["bed", "wardrobe", "cushion", "blanket", "throw", "chest", "storage", "bedside", "side", "cabinet", "shelf", "desk", "sofa", "armchair", "chair", "bookcase", "tv", "coffee", "curtains", "sideboard", "table", "bathroom", "wash", "outside", "bench", "curtain", "curtains", "rug", "shelving", "box"]
+    # types = {"sofa" => "sofa", "seats section" => "sofa"}
     color = []
     furniture_type = []
     p name = @doc.search(".pip-header-section__title--big").text.strip
@@ -105,6 +107,7 @@ class ScrapeIkeaService
     p height = height_elem.select { |element| element.start_with?("Height") }[0].match(/\d+/)[0]
 
     item_title = @doc.search(".pip-header-section__description-text")[0].text.strip.split(/[^a-zA-Z]/)
+    original_item_title = @doc.search(".pip-header-section__description-text")[0].text.strip
     p item_title
     item_title.each do |title_word|
       if colors.include?(title_word.downcase)
@@ -114,8 +117,20 @@ class ScrapeIkeaService
     item_title.each do |title_word|
       if types.include?(title_word.downcase)
         furniture_type << title_word.downcase
+      # elsif original_item_title.downcase.include?("seat section")
+      #   furniture_type << "Sofa"
+      # elsif original_item_title.downcase.include?("blind")
+      #   furniture_type << "Curtain"
       end
     end
+
+    if original_item_title.downcase.include?("seat section")
+      furniture_type << "Sofa"
+    elsif original_item_title.downcase.include?("blind")
+      furniture_type << "Curtain"
+    end
+
+
     p shop_url = url
     p photo = @doc.search(".pip-image").attribute("src")&.value
     return unless photo

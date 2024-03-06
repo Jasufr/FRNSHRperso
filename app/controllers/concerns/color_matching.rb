@@ -11,8 +11,10 @@ module ColorMatching
   end
 
   # Method to find closest matching images to user-selected colors
+
   def closest_matching_images(user_colors, item_collect, num_images = 5)
     item_collect.map do |item|
+
       item_rgb_color = convert_hex_to_rgb(item.color)
 
       most_similar_color = user_colors.map do |user_color|

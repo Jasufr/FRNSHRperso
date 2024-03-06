@@ -3,7 +3,8 @@
     <div class="narrow-search">
       <div class="palette-container d-flex">
         <% @room.palette.each do |color| %>
-          <div class="room-color" style="background-color: <%= color %>"></div>
+          <input class="form-check-input check_boxes optional color-selector" type="checkbox" value="<%= color %>" name="colors[]" id="color-<%= color %>" <%= "checked" if params[:colors].present? && params[:colors].include?(color)%> >
+          <label class="form-check-label collection_check_boxes" for="color-<%= color %>" style='background-color: <%= color %>'></label>
         <% end %>
       </div>
       <div class="narrowbar">
@@ -45,7 +46,7 @@
           </ul>
         </div>
         <%# submit %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary search-button" %>
+        <%= submit_tag "Filter", name: "", class: "btn btn-primary search-button" %>
       </div>
       <div class="d-flex ml-4px mr-4px">
         <div class="inline-text">Price</div>
@@ -55,6 +56,10 @@
       <%= f.hidden_field :sort, type: :hidden, value: params[:sort] %>
       <%# reset search %>
       <a href="/rooms/<%= @room.id %>/wishlists" class="reset-button btn btn-danger">Reset</a>
+      <div>
+        search by a new colour
+        <input type="color" name="colors[]" value="#000001">
+      </div>
     </div>
   <% end %>
 </div>
