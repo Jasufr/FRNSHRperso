@@ -6,6 +6,10 @@ class WishlistsController < ApplicationController
     @wishlists = policy_scope(Wishlist)
     @room = Room.find(params[:room_id])
     @wishlists = @wishlists.where(room: @room)
+
+    user_colors = @room.palette # Assuming user selects an array of colors somehow
+
+
     # Assuming user selects an array of colors somehow
     params[:colors].delete("#000001") if params[:colors].present?
     if params[:colors].nil? || params[:colors].empty?
@@ -14,11 +18,9 @@ class WishlistsController < ApplicationController
       user_colors = params[:colors]
     end
 
-    @closest_images = closest_matching_images(user_colors)
-
     # color_range = generate_analogous_colors(@room.palette)
 
-    @items = @closest_images
+    @items = Item.all
 
     # To do: turn this one into Items that matches the room
     if params[:query].present?
@@ -54,10 +56,13 @@ class WishlistsController < ApplicationController
       @items = @items.sort_by(&:price).reverse
     end
 
+    @items = closest_matching_images(user_colors, @items)
+
     # if params[:none].present?
     #   @items = Item.where(color: @room.palette, furniture_type: Item::ROOM_ITEMS[@room.room_type])
     # end
-    # @items = Item.all
+
+    #@items = Item.all
 
   end
 
