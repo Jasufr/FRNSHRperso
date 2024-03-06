@@ -1,4 +1,5 @@
 <div id ="colorarea" data-refreshless-target="colorswatch">
+  <%# <div style = "width: 450></div> %>
   <%total_item_no = @planners.count%>
   <% if @planners.count.positive?%>
     <%colored_items = @room.area_by_colors%>
@@ -22,4 +23,13 @@
   <%else%>
     <p>Add some items from your favourites!</p>
   <%end%>
+  <div>
+    <% if @planners.any? %>
+      <% totalprice = 0 %>
+      <% @planners.each do |planner| %>
+        <% totalprice += planner.item.price.to_i %>
+      <% end %>
+      <p>Total: ¥<%= number_with_delimiter(totalprice) %></p>
+    <% end %>
+  </div>
 </div>

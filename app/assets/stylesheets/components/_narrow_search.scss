@@ -18,7 +18,10 @@
   border: none;
 }
 .search-button {
-  color: white
+  color: white;
+}
+.search-button:hover {
+  opacity: .7;
 }
 .room-type-menu label, .price-range-menu label {
   display: block;
@@ -61,8 +64,8 @@
   border-radius: 0 4px 4px 0;
 }
 .narrowbar:focus-within {
-  box-shadow: 0 0 0 2px rgba(0, 146, 255, .3), 0 0 0 3px rgba(11, 65, 137, 0.2);
-
+    // box-shadow: 0 0 0 2px rgba(0, 146, 255, .3), 0 0 0 3px rgba(11, 65, 137, 0.2);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .3), 0 0 0 3px rgba(50, 50, 50, 0.2);
 }
 .search-input:focus {
   box-shadow: none;

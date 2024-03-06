@@ -1,5 +1,8 @@
 <div class="planner">
   <%= render "shared/planner-bar" %>
+  <div class="planner-title">
+    <h4>Welcome to your Room Planner!</h4>
+  </div>
   <div class="planner-card-container" data-refreshless-target="display">
     <%@planners.each do |planner|%>
       <%= render "planner_card", planner: planner%>

@@ -27,11 +27,25 @@
 
 #colorarea {
   height: 37.6px;
-  width: 450px;
+  width: 550px;
+  // width: 100%;
   display: flex;
   flex-direction: row;
   transition: 0.8s;
   font-size: 12px;
+}
+#colorarea div {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+#colorarea p {
+  margin-bottom: 0;
+  margin-left: 20px;
+  width: 125px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .each-color {
   padding: 4px;
@@ -53,4 +67,12 @@
   background-color: $light-gray;
   padding: 8px 12px;
   border-radius: 10px;
+}
+
+.planner-title {
+  margin: 16px 18px;
+  border-bottom: 1px lightgray solid;
+}
+.planner-title h4 {
+  margin-bottom: 16px;
 }

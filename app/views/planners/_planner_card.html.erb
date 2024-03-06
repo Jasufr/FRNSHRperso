@@ -4,8 +4,9 @@
     <div class="planner-image" style="background-image: url('<%= planner.item.photo %>')">
     </div>
     <div class="planner-card-infos">
-      <p><%= planner.item.name %></p>
-      <p>¥ <%= planner.item.price %></p>
+      <%# <p><%= planner.item.name </p> %>
+      <p><a class="text-decoration-none text-info d-flex align-items-center" href="<%= planner.item.shop_url %>" target="_blank"><%= planner.item.name %><i class="fa-solid fa-up-right-from-square"></i></a></p>
+      <p>¥ <%= number_with_delimiter(planner.item.price) %></p>
     </div>
     <div class="remove-item-from-planner ">
       <%= simple_form_for [@room, @planner],url: planner_path(planner), method: :delete , data: { refreshless_target: "removeitem", action: "submit->refreshless#remove"} do |f| %>

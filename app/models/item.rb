@@ -2,10 +2,12 @@ class Item < ApplicationRecord
   has_many :wishlists, dependent: :destroy
   has_many :planners, dependent: :destroy
 
+
+  before_save :add_color
+
   before_save :set_default_x, if: :no_x_value?
   before_save :set_default_y, if: :no_y_value?
   before_save :set_default_z, if: :no_z_value?
-
 
   validates :name, presence: true
   validates :price, presence: true
@@ -29,6 +31,11 @@ class Item < ApplicationRecord
 
   def surface_area
     x_dimension*y_dimension + y_dimension*z_dimension + x_dimension*z_dimension
+  end
+
+
+  def add_color
+    self.color = ColorAnalyze.new(self.photo).call
   end
 
   private
