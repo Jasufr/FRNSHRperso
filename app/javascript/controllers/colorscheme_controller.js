@@ -7,16 +7,24 @@ export default class extends Controller {
   connect() {
     console.log("js connected");
   }
-  selectAnalogic(event) {
+  select(event) {
     event.preventDefault();
-    this.displayAnalogicTarget.style.border = "2px solid white";
-    this.analogicTargets.forEach(element => {
-      element.setAttribute("name", "room[palette][]");
-    });
-    this.displayMonochromeTarget.style.border = "";
-    this.monochromeTargets.forEach(element => {
-      element.setAttribute("name", "");
-    });
+ // resetting the others to zero
+    const allDivs = document.querySelectorAll('.scheme-card');
+    allDivs.forEach(div => {
+      div.style.border = '0';
+      const allInputs = div.querySelectorAll('input[type="color"]');
+      allInputs.forEach(input => {
+          input.setAttribute("name", "");
+      });
+  });
+
+// picking the current one only
+    const selectedDiv = event.currentTarget.parentElement
+    selectedDiv.style.border = "2px solid white";
+    const selectedInput = selectedDiv.querySelectorAll('input[type="color"]')
+    selectedInput.forEach(element => {element.setAttribute("name", "room[palette][]")});
+
 }
 
 selectMonochrome(event) {
@@ -59,7 +67,7 @@ selectMonochrome(event) {
       const colorPicker = `<input type="color" data-colorscheme-target="analogic" name="" value="${colorHex}">`;
       this.displayAnalogicTarget.insertAdjacentHTML('beforeend',colorPicker);
     });
-const analogicButton = `<button data-action="click->colorscheme#selectAnalogic">Pick this color scheme</button>`;
+const analogicButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
 this.displayAnalogicTarget.insertAdjacentHTML('beforeend',analogicButton)
   })
 
@@ -82,7 +90,7 @@ this.displayMonochromeTarget.insertAdjacentHTML('beforeend',"<p>2nd Suggested Co
       const colorPicker = `<input type="color" data-colorscheme-target="monochrome" name="" value="${colorHex}">`;
       this.displayMonochromeTarget.insertAdjacentHTML('beforeend',colorPicker);
     });
-const monochromeButton = `<button data-action="click->colorscheme#selectMonochrome">Pick this color scheme</button>`;
+const monochromeButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
 this.displayMonochromeTarget.insertAdjacentHTML('beforeend',monochromeButton)
   })
 
