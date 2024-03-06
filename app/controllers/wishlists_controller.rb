@@ -70,7 +70,12 @@ class WishlistsController < ApplicationController
     authorize @wishlist
     @room = @wishlist.room
     @wishlist.destroy
-    redirect_to room_wishlists_path(@room), status: :see_other
+    # raise
+    if params[:origin] == "wishlists"
+      redirect_to room_wishlists_path(@room), status: :see_other
+    else
+      redirect_to room_planners_path(@room), status: :see_other
+    end
   end
 
   private
