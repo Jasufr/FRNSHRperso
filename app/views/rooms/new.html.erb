@@ -13,9 +13,11 @@
           </button>
         <% end %>
       </div>
-      <p>Your Favourite Color:</p>
-      <input type="color" data-colorscheme-target="usercolor" data-action="input->colorscheme#suggestion">
-      <p>Suggested Color Schemes: </p>
+      <div class = "favoritecolor-card">
+        <p>Your Favorite Color:</p>
+        <input type="color" data-colorscheme-target="usercolor" data-action="input->colorscheme#suggestion" class="favoritecolor" value="#FFFFFF">
+      </div>
+      <div class = "schemetitle" data-colorscheme-target = "title"></div>
       <div class = "scheme-card-container" data-colorscheme-target = "displayArea">
       </div>
       <p><%= f.button :submit, "Design Your Room", class: "btn btn-primary" %></p>
