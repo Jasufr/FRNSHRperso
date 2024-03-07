@@ -3,11 +3,15 @@
     <h1>Choose a Room</h1>
     <%= simple_form_for(@room, html: { data: { controller: 'colorscheme' } }) do |f| %>
       <%= f.hidden_field :room_type, data: { colorscheme_target: 'room' } %>
-      <% Room::ROOMS.each do |room| %>
-        <button data-action="click->colorscheme#roomchecking" data-roomtype="<%= room %>" class="room-card">
-          <%= room %>
-        </button>
-      <% end %>
+      <div class="room-card-container">
+        <% Room::ROOMS.each do |room| %>
+          <button data-action="click->colorscheme#roomchecking" data-roomtype="<%= room %>" class="room-card"
+            style="background-image: url('<%= image_path("#{room}.jpg") %>'); ">
+            <!-- Your button text or content -->
+            <%= room %>
+          </button>
+        <% end %>
+      </div>
       <p>Choose a Color:</p>
       <input type="color" data-colorscheme-target="usercolor" data-action="input->colorscheme#suggestion">
       <p>Suggested Color Schemes: </p>
