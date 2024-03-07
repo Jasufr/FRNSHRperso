@@ -39,6 +39,15 @@
 .result-details {
   // flex-grow: 1;
   padding: 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.result-details-top * {
+  margin-top: 6px;
+}
+.shop-link {
+  text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.2);
 }
 .add-to-wishlist-button {
   align-self: flex-start;
