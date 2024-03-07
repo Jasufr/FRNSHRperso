@@ -39,6 +39,19 @@
 .planner-card-infos p:first-child {
   font-weight: bold;
 }
+.planner-card-infos a {
+  display: flex;
+  align-items: center;
+}
+.planner-item-name {
+  height: 21.5px;
+}
+.planner-card-infos i {
+  // margin: auto;
+  margin-left: 4px;
+  font-size: 16px;
+  height: 100%;
+}
 .remove-item-from-planner {
   position: absolute;
   top: 0;

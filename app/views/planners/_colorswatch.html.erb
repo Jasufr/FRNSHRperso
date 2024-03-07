@@ -23,13 +23,13 @@
   <%else%>
     <p>Add some items from your favourites!</p>
   <%end%>
-  <div>
-    <% if @planners.any? %>
-      <% totalprice = 0 %>
-      <% @planners.each do |planner| %>
-        <% totalprice += planner.item.price.to_i %>
-      <% end %>
-      <p>Total: ¥<%= number_with_delimiter(totalprice) %></p>
-    <% end %>
+  <%# <div> %>
+  <%# <% if @planners.any? %>
+  <%# <% totalprice = 0 %>
+  <%# <% @planners.each do |planner| %>
+    <%# <% totalprice += planner.item.price.to_i %>
+    <%# <% end %>
+    <%# <p>Total: ¥<%= number_with_delimiter(totalprice) </p> %>
+    <%# <% end %>
+    <%# </div> %>
   </div>
-</div>

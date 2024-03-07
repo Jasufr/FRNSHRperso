@@ -1,20 +1,25 @@
 <div class="container">
-  <h2>Your saved rooms with color planner: </h2>
-  <div class = "row">
+  <h2 class="rooms-index-title">Your saved rooms with color planner: </h2>
+  <div class = "rooms-container">
     <% @rooms.each do |room|%>
-      <div class="d-flex col-lg-6 col-md-6 col-sm-12 mb-8">
-        <div class = "saved_room_cards">
-          <div class = "d-flex justify-content-between">
-            <p><%= link_to room.room_type, room_planners_path(room)%></p>
-            <%= button_to room_path(room), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-button" do %>
-              <i class="fas fa-trash"></i>
-            <% end %>
-          </div>
+      <%# <div class="d-flex col-lg-6 col-md-6 col-sm-12 mb-8"> %>
+      <div class = "saved_room_cards">
+        <%= link_to room_planners_path(room), class: "room-card-link" do  %>
           <% @planners = room.planners %>
           <% @room = room %>
-          <%= render "planners/colorswatch", room: room %>
-        </div>
+          <div class="room-swatch-container"><%= render "planners/colorswatch", room: room %></div>
+          <div class = "room-card-infos">
+            <p class="mb-0 me-4"><%= room.room_type.capitalize %> :</p>
+            <div class="d-flex"><% @room.palette.each do |color| %>
+                <div class="room-color" style="background-color: <%= color %>"></div>
+              <% end %></div>
+          </div>
+        <% end %>
+        <%= button_to room_path(room), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "remove-button" do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
       </div>
+      <%# </div> %>
     <%end%>
   </div>
 </div>
