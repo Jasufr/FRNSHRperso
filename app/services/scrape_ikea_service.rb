@@ -11,7 +11,7 @@ class ScrapeIkeaService
     # url = "https://www.ikea.com/jp/en/p/barsloev-3-seat-sofa-bed-with-chaise-longue-tibbleby-light-grey-turquoise-30541577/"
     # url = "https://www.ikea.com/jp/en/p/kleppstad-wardrobe-with-3-doors-white-80441759/"
 
-    # "https://www.ikea.com/jp/en/cat/sofas-fu003/", "https://www.ikea.com/jp/en/cat/armchairs-chaise-longues-fu006/"
+    # "https://www.ikea.com/jp/en/cat/sofas-fu003/", "https://www.ikea.com/jp/en/cat/armchairs-chaise-longues-fu006/", "https://www.ikea.com/jp/en/cat/bookcases-shelving-units-st002/", "https://www.ikea.com/jp/en/cat/tv-media-furniture-10475/", "https://www.ikea.com/jp/en/cat/coffee-side-tables-10705/"
 
     # @item_category_page_urls = ["https://www.ikea.com/jp/en/cat/beds-bm003/", "https://www.ikea.com/jp/en/cat/wardrobes-19053/", "https://www.ikea.com/jp/en/cat/cushions-cushion-covers-10659/"]
       #"https://www.ikea.com/jp/en/cat/chests-of-drawers-10451/","https://www.ikea.com/jp/en/cat/bedside-tables-20656/", "https://www.ikea.com/jp/en/cat/sofas-fu003/", "https://www.ikea.com/jp/en/cat/armchairs-chaise-longues-fu006/", "https://www.ikea.com/jp/en/cat/bookcases-shelving-units-st002/", "https://www.ikea.com/jp/en/cat/cabinets-cupboards-st003/", "https://www.ikea.com/jp/en/cat/tv-media-furniture-10475/", "https://www.ikea.com/jp/en/cat/coffee-side-tables-10705/", "https://www.ikea.com/jp/en/cat/rugs-10653/", "https://www.ikea.com/jp/en/cat/curtains-blinds-tl002/" ]
@@ -21,7 +21,7 @@ class ScrapeIkeaService
     # html = URI.open(url)
     # @doc = Nokogiri::HTML.parse(html)
 
-    @living_room_item_category_page_urls = ["https://www.ikea.com/jp/en/cat/bookcases-shelving-units-st002/", "https://www.ikea.com/jp/en/cat/tv-media-furniture-10475/", "https://www.ikea.com/jp/en/cat/coffee-side-tables-10705/", "https://www.ikea.com/jp/en/cat/rugs-10653/", "https://www.ikea.com/jp/en/cat/curtains-blinds-tl002/", "https://www.ikea.com/jp/en/cat/cushions-cushion-covers-10659/"]
+    @living_room_item_category_page_urls = ["https://www.ikea.com/jp/en/cat/rugs-10653/", "https://www.ikea.com/jp/en/cat/curtains-blinds-tl002/", "https://www.ikea.com/jp/en/cat/cushions-cushion-covers-10659/"]
   end
 
   def call
