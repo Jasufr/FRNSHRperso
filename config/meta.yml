@@ -1,0 +1,7 @@
+
+ # config/meta.yml
+ meta_product_name: "FRNSHR"
+ meta_title: "FRNSHR - Your Ideal Furniture Awaits"
+ meta_description: "Become a furnisher with FRNSHR"
+ meta_image: 'frnshr-meta-img.png' # should exist in `app/assets/images/`
+
