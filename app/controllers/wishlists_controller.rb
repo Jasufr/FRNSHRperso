@@ -71,10 +71,23 @@ class WishlistsController < ApplicationController
     authorize @wishlist
     @room = Room.find(params[:room_id])
     @wishlist.room = @room
-    if @wishlist.save
-      redirect_to room_wishlists_path(@room)
-    else
-      render :new, status: :unprocessable_entity
+    # if @wishlist.save
+    #   redirect_to room_wishlists_path(@room)
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
+    respond_to do |format|
+      if @wishlist.save
+        @wishlists = current_user.wishlists.where(room: @room)
+        # html2 = render_to_string(partial: "shared/status", formats: :html, locals: { wishlist: @wishlist, wishlists: @wishlists })
+        counter = @wishlists.count
+        html = render_to_string(partial: "shared/wishlistcard", formats: :html, locals: { wishlist: @wishlist, wishlists: @wishlists })
+        format.html { redirect_to room_wishlists_path(@room) }
+        format.json { render json: { counter: counter, html: html } }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: { errors: @wishlist.errors.full_messages }, status: :unprocessable_entity }
+      end
     end
   end
 
