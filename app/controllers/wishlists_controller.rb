@@ -84,10 +84,10 @@ class WishlistsController < ApplicationController
     @room = @wishlist.room
     @wishlist.destroy
     # raise
-    if params[:origin] == "wishlists"
-      redirect_to room_wishlists_path(@room), status: :see_other
-    else
+    if params[:origin] == "planners"
       redirect_to room_planners_path(@room), status: :see_other
+    else
+      redirect_to room_wishlists_path(@room), status: :see_other
     end
   end
 
