@@ -1,13 +1,11 @@
 <div class="search" data-controller="loadingpage" >
   <%= render "shared/narrow-search" %>
-  <div class="search-results" style="display: none;">
+  <div class="search-results">
     <div id="items">
       <% if @items.any? %>
         <div class="results-container">
           <% @items.each do |item| %>
-
             <%= render item, room: @room %>
-
           <% end %>
         </div>
       <% else %>
