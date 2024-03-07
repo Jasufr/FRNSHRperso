@@ -2,14 +2,29 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="colorscheme"
 export default class extends Controller {
-  static targets = ["usercolor", "displayArea"];
+  static targets = ["usercolor", "displayArea","room"];
 
   connect() {
     console.log("js connected");
   }
 
   roomchecking(event){
+    event.preventDefault();
     console.log("room is connected");
+    // resetting the others to zero
+    const allRooms = document.querySelectorAll('.room-card');
+    allRooms.forEach(room => {
+      room.classList.remove("clicked");
+      this.roomTarget.value = "";
+  });
+
+    // passing the roomtype to simple form
+    const roomtype = event.currentTarget.getAttribute('data-roomtype');
+    console.log(roomtype)
+    this.roomTarget.value = roomtype;
+    console.log(this.roomTarget.value)
+    event.currentTarget.classList.add("clicked");
+
   }
 
   select(event) {
