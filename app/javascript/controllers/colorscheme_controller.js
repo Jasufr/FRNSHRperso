@@ -39,7 +39,9 @@ export default class extends Controller {
       });
   });
 // picking the current one only
-    const selectedDiv = event.currentTarget.parentElement
+    // const selectedDiv = event.currentTarget.parentElement
+    const id = event.currentTarget.id.slice(4);
+    const selectedDiv = document.getElementById(id);
     selectedDiv.classList.add("clicked");
     const selectedInput = selectedDiv.querySelectorAll('input[type="color"]')
     selectedInput.forEach(element => {element.setAttribute("name", "room[palette][]")});
@@ -52,7 +54,7 @@ export default class extends Controller {
     const usercolor = this.usercolorTarget.value.slice(1);
     console.log(usercolor);
     const modes = ["analogic", "monochrome", "monochrome-light", "quad"];
-    const schemeButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
+    // const schemeButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
 
  // iteration
  modes.forEach(mode => {
@@ -73,7 +75,7 @@ export default class extends Controller {
         const colorPicker = `<input type="color" name="" value="${colorHex}">`;
         modeDiv.insertAdjacentHTML('beforeend',colorPicker);
       });
-  modeDiv.insertAdjacentHTML('beforeend',schemeButton)
+  modeDiv.insertAdjacentHTML('beforeend',`<button id = "btn-${mode}" data-action="click->colorscheme#select">Pick this color scheme</button>`)
     })
 });
   }
