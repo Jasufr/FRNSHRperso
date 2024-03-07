@@ -1,8 +1,8 @@
 .planner-card-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 16px;
-  padding: 12px;
+  gap: 32px;
+  padding: 32px;
   // justify-items: center;
   margin-bottom: 64px;
 }
@@ -13,7 +13,8 @@
   width: 100%;
   min-width: 250px;
   background-color: $beige;
-  box-shadow: 0px 0px 10px gray;
+  // box-shadow: 0px 0px 10px gray;
+  box-shadow: 4px 4px 8px rgba(0,0,0, .1);
   position: relative;
 }
 
@@ -45,6 +46,9 @@
 }
 .planner-item-name {
   height: 21.5px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }
 .planner-card-infos i {
   // margin: auto;
@@ -68,12 +72,12 @@
 
   }
 }
-@media (max-width: 1300px) {
+@media (max-width: 1340px) {
   .planner-card-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1060px) {
   .planner-card-container {
     grid-template-columns: 1fr 1fr;
   }

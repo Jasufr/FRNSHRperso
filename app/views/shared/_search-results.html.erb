@@ -1,33 +1,13 @@
-<div class="search">
+<div class="search" data-controller="loadingpage" >
   <%= render "shared/narrow-search" %>
-  <div class="search-results">
+  <div class="search-results" style="display: none;">
     <div id="items">
       <% if @items.any? %>
         <div class="results-container">
           <% @items.each do |item| %>
-            <div class="result">
-              <div class="result-photo" style="background-image: url('<%= item.photo %>');">
-              </div>
-              <div class="result-details">
-                <h3><%= item.name %></h3>
-                <p>¥ <%= number_with_delimiter(item.price) %> (<%= item.furniture_type&.capitalize %>)</p>
-                <p></p>
-                <p><i class="fa-solid fa-ruler"></i> <%= item.x_dimension %> x <%= item.y_dimension %> x <%= item.z_dimension %></p>
-                <p><a class="text-decoration-none text-info" href="<%= item.shop_url %>" target="_blank"><%= item.shop_name %>  <i class="fa-solid fa-up-right-from-square"></i></a></p>
-              </div>
-              <% if @room.wish_items.find_by(id: item) %>
-                <%= button_to wishlist_path(@room.wishlists.find_by(item: item)), method: :delete, data: {turbo_method: :delete}, class: "on-wishlist-button" do %>
-                  <i class="fa-solid fa-heart"></i>
-                <% end %>
-              <% else %>
-                <%= simple_form_for [@room, @wishlist], html: { class:"d-flex" } do |f| %>
-                  <%= f.input :item_id, as: :hidden, input_html: { value: item.id } %>
-                  <%= f.button :button, disabled: @room.wish_items.find_by(id: item) ? true : false, class: "add-to-wishlist-button" do %>
-                    <i class="fa-solid fa-heart"></i>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
+
+            <%= render item, room: @room %>
+
           <% end %>
         </div>
       <% else %>

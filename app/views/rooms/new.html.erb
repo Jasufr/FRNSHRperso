@@ -1,10 +1,11 @@
+<% content_for :meta_title, "FRNSHR - Room composer" %>
 <div class="container">
   <div class="form-container">
     <h1>Choose a Room</h1>
     <%= simple_form_for(@room, html: { data: { controller: 'colorscheme' } }) do |f| %>
       <%= f.input :room_type, as: :select, collection: Room::ROOMS, input_html: { data: { colorscheme_target: 'room', action: 'change->colorscheme#roomchecking' }} %>
       <p>Choose a Color:</p>
-      <input type="color" data-colorscheme-target="usercolor" data-action="change->colorscheme#suggestion">
+      <input type="color" data-colorscheme-target="usercolor" data-action="input->colorscheme#suggestion">
       <p>Suggested Color Schemes: </p>
       <div class = "row" data-colorscheme-target = "displayArea">
       </div>

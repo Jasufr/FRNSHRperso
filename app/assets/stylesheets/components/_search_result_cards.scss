@@ -2,8 +2,8 @@
 .results-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-  padding: 12px;
+  gap: 32px;
+  padding: 32px;
   justify-items: center;
   margin-bottom: 64px;
 }
@@ -11,9 +11,9 @@
   display: flex;
   width: 100%;
   min-width: 300px;
-
   background-color: $beige;
-  box-shadow: 0px 0px 2px gray;
+  box-shadow: 4px 4px 8px rgba(0,0,0, .1);
+  position: relative;
 }
 .result p {
   font-size: 14px;
@@ -22,17 +22,22 @@
 .result h3 {
   font-size: 16px;
   font-weight: bold;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  text-wrap: nowrap;
 }
 .result-photo {
   width: 150px;
-  height: 100%;
+  min-width: 150px;
+  height: 150px;
   background-size: cover;
   background-position: center;
   align-self: center;
   border-right: 1px solid black;
 }
 .result-details {
-  flex-grow: 1;
+  // flex-grow: 1;
   padding: 12px 12px;
 }
 .add-to-wishlist-button {
@@ -64,6 +69,12 @@
   color: $red;
   text-shadow: 0 0 2px black;
   font-size: 18px;
+}
+
+.heart-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 @media (max-width: 1300px) {
