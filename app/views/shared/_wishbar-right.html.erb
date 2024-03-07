@@ -1,40 +1,12 @@
 <div class="wishbar">
-  <div class="wishbar-header">
-    <p class="wishbar-title">Favourites</p>
-    <p class="wishlists-counter"><%= wishlists.count %> items selected</p>
-    <% if current_page?(room_planners_path) %>
-      <%= link_to "Back to Search", room_wishlists_path, class: "button-back-to-search", role: "button" %>
-    <% end %>
-    <% if current_page?(room_wishlists_path) && wishlists.any? %>
-      <%= link_to "Continue to Room Planner", room_planners_path, class: "button-planner btn btn-primary", role: "button" %>
-    <% end %>
-  </div>
-  <div class="wishitems-container scrollbar" id="style-4">
+  <%= render "shared/status", wishlist: @wishlist, wishlists: @wishlists%>
+  <div class="wishitems-container scrollbar"  id="style-4" data-searchpage-target="wishlistsubDisplay">
     <% if wishlists.any? %>
       <% wishlists.each do |wishlist| %>
-        <div class="wishitem">
-          <div class="wishitem-image" style="background-image: url('<%= wishlist.item.photo %>')"></div>
-          <div class="wishitem-info">
-            <% if current_page?(room_planners_path) %>
-              <p><i class="fa-solid fa-ruler"></i> <%= wishlist.item.x_dimension %> x <%= wishlist.item.y_dimension %> x <%= wishlist.item.z_dimension %></p>
-            <% end %>
-            <%# <p><%= wishlist.item.name </p> %>
-            <div class="wishitem-lastline">
-              <p>¥ <%= number_with_delimiter(wishlist.item.price) %></p>
-              <%# <p><a class="text-decoration-none" href="<%= wishlist.item.shop_url " target="_blank">Shop</a></p> %>
-              <% if current_page?(room_planners_path) %>
-                <%= render "room_planners", wishlist: wishlist %>
-                <%# <% else %>
-              <% end %>
-              <%= button_to wishlist_path(wishlist, origin: params[:controller]), method: :delete, data: {turbo_method: :delete}, class: "remove-button" do %>
-                <i class="fas fa-trash"></i>
-              <% end %>
-            </div>
-          </div>
-        </div>
+        <%= render "shared/wishlistcard", wishlist: wishlist%>
       <% end %>
     <% else %>
-      <em class="empty-wishlist-text p-3">Add some items to your wishlist...</em>
+      <em class="empty-wishlist-text p-3" data-searchpage-target ="statement">Add some items to your wishlist...</em>
     <% end %>
   </div>
 </div>
