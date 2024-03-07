@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :planners, dependent: :destroy
 
 
-  before_save :add_color
+  # before_save :add_color
 
   before_save :set_default_x, if: :no_x_value?
   before_save :set_default_y, if: :no_y_value?
