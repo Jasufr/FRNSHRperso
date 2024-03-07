@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :planners, dependent: :destroy
 
 
-  before_save :add_color
+  # before_save :add_color
 
   before_save :set_default_x, if: :no_x_value?
   before_save :set_default_y, if: :no_y_value?
@@ -54,53 +54,56 @@ class Item < ApplicationRecord
 
   def set_default_x
     case self.furniture_type
-      when "cushion" then 50
-      when "sofa" then 150
-      when "chair" then 70
-      when "table" then 180
-      when "stool" then 40
-      when "cabinet" then 160
-      when "counter" then 100
-      when "bed" then 150
-      when "bookcase" then 75
-      when "rug" then 230
-      when "curtain" then 250
-      when "curtains" then 250
+      when "cushion" then self.x_dimension = 50
+      when "sofa" then self.x_dimension = 150
+      when "chair" then self.x_dimension = 70
+      when "table" then self.x_dimension = 180
+      when "stool" then self.x_dimension = 40
+      when "cabinet" then self.x_dimension = 160
+      when "counter" then self.x_dimension = 100
+      when "bed" then self.x_dimension = 150
+      when "bookcase" then self.x_dimension = 75
+      when "rug" then self.x_dimension = 230
+      when "curtain" then self.x_dimension = 250
+      when "curtains" then self.x_dimension = 250
     end
+    save
   end
 
   def set_default_y
     case self.furniture_type
-      when "cushion" then 50
-      when "sofa" then 70
-      when "chair" then 80
-      when "table" then 80
-      when "stool" then 45
-      when "cabinet" then 185
-      when "counter" then 15
-      when "bed" then 90
-      when "bookcase" then 150
-      when "rug" then 160
-      when "curtain" then 210
-      when "curtains" then 210
+      when "cushion" then self.y_dimension = 50
+      when "sofa" then self.y_dimension = 70
+      when "chair" then self.y_dimension = 80
+      when "table" then self.y_dimension = 80
+      when "stool" then self.y_dimension = 45
+      when "cabinet" then self.y_dimension = 185
+      when "counter" then self.y_dimension = 15
+      when "bed" then self.y_dimension = 90
+      when "bookcase" then self.y_dimension = 150
+      when "rug" then self.y_dimension = 160
+      when "curtain" then self.y_dimension = 210
+      when "curtains" then self.y_dimension = 210
     end
+    save
   end
 
   def set_default_z
     case self.furniture_type
-      when "cushion" then 15
-      when "sofa" then 70
-      when "chair" then 80
-      when "table" then 90
-      when "stool" then 50
-      when "cabinet" then 30
-      when "counter" then 50
-      when "bed" then 200
-      when "bookcase" then 40
-      when "rug" then 5
-      when "curtain" then 5
-      when "curtains" then 5
+      when "cushion" then self.z_dimension = 15
+      when "sofa" then self.z_dimension = 70
+      when "chair" then self.z_dimension = 80
+      when "table" then self.z_dimension = 90
+      when "stool" then self.z_dimension = 50
+      when "cabinet" then self.z_dimension = 30
+      when "counter" then self.z_dimension = 50
+      when "bed" then self.z_dimension = 200
+      when "bookcase" then self.z_dimension = 40
+      when "rug" then self.z_dimension = 5
+      when "curtain" then self.z_dimension = 5
+      when "curtains" then self.z_dimension = 5
     end
+    save
   end
 
 end
