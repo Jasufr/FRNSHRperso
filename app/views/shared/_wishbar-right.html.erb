@@ -5,6 +5,7 @@
       <% wishlists.each do |wishlist| %>
         <%= render "shared/wishlistcard", wishlist: wishlist%>
       <% end %>
+      <em class="empty-wishlist-text p-3" data-searchpage-target ="statement"></em>
     <% else %>
       <em class="empty-wishlist-text p-3" data-searchpage-target ="statement">Add some items to your wishlist...</em>
     <% end %>

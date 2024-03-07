@@ -6,8 +6,9 @@ export default class extends Controller {
       setTimeout(this.showPage, 7000);
   }
   showPage() {
-    document.querySelector(".loader-container").style.display = "none";
-    document.querySelector(".search-results").style.display = "block"
+    if (document.querySelector(".loader-container")) {
+      document.querySelector(".loader-container").style.display = "none";
+    }
   }
 
 }

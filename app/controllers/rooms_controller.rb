@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
     @room.user = current_user
     authorize @room
     if @room.save
-      redirect_to room_wishlists_path(@room)
+      redirect_to room_wishlists_path(@room, searching: true)
     else
       render :new, status: :unprocessable_entity
     end

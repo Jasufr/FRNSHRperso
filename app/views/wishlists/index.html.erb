@@ -1,8 +1,6 @@
-
 <% content_for :meta_title, "FRNSHR - Search results" %>
-<div class="page-container" data-controller="loadingpage" data-controller="searchpage">
-  <%= render "shared/loading-search-page" %>
-
+<div class="page-container" data-controller="loadingpage searchpage">
+  <%= render "shared/loading-search-page" if params[:searching] %>
   <div class="search-results-container">
     <%= render "shared/search-results" %>
   </div>
