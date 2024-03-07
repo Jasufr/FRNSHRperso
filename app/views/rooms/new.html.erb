@@ -1,7 +1,7 @@
 <% content_for :meta_title, "FRNSHR - Room composer" %>
 <div class="container">
-  <div class="form-container">
-    <h2>Your Room</h2>
+  <div class="form-container new-room-form-container">
+    <h2>Define Your Decor</h2>
     <%= simple_form_for(@room, html: { data: { controller: 'colorscheme' } }) do |f| %>
       <%= f.hidden_field :room_type, data: { colorscheme_target: 'room' } %>
       <div class="room-card-container">
@@ -9,18 +9,18 @@
           <button data-action="click->colorscheme#roomchecking" data-roomtype="<%= room %>" class="room-card"
             style="background-image: url('<%= image_path("#{room}.jpg") %>'); ">
             <!-- Your button text or content -->
-            <%= room %>
+            <%= room.capitalize %>
           </button>
         <% end %>
       </div>
       <div class = "favoritecolor-card">
-        <p>Your Favorite Color:</p>
+        <p>Main Tone Choice:</p>
         <input type="color" data-colorscheme-target="usercolor" data-action="input->colorscheme#suggestion" class="favoritecolor" value="#FFFFFF">
       </div>
       <div class = "schemetitle" data-colorscheme-target = "title"></div>
       <div class = "scheme-card-container" data-colorscheme-target = "displayArea">
       </div>
-      <p><%= f.button :submit, "Design Your Room", class: "btn btn-primary" %></p>
+      <p class="design-your-room-btn"><%= f.button :submit, "Search Decor Options", class: "btn btn-primary" %></p>
     <% end %>
   </div>
 </div>

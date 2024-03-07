@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding: 10px;
+  // padding: 10px;
   justify-items: center;
   margin-bottom: 20px;
   margin-top: 0px;
@@ -21,7 +21,7 @@
   border: 0px;
   border-radius: 5px;
   padding: 10px;
-  margin: 5px;
+  // margin: 5px;
   margin-bottom: 20px;
   // height:40px;
   p{
@@ -87,4 +87,24 @@
 .scheme-card.clicked {
   background-color: rgba(255, 255, 255, 0.7);
   border: 1px solid rgb(255, 255, 255);
+}
+
+.design-your-room-btn {
+  display: flex;
+  justify-content: center;
+}
+.design-your-room-btn input {
+  width: 100%;
+  align-self: center;
+  height: 50px;
+  margin-bottom: 64px;
+}
+
+.new-room-form-container {
+  margin: auto;
+  margin-top: 64px;
+  width: 75%;
+}
+.new-room-form-container h2 {
+  margin-bottom: 24px;
 }
