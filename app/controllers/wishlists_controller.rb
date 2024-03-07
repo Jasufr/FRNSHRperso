@@ -83,7 +83,11 @@ class WishlistsController < ApplicationController
         counter = @wishlists.count
         html = render_to_string(partial: "shared/wishlistcard", formats: :html, locals: { wishlist: @wishlist, wishlists: @wishlists })
         format.html { redirect_to room_wishlists_path(@room) }
-        format.json { render json: { counter: counter, html: html } }
+        format.json { render json: {
+          counter: counter,
+          html: html,
+          item_html: render_to_string(partial: "items/item", formats: :html, locals: {item: @wishlist.item, room: @room})
+          } }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: { errors: @wishlist.errors.full_messages }, status: :unprocessable_entity }

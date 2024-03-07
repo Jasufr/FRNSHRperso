@@ -13,7 +13,9 @@ export default class extends Controller {
   add(event) {
     event.preventDefault();
     console.log("An item is added to wishlist");
-    console.log(event.currentTarget);
+    console.log(event.currentTarget.dataset.id);
+    const itemCard = document.getElementById(event.currentTarget.dataset.id);
+    console.log(itemCard);
     fetch(event.currentTarget.action, {
       method: "POST",
       headers: { "Accept": "application/json" },
@@ -22,7 +24,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         console.log(this.wishlistsubDisplayTarget);
-        console.log(data.html);
+        console.log(data);
         this.wishlistsubDisplayTarget.insertAdjacentHTML('afterbegin', data.html);
         this.counterTarget.innerText = data.counter
         if(data.counter === 0) {
@@ -30,8 +32,10 @@ export default class extends Controller {
         } else {
           this.statementTarget.innerText = "";
         }
+        if(data.item_html){
+          itemCard.outerHTML = data.item_html
+        }
       })
-
   }
 
   // remove(event) {

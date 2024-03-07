@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
   <style>
-    .FRFR-header {
+    .error-header {
       font-family: "Gochi Hand", cursive;
       font-size: 8em;
       transform: translateY(30px);
@@ -41,10 +41,16 @@
       display: flex;
       justify-content: center;
       align-content: center;
-      margin-bottom: 12px;
+    }
+
+    .error-card {
+      background-color: #edede9;
+      border-top: 32px solid #d5bdaf;
+      margin-bottom: 15%;
     }
 
     .error-text {
+      font-size: 0.8em;
       margin: auto;
       width: 50%;
       text-align: center;
@@ -62,11 +68,13 @@
   <!-- This file lives in public/404.html -->
   <div class="error-container">
     <div class="error-circle">
-      <h1 class="FRFR-header">FR FR</h1>
+      <h1 class="error-header">FR FR</h1>
     </div>
-    <div class="error-text">
-      <p>A sad, empty room stretches before you.</p>
-      <p>There doesn't seem to be anything at this address...</p>
+    <div class="error-card">
+      <div class="error-text">
+        <p>A sad, empty room stretches before you.</p>
+        <p>There doesn't seem to be anything at this address...</p>
+      </div>
     </div>
   </div>
 </body>
