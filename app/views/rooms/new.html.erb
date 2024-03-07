@@ -1,7 +1,7 @@
 <% content_for :meta_title, "FRNSHR - Room composer" %>
 <div class="container">
   <div class="form-container">
-    <h1>Choose a Room</h1>
+    <h2>Your Room</h2>
     <%= simple_form_for(@room, html: { data: { controller: 'colorscheme' } }) do |f| %>
       <%= f.hidden_field :room_type, data: { colorscheme_target: 'room' } %>
       <div class="room-card-container">
@@ -13,10 +13,10 @@
           </button>
         <% end %>
       </div>
-      <p>Choose a Color:</p>
+      <p>Your Favourite Color:</p>
       <input type="color" data-colorscheme-target="usercolor" data-action="input->colorscheme#suggestion">
       <p>Suggested Color Schemes: </p>
-      <div class = "row" data-colorscheme-target = "displayArea">
+      <div class = "scheme-card-container" data-colorscheme-target = "displayArea">
       </div>
       <p><%= f.button :submit, "Design Your Room", class: "btn btn-primary" %></p>
     <% end %>

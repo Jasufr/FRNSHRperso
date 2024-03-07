@@ -58,7 +58,7 @@ export default class extends Controller {
 
  // iteration
  modes.forEach(mode => {
-  this.displayAreaTarget.insertAdjacentHTML('beforeend', `<div id="${mode}" class="scheme-card col-lg-6 col-md-6 col-sm-12 mb-8"></div>`);// the style is here
+  this.displayAreaTarget.insertAdjacentHTML('beforeend', `<div id="${mode}" class="scheme-card"></div>`);// the style is here
   const modeDiv = document.getElementById(mode);
   modeDiv.insertAdjacentHTML('beforeend', `<p>${mode}</p>`);
   fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=${mode}&count=5`)
