@@ -9,7 +9,7 @@ class ColorAnalyze
   end
 
   def call
-    browser = Watir::Browser.new
+    browser = Watir::Browser.new :chrome, headless: true
     browser.goto("https://www.colorpoint.io/free-tools-for-developers/color-palette-from-image-url/")
     sleep(3)
     browser.input(id: "inputImageUrl").set @image_url
