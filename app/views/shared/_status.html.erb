@@ -1,0 +1,10 @@
+<div class="wishbar-header">
+  <p class="wishbar-title">Favourites</p>
+  <p class="wishlists-counter" ><span data-searchpage-target="counter"><%= wishlists.count %></span> items selected</p>
+  <% if current_page?(room_planners_path) %>
+    <%= link_to "Back to Search", room_wishlists_path, class: "button-back-to-search", role: "button" %>
+  <% end %>
+  <% if current_page?(room_wishlists_path)%>
+    <%= link_to "Continue to Room Planner", room_planners_path, class: "button-planner btn btn-primary", role: "button" %>
+  <% end %>
+</div>
