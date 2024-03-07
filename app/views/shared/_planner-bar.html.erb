@@ -8,6 +8,7 @@
     </div>
     <p class="palette-title">Color ratios :</p>
     <div class="automatic-palette-container"><%= render "planners/colorswatch" %></div>
+    <%= render "shared/total_price" %>
   </div>
   <%= link_to "Share", room_planners_path(@room, format: :pdf), target: "_blank", class: "share-btn btn btn-primary" %>
 </div>

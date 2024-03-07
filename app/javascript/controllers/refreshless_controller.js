@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="refreshless"
 export default class extends Controller {
 
-  static targets = ["display","plannercard","colorswatch"]
+  static targets = ["display","plannercard","colorswatch", "totalprice"]
 
 
   connect() {
@@ -33,8 +33,8 @@ export default class extends Controller {
         console.log(this.displayTarget)
         this.displayTarget.insertAdjacentHTML("beforeend", data.html)
         this.colorswatchTarget.outerHTML = data.colorswatch
+        document.getElementById("totalprice").innerText = data.price
       })
-
   }
 
   remove(event) {
@@ -61,6 +61,7 @@ export default class extends Controller {
     .then(data => {
       console.log(data.colorswatch)
       this.colorswatchTarget.outerHTML = data.colorswatch
+      document.getElementById("totalprice").innerText = data.price
     })
 
 

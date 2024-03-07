@@ -5,7 +5,7 @@
     </div>
     <div class="planner-card-infos">
       <%# <p><%= planner.item.name </p> %>
-      <p><a class="text-decoration-none text-info" href="<%= planner.item.shop_url %>" target="_blank"><span class="planner-item-name"><%= planner.item.name %></span><i class="fa-solid fa-up-right-from-square"></i></a></p>
+      <p><a class="shop-link text-decoration-none text-info" href="<%= planner.item.shop_url %>" target="_blank"><span class="planner-item-name"><%= planner.item.name %></span><i class="fa-solid fa-up-right-from-square"></i></a></p>
       <p>¥ <%= number_with_delimiter(planner.item.price) %></p>
     </div>
     <div class="remove-item-from-planner ">

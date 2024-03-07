@@ -82,3 +82,13 @@
 .planner-title h4 {
   margin: 16px 0;
 }
+
+.totalpricep {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  text-wrap: nowrap;
+}
+.totalpricep span:first-child {
+  letter-spacing: -2px;
+}

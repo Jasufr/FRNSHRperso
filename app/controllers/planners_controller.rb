@@ -25,7 +25,7 @@ class PlannersController < ApplicationController
         colorhtml = render_to_string(partial: "colorswatch", formats: :html, locals: { planner: @planners })
         # create the colorbar as a string using a partial
         format.html { redirect_to room_planners_path(@room) }
-        format.json { render json: { html: html, colorswatch: colorhtml } }
+        format.json { render json: { html: html, colorswatch: colorhtml, price: @room.planner_items.sum { |item| item.price } } }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: { errors: @planner.errors.full_messages }, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class PlannersController < ApplicationController
       @planners = current_user.planners.where(room: @room)
       colorhtml = render_to_string(partial: "colorswatch", formats: :html, locals: { planner: @planners })
       # format.html {redirect_to room_planners_path(@room), status: :see_other}
-      format.json { render json: {colorswatch: colorhtml } }
+      format.json { render json: {colorswatch: colorhtml, price: @room.planner_items.sum { |item| item.price } } }
     end
   end
   end
