@@ -1,7 +1,7 @@
 class ScrapeIkeaService
   require "nokogiri"
   require "open-uri"
-  require "watir"
+  # require "watir"
 
   def initialize
     # url = "https://www.ikea.com/jp/en/"
