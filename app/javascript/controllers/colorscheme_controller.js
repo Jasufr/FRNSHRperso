@@ -17,7 +17,7 @@ export default class extends Controller {
  // resetting the others to zero
     const allDivs = document.querySelectorAll('.scheme-card');
     allDivs.forEach(div => {
-      div.style.border = '0';
+      div.classList.remove("clicked");
       const allInputs = div.querySelectorAll('input[type="color"]');
       allInputs.forEach(input => {
           input.setAttribute("name", "");
@@ -25,7 +25,7 @@ export default class extends Controller {
   });
 // picking the current one only
     const selectedDiv = event.currentTarget.parentElement
-    selectedDiv.style.border = "2px solid white";
+    selectedDiv.classList.add("clicked");
     const selectedInput = selectedDiv.querySelectorAll('input[type="color"]')
     selectedInput.forEach(element => {element.setAttribute("name", "room[palette][]")});
 }
@@ -41,7 +41,7 @@ export default class extends Controller {
 
  // iteration
  modes.forEach(mode => {
-  this.displayAreaTarget.insertAdjacentHTML('beforeend', `<div id="${mode}" class="scheme-card col-lg-6 col-md-6 col-sm-12 mb-8"></div>`);
+  this.displayAreaTarget.insertAdjacentHTML('beforeend', `<div id="${mode}" class="scheme-card col-lg-6 col-md-6 col-sm-12 mb-8"></div>`);// the style is here
   const modeDiv = document.getElementById(mode);
   modeDiv.insertAdjacentHTML('beforeend', `<p>${mode}</p>`);
   fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=${mode}&count=5`)
