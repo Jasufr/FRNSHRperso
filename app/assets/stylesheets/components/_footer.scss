@@ -22,18 +22,22 @@
   font-size: 24px;
   padding: 0px 10px;
 }
-.footer-links a:nth-child(1):hover {
-  color: pink;
+// .footer-links a:nth-child(1):hover {
+//   color: pink;
+// }
+// .footer-links a:nth-child(2):hover {
+//   color: lightgreen;
+// }
+// .footer-links a:nth-child(3):hover {
+//   color: red;
+// }
+// .footer-links a:nth-child(4):hover {
+//   color: grey;
+// }
+.footer-links a:hover {
+  color: $brown;
 }
-.footer-links a:nth-child(2):hover {
-  color: lightgreen;
-}
-.footer-links a:nth-child(3):hover {
-  color: red;
-}
-.footer-links a:nth-child(4):hover {
-  color: grey;
-}
+
 .footer-links a:hover, .footer-copyright a:hover {
   opacity: 1;
 }
