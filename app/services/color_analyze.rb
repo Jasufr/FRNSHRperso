@@ -2,7 +2,7 @@ class ColorAnalyze
   require 'json'
   require 'open-uri'
   require "nokogiri"
-  require 'watir'
+  # require 'watir'
 
   def initialize(image_url)
     @image_url = image_url
