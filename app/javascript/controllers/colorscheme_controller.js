@@ -55,7 +55,7 @@ export default class extends Controller {
     const usercolor = this.usercolorTarget.value.slice(1);
     console.log(usercolor);
     const nameOnColorAPI = ["analogic", "monochrome", "monochrome-light", "quad"];
-    const funnyNames = ["Funny-analogic", "Fancy-monochrome", "Great-monochrome-light", "Crazy-quad"];
+    const funnyNames = ["Analogic", "Monochrome", "Monochrome-light", "Quad"];
     const modes = {};
 
     nameOnColorAPI.forEach((mode, index) => {
