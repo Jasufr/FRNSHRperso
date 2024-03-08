@@ -12,7 +12,7 @@ module ColorMatching
 
   # Method to find closest matching images to user-selected colors
 
-  def closest_matching_images(user_colors, item_collect, num_images = 20)
+  def closest_matching_images(user_colors, item_collect, num_images = 36)
 
     item_collect.map do |item|
 
