@@ -3,5 +3,5 @@
   <% @planners.each do |planner| %>
     <% totalprice += planner.item.price.to_i %>
   <% end %>
-  <p class="totalpricep ms-3"><span>Total :</span> ¥<span id="totalprice"><%= number_with_delimiter(totalprice)%></span> </p>
+  <p class="totalpricep ms-3"><span>Total :</span> ¥<span id="totalprice"><%= number_with_delimiter(totalprice) %></span> </p>
 </div>

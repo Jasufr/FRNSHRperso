@@ -12,7 +12,7 @@ $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    rgb(115, 72, 72);
+$primary:    #09BC8A;
 $success:    rgb(115, 72, 72);
 $info:       $yellow;
 $danger:     $red;
@@ -30,3 +30,6 @@ $navbar-toggler-focus-width: 0;
 
 $zindex-dropdown: 1060;
 $spinner-animation-speed: 1s;
+
+$navbar-light-icon-color: white;
+$navbar-toggler-font-size: 24px;
