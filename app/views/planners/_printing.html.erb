@@ -43,17 +43,18 @@
   <div style="text-align: right;">
     <h2>Total Price : ¥<%= total_price %></h2>
   </div>
-  <div class="container-fluid">
-    <div class="card-group">
-      <% @planners.each do |planner|%>
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="<%= planner.item.photo %>" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"><%= planner.item.name %></h5>
-            <p class="card-text">¥<%= planner.item.price %></p>
-          </div>
-        </div>
+  <table style="border:none">
+    <tbody style="border:none">
+    <% unique_planners = @planners.uniq { |planner| planner.item.id } %>
+      <% unique_planners.each_slice(4) do |slice| %>
+        <tr style="border:none">
+          <% slice.each do |planner|%>
+            <td style="border:none; font-size:15px">
+              <%= image_tag planner.item.photo, width:"100px", height:"100px" %>
+              <%= planner.item.name %></td>
+          <% end %>
+        </tr>
       <% end %>
-    </div>
-  </div>
+    </tbody>
+  </table>
 </div>
