@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding: 10px;
+  // padding: 10px;
   justify-items: center;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   margin-top: 0px;
 }
 .favoritecolor{
@@ -16,16 +16,20 @@
 }
 .favoritecolor-card{
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.1);
   width: 100%;
   border: 0px;
   border-radius: 5px;
-  padding: 10px;
-  margin: 5px;
-  margin-bottom: 20px;
+  padding: 26px 32px;
+  // margin: 5px;
+  // margin-bottom: 20px;
+  margin-bottom: 64px;
   // height:40px;
   p{
-    padding-bottom: 0px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 22px;
   }
 }
 .scheme-card {
@@ -35,16 +39,25 @@
   min-width: 300px;
   border: 0px;
   border-radius: 5px;
-  padding: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 8px 12px;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.1);
   h5 {
     padding-bottom: 0px;
     font-size: 18px;
   }
 }
-
-.schemetitle{
-  padding-bottom: 0px;
+.scheme-card:nth-child(3), .scheme-card:nth-child(4) {
+  margin-bottom: 34px;
+}
+.schemetitle {
+  padding-bottom: 6px;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 12px;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .colorpicker{
@@ -86,5 +99,26 @@
 }
 .scheme-card.clicked {
   background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgb(255, 255, 255);
+  // border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.design-your-room-btn {
+  display: flex;
+  justify-content: center;
+}
+.design-your-room-btn input {
+  width: 100%;
+  align-self: center;
+  height: 50px;
+
+}
+
+.new-room-form-container {
+  margin: auto;
+  margin-top: 64px;
+  // width: 75%;
+}
+.new-room-form-container h2 {
+  margin-bottom: 24px;
 }
