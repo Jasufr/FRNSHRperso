@@ -5,7 +5,7 @@
     <%= simple_form_for(@room, html: { data: { controller: 'colorscheme' } }) do |f| %>
       <%= f.hidden_field :room_type, data: { colorscheme_target: 'room' } %>
       <div class="room-card-container">
-        <% Room::ROOMS.each do |room| %>
+        <% Room::ROOMS[0..-2].each do |room| %>
           <button data-action="click->colorscheme#roomchecking" data-roomtype="<%= room %>" class="room-card"
             style="background-image: url('<%= image_path("#{room}.jpg") %>'); ">
             <!-- Your button text or content -->
