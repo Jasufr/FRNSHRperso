@@ -54,14 +54,18 @@ export default class extends Controller {
     console.log("color is connected");
     const usercolor = this.usercolorTarget.value.slice(1);
     console.log(usercolor);
-    const modes = ["analogic", "monochrome", "monochrome-light", "quad"];
-    // const schemeButton = `<button data-action="click->colorscheme#select">Pick this color scheme</button>`;
+    const nameOnColorAPI = ["analogic", "monochrome", "monochrome-light", "quad"];
+    const funnyNames = ["Funny-analogic", "Fancy-monochrome", "Great-monochrome-light", "Crazy-quad"];
+    const modes = {};
 
+    nameOnColorAPI.forEach((mode, index) => {
+        modes[mode] = funnyNames[index];
+    });
  // iteration
- modes.forEach(mode => {
+ Object.entries(modes).forEach(([mode, funnyName]) => {
   this.displayAreaTarget.insertAdjacentHTML('beforeend', `<div id="${mode}" class="scheme-card"></div>`);// the style is here
   const modeDiv = document.getElementById(mode);
-  modeDiv.insertAdjacentHTML('beforeend', `<h5>${mode}</h5>`);
+  modeDiv.insertAdjacentHTML('beforeend', `<h5>${funnyName}</h5>`);
   fetch(`https://www.thecolorapi.com/scheme?hex=${usercolor}&format=json&mode=${mode}&count=5`)
     .then(response => {
       if (!response.ok) {

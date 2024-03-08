@@ -8,7 +8,6 @@
         <% Room::ROOMS[0..-2].each do |room| %>
           <button data-action="click->colorscheme#roomchecking" data-roomtype="<%= room %>" class="room-card"
             style="background-image: url('<%= image_path("#{room}.jpg") %>'); ">
-            <!-- Your button text or content -->
             <%= room %>
           </button>
         <% end %>
