@@ -24,22 +24,27 @@
 #navbarSupportedContent {
   position: absolute;
   top: 60px;
-  right: 10px;
+  right: 25px;
   background-color: $light-gray;
   color: $gray;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 4px;
   line-height: 32px;
-  box-shadow: 0 0 10px $gray;
+  box-shadow: 0px 0px 8px rgba(0,0,0,.3);
 }
 
 .dropdown-item {
   padding: 4px;
   &:hover {
-      background-color: rgba(1,186,239,0.25);
+      background-color: $light-brown;
     }
 }
 
 .brand-title {
   font-family: "Gochi Hand", cursive;
+}
+
+.navbar-toggler {
+  background-color: $brown;
+  border: none;
 }

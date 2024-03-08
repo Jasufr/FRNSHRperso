@@ -33,7 +33,8 @@ export default class extends Controller {
         console.log(this.displayTarget)
         this.displayTarget.insertAdjacentHTML("beforeend", data.html)
         this.colorswatchTarget.outerHTML = data.colorswatch
-        document.getElementById("totalprice").innerText = data.price
+        document.getElementById("totalprice").innerText =  new Intl.NumberFormat('ja-JP').format(
+          data.price)
       })
   }
 
@@ -61,7 +62,8 @@ export default class extends Controller {
     .then(data => {
       console.log(data.colorswatch)
       this.colorswatchTarget.outerHTML = data.colorswatch
-      document.getElementById("totalprice").innerText = data.price
+      document.getElementById("totalprice").innerText =  new Intl.NumberFormat('ja-JP').format(
+        data.price)
     })
 
 
