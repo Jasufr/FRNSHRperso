@@ -1,4 +1,4 @@
-# 📚 FRNSHR
+# 🪑 FRNSHR 🛋️
 
 Bootcamp final group project.
 FRNSHR is an interior design tool which helps you find suitable furniture from several websites (like IKEA or FrancFranc) to decorate your space based on a specific color scheme.
