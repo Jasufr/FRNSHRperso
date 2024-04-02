@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_many :rooms
-  has_many :planners, through: :rooms
-  has_many :wishlists, through: :rooms
+  self.table_name = "frnshr_users"
+  has_many :rooms, foreign_key: "frnshr_user_id"
+  has_many :planners, foreign_key: "frnshr_user_id", through: :rooms
+  has_many :wishlists, foreign_key: "frnshr_user_id", through: :rooms
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

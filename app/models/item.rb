@@ -1,10 +1,7 @@
 class Item < ApplicationRecord
-  has_many :wishlists, dependent: :destroy
-  has_many :planners, dependent: :destroy
-
-
-  # before_save :add_color
-
+  self.table_name = "frnshr_items"
+  has_many :wishlists, foreign_key: "frnshr_item_id", dependent: :destroy
+  has_many :planners, foreign_key: "frnshr_item_id", dependent: :destroy
   before_save :set_default_x, if: :no_x_value?
   before_save :set_default_y, if: :no_y_value?
   before_save :set_default_z, if: :no_z_value?
@@ -13,12 +10,8 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :photo, presence: true
   validates :color, presence: true
-  # validates :shop_name, presence: true
   validates :shop_url, presence: true
-  # validates :dimensions, presence: true?
-  # validates :shop_item_id, presence: true?
   validates :furniture_type, presence: :true
-  # validates :furniture_type, inclusion: { in: ["curtain", "curtains", "cushion","sofa","chair","cabinet","bookcase","counter","table","stool","bed","bookcase","rug"] }
 
   include PgSearch::Model
   pg_search_scope :search_by_name,
@@ -32,7 +25,6 @@ class Item < ApplicationRecord
   def surface_area
     x_dimension*y_dimension + y_dimension*z_dimension + x_dimension*z_dimension
   end
-
 
   def add_color
     self.color = ColorAnalyze.new(self.photo).call
@@ -105,5 +97,4 @@ class Item < ApplicationRecord
     end
     save
   end
-
 end

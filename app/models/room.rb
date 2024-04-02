@@ -1,9 +1,10 @@
 class Room < ApplicationRecord
-  belongs_to :user
-  has_many :wishlists, dependent: :destroy
-  has_many :planners, dependent: :destroy
-  has_many :planner_items, through: :planners, source: :item
-  has_many :wish_items, through: :wishlists, source: :item
+  self.table_name = "frnshr_rooms"
+  belongs_to :user, foreign_key: "frnshr_user_id"
+  has_many :wishlists, foreign_key: "frnshr_room_id", dependent: :destroy
+  has_many :planners, foreign_key: "frnshr_room_id", dependent: :destroy
+  has_many :planner_items, foreign_key: "frnshr_room_id", through: :planners, source: :item
+  has_many :wish_items, foreign_key: "frnshr_room_id", through: :wishlists, source: :item
 
   validates :room_type, presence: true
   validates :palette, presence: true
