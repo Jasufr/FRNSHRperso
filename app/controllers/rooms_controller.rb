@@ -34,6 +34,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:room_type, palette: [])
+    params.require(:frnshr_room).permit(:room_type, palette: [])
   end
 end

@@ -111,6 +111,6 @@ class WishlistsController < ApplicationController
   private
 
   def wishlist_params
-    params.require(:wishlist).permit(:item_id)
+    params.require(:frnshr_wishlist).permit(:item_id)
   end
 end
