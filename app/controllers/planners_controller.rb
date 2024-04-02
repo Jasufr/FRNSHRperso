@@ -51,7 +51,7 @@ class PlannersController < ApplicationController
   private
 
   def planner_params
-    params.require(:frnshr_planner).permit(:room_id, :item_id)
+    params.require(:planner).permit(:frnshr_room_id, :frnshr_item_id)
   end
 
 end
